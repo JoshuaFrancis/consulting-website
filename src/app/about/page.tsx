@@ -34,11 +34,11 @@ const values = [
 
 const experience = [
   {
-    role: "Agent Designer",
-    company: "PolyAI",
+    role: "Conversational AI Agent Designer",
+    company: "",
     period: "2024 to Present",
     description:
-      "Designing conversational AI agents for enterprise customers at one of the leading voice AI companies.",
+      "Designing conversational AI agents for enterprise customers at a leading voice AI company.",
   },
   {
     role: "AI Image Course Instructor",

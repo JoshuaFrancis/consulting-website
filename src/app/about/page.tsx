@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { Target, Users, BarChart3 } from "lucide-react";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -76,8 +77,14 @@ export default function AboutPage() {
       <Section className="pt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
           <AnimatedSection>
-            <div className="aspect-[4/5] rounded-lg bg-muted flex items-center justify-center">
-              <span className="text-sm text-muted-foreground">Photo</span>
+            <div className="aspect-[4/5] rounded-lg overflow-hidden relative">
+              <Image
+                src="/photo.png"
+                alt="Joshua Francis"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>

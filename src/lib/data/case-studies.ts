@@ -91,6 +91,7 @@ export const caseStudies: CaseStudy[] = [
     categories: ["UX/UI Design", "AI Strategy"],
     client: "SynthMinds AI",
     timeline: "6 weeks",
+    url: "https://synthminds.ai",
     challenge:
       "SynthMinds needed a digital presence that matched the caliber of their enterprise client roster (NVIDIA, PwC, HP, Kraft Heinz) while making complex AI consulting and education services feel approachable. Their existing presence lacked the visual authority to convert enterprise leads and failed to communicate the breadth of their four service pillars: consulting, education, design, and integration.",
     approach:

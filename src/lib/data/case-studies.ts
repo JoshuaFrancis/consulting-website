@@ -100,11 +100,5 @@ export const caseStudies: CaseStudy[] = [
       { metric: "52%", description: "Improvement in average session duration" },
       { metric: "40%", description: "Increase in consultation bookings" },
     ],
-    testimonial: {
-      quote:
-        "Joshua translated our vision into a platform that truly reflects the quality of work we deliver. Enterprise clients now take us seriously from the first click.",
-      author: "Wes Simons",
-      role: "Founder, SynthMinds AI",
-    },
   },
 ];

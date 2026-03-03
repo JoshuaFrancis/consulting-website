@@ -92,9 +92,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <h2 className="text-sm font-semibold text-accent uppercase tracking-wider">
               The Challenge
             </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed text-lg">
-              {study.challenge}
-            </p>
+            <div className="mt-4 space-y-4">
+              {(Array.isArray(study.challenge) ? study.challenge : [study.challenge]).map((p, i) => (
+                <p key={i} className="text-muted-foreground leading-relaxed text-lg">
+                  {p}
+                </p>
+              ))}
+            </div>
           </AnimatedSection>
         </div>
       </Section>
@@ -106,9 +110,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <h2 className="text-sm font-semibold text-accent uppercase tracking-wider">
               The Approach
             </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed text-lg">
-              {study.approach}
-            </p>
+            <div className="mt-4 space-y-4">
+              {(Array.isArray(study.approach) ? study.approach : [study.approach]).map((p, i) => (
+                <p key={i} className="text-muted-foreground leading-relaxed text-lg">
+                  {p}
+                </p>
+              ))}
+            </div>
           </AnimatedSection>
         </div>
       </Section>

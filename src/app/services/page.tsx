@@ -9,7 +9,7 @@ import { Search, Lightbulb, Code, Repeat } from "lucide-react";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "End-to-end AI consulting — from strategy to production deployment. AI strategy, LLM implementation, agent development, and UX/UI design.",
+    "End-to-end AI consulting, from strategy to production deployment. AI strategy, LLM implementation, agent development, and UX/UI design.",
 };
 
 const processSteps = [
@@ -32,7 +32,7 @@ const processSteps = [
     icon: Code,
     title: "Build",
     description:
-      "I design and build iteratively — shipping early, getting feedback, and refining. You see working software, not status updates.",
+      "I design and build iteratively, shipping early, getting feedback, and refining. You see working software, not status updates.",
   },
   {
     step: "04",
@@ -48,7 +48,7 @@ export default function ServicesPage() {
     <>
       <PageHeader
         title="Services"
-        subtitle="End-to-end AI consulting — from strategy to production deployment."
+        subtitle="End-to-end AI consulting, from strategy to production deployment."
       />
 
       {/* Service Details */}

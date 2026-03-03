@@ -8,7 +8,7 @@ import { Target, Users, BarChart3 } from "lucide-react";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Product designer turned AI builder. I design and ship AI products — from conversational agents to full SaaS platforms.",
+    "Product designer turned AI builder. I design and ship AI products, from conversational agents to full SaaS platforms.",
 };
 
 const values = [
@@ -28,7 +28,7 @@ const values = [
     icon: BarChart3,
     title: "Full Picture",
     description:
-      "I work across design, AI, and product — so nothing gets lost in translation between what's built and what users need.",
+      "I work across design, AI, and product so nothing gets lost in translation between what's built and what users need.",
   },
 ];
 
@@ -36,7 +36,7 @@ const experience = [
   {
     role: "Agent Designer",
     company: "PolyAI",
-    period: "2024 — Present",
+    period: "2024 to Present",
     description:
       "Designing conversational AI agents for enterprise customers at one of the leading voice AI companies.",
   },
@@ -50,14 +50,14 @@ const experience = [
   {
     role: "Founding Design Lead",
     company: "SynthMinds",
-    period: "2023 — 2024",
+    period: "2023 to 2024",
     description:
       "Led design for an AI consulting and education firm working with enterprise clients including NVIDIA, PwC, and Kraft Heinz.",
   },
   {
     role: "Freelance Product Designer",
     company: "",
-    period: "2021 — 2024",
+    period: "2021 to 2024",
     description:
       "Designed products for a range of clients, from startup MVPs to corporate websites focused on conversion optimization.",
   },
@@ -69,7 +69,7 @@ export default function AboutPage() {
       <PageHeader
         title="About"
         accent="Joshua Francis"
-        subtitle="Product designer turned AI builder. I design and ship AI products — from conversational agents to full SaaS platforms."
+        subtitle="Product designer turned AI builder. I design and ship AI products, from conversational agents to full SaaS platforms."
       />
 
       {/* Bio */}
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 <a href="https://www.roomlab.ca" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
                   RoomLab
                 </a>
-                , an AI-powered interior design tool, from scratch — the AI
+                , an AI-powered interior design tool, from scratch. The AI
                 pipeline, the app, the payments, everything. I&apos;ve also
                 taught a course on AI image generation at Uplimit.
               </p>

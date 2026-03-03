@@ -21,7 +21,7 @@ export const services: Service[] = [
     summary:
       "Align your AI investments with business goals. I assess your current capabilities, identify high-impact opportunities, and create actionable implementation roadmaps.",
     description:
-      "Most companies know AI matters but don't know where to start. I help figure out where AI will actually move the needle for your business, and map out a realistic plan to get there — no hype, just what's worth building.",
+      "Most companies know AI matters but don't know where to start. I help figure out where AI will actually move the needle for your business, and map out a realistic plan to get there. No hype, just what's worth building.",
     includes: [
       "AI readiness assessment",
       "Opportunity identification & prioritization",
@@ -42,7 +42,7 @@ export const services: Service[] = [
     summary:
       "From RAG pipelines to fine-tuned models, I architect and deploy production-ready LLM systems that integrate seamlessly with your existing infrastructure.",
     description:
-      "Building with LLMs requires more than API calls. I handle the full implementation — from architecture and prompt engineering to deployment — so you end up with something that actually works in production, not just a demo.",
+      "Building with LLMs requires more than API calls. I handle the full implementation, from architecture and prompt engineering to deployment, so you end up with something that actually works in production, not just a demo.",
     includes: [
       "Architecture design & system planning",
       "RAG pipeline development",
@@ -61,9 +61,9 @@ export const services: Service[] = [
     shortTitle: "Agent Development",
     icon: Bot,
     summary:
-      "Design and build autonomous agent systems that handle complex workflows — from customer support to data analysis to internal operations.",
+      "Design and build autonomous agent systems that handle complex workflows, from customer support to data analysis to internal operations.",
     description:
-      "I design and build AI agents that handle real workflows — tool calling, multi-step reasoning, and human-in-the-loop flows. This is what I do day-to-day in my full-time role, and I bring that experience to consulting engagements.",
+      "I design and build AI agents that handle real workflows: tool calling, multi-step reasoning, and human-in-the-loop flows. This is what I do day-to-day in my full-time role, and I bring that experience to consulting engagements.",
     includes: [
       "Agent architecture design",
       "Tool & function calling setup",
@@ -84,7 +84,7 @@ export const services: Service[] = [
     summary:
       "Human-centered design for AI-powered products. I create interfaces that make complex AI capabilities intuitive and trustworthy for end users.",
     description:
-      "AI products fail when users don't trust or understand them. I design interfaces for AI-powered products — conversational UIs, dashboards, generation tools — making sure the technology actually serves the people using it.",
+      "AI products fail when users don't trust or understand them. I design interfaces for AI-powered products, including conversational UIs, dashboards, and generation tools, making sure the technology actually serves the people using it.",
     includes: [
       "User research & needs analysis",
       "Interaction design & prototyping",
@@ -95,6 +95,6 @@ export const services: Service[] = [
     whoItsFor:
       "Product teams building AI-powered products who need interfaces that users actually trust and adopt.",
     typicalEngagement:
-      "Flexible engagement model — from design sprints to ongoing product design partnership.",
+      "Flexible engagement model, from design sprints to ongoing product design partnership.",
   },
 ];

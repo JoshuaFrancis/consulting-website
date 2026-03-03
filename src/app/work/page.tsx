@@ -27,7 +27,7 @@ export default function WorkPage() {
     <>
       <PageHeader
         title="Case Studies"
-        subtitle="A look at what I've built — client work and personal projects across AI, product design, and development."
+        subtitle="A look at what I've built. Client work and personal projects across AI, product design, and development."
       />
 
       <Section className="pt-0">

@@ -15,8 +15,8 @@ export function Footer() {
               Joshua Francis
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              AI consulting & implementation for companies that are ready to
-              ship.
+              AI product design & development. I design it, build it, and
+              ship it.
             </p>
           </div>
 

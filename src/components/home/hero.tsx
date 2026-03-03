@@ -30,9 +30,9 @@ export function Hero() {
             className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl animate-fade-up"
             style={{ animationDelay: "0.3s" }}
           >
-            I help startups and enterprises design, build, and deploy AI systems
-            that create measurable business impact — from LLM integrations to
-            autonomous agent workflows.
+            I design and build AI products — from concept through shipped
+            product. From conversational AI agents to full SaaS platforms,
+            I handle design, AI, and development.
           </p>
           <div
             className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"

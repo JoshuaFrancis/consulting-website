@@ -16,30 +16,30 @@ const processSteps = [
   {
     step: "01",
     icon: Search,
-    title: "Discovery",
+    title: "Understand",
     description:
-      "I start by understanding your business, your users, and your technical landscape. No assumptions — just deep listening and analysis.",
+      "I learn your business, your users, and what you've already tried. I need to understand the problem before I can build the right thing.",
   },
   {
     step: "02",
     icon: Lightbulb,
-    title: "Strategy",
+    title: "Plan",
     description:
-      "Based on discovery, I identify the highest-impact opportunities and design an implementation approach that balances ambition with pragmatism.",
+      "I figure out what's worth building and how to build it. Practical scope, realistic timeline, clear deliverables.",
   },
   {
     step: "03",
     icon: Code,
     title: "Build",
     description:
-      "Working alongside your team, I architect and implement AI systems iteratively. Shipping early, testing often, and refining based on real feedback.",
+      "I design and build iteratively — shipping early, getting feedback, and refining. You see working software, not status updates.",
   },
   {
     step: "04",
     icon: Repeat,
-    title: "Optimize",
+    title: "Refine",
     description:
-      "Post-launch, I help measure impact against business metrics, optimize performance, and identify the next wave of opportunities.",
+      "After launch, I help optimize what's working and fix what isn't. The first version is rarely the final version.",
   },
 ];
 
@@ -153,7 +153,7 @@ export default function ServicesPage() {
 
       <CTABanner
         heading="Have a project in mind?"
-        subheading="Let's talk about how I can help you build and deploy AI that delivers real results."
+        subheading="Let's talk about what you're building and how I can help."
       />
     </>
   );

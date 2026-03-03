@@ -16,8 +16,8 @@ export function ServicesPreview() {
           <span className="font-serif italic">AI consulting</span>
         </h2>
         <p className="mt-4 text-muted-foreground max-w-2xl">
-          From strategy through production deployment. I work across the full AI
-          lifecycle to deliver systems that create real business value.
+          From figuring out what to build through getting it live. I work across
+          design, AI, and product to ship things that actually work.
         </p>
       </AnimatedSection>
 

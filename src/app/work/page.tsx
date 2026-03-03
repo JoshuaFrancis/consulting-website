@@ -27,7 +27,7 @@ export default function WorkPage() {
     <>
       <PageHeader
         title="Case Studies"
-        subtitle="Real projects. Measurable outcomes. Here's a selection of recent work across AI strategy, implementation, and design."
+        subtitle="A look at what I've built — client work and personal projects across AI, product design, and development."
       />
 
       <Section className="pt-0">
@@ -87,8 +87,8 @@ export default function WorkPage() {
       </Section>
 
       <CTABanner
-        heading="Want results like these?"
-        subheading="Let's discuss how AI can create measurable impact for your business."
+        heading="Want to build something together?"
+        subheading="I'm available for consulting and product work. Let's talk about your project."
       />
     </>
   );

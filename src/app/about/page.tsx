@@ -8,7 +8,7 @@ import { Target, Users, BarChart3 } from "lucide-react";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AI consultant and designer helping companies turn AI ambition into production reality.",
+    "Product designer turned AI builder. I design and ship AI products — from conversational agents to full SaaS platforms.",
 };
 
 const values = [
@@ -16,43 +16,50 @@ const values = [
     icon: Target,
     title: "Ship, Don't Slide",
     description:
-      "I deliver working systems, not 100-page strategy decks. Every engagement produces tangible, deployable outcomes.",
+      "I build working products, not slide decks. If it doesn't ship, it doesn't count.",
   },
   {
     icon: Users,
-    title: "Human-Centered AI",
+    title: "Design-Driven AI",
     description:
-      "AI systems succeed when they're designed for the people who use them. I bring design rigor to technical implementation.",
+      "AI products fail when nobody wants to use them. I bring design thinking to technical products so they actually get adopted.",
   },
   {
     icon: BarChart3,
-    title: "Measurable Impact",
+    title: "Full Picture",
     description:
-      "Every project is anchored to business metrics. If we can't measure the impact, we rethink the approach.",
+      "I work across design, AI, and product — so nothing gets lost in translation between what's built and what users need.",
   },
 ];
 
 const experience = [
   {
-    role: "Independent AI Consultant",
+    role: "Agent Designer",
+    company: "PolyAI",
+    period: "2024 — Present",
+    description:
+      "Designing conversational AI agents for enterprise customers at one of the leading voice AI companies.",
+  },
+  {
+    role: "AI Image Course Instructor",
+    company: "Uplimit",
+    period: "2024",
+    description:
+      "Created and taught a course on AI image generation, covering practical techniques for creating with generative AI.",
+  },
+  {
+    role: "Founding Design Lead",
+    company: "SynthMinds",
+    period: "2023 — 2024",
+    description:
+      "Led design for an AI consulting and education firm working with enterprise clients including NVIDIA, PwC, and Kraft Heinz.",
+  },
+  {
+    role: "Freelance Product Designer",
     company: "",
-    period: "2022 — Present",
+    period: "2021 — 2024",
     description:
-      "Working with startups and enterprises on AI strategy, LLM implementation, and agent development.",
-  },
-  {
-    role: "Lead AI Designer",
-    company: "TechCorp AI",
-    period: "2020 — 2022",
-    description:
-      "Led design and implementation of AI-powered products serving enterprise customers.",
-  },
-  {
-    role: "Senior Product Designer",
-    company: "DesignLab",
-    period: "2018 — 2020",
-    description:
-      "Designed complex data-driven products with a focus on usability and user trust.",
+      "Designed products for a range of clients, from startup MVPs to corporate websites focused on conversion optimization.",
   },
 ];
 
@@ -62,7 +69,7 @@ export default function AboutPage() {
       <PageHeader
         title="About"
         accent="Joshua Francis"
-        subtitle="AI consultant & designer helping companies turn AI ambition into production reality."
+        subtitle="Product designer turned AI builder. I design and ship AI products — from conversational agents to full SaaS platforms."
       />
 
       {/* Bio */}
@@ -76,29 +83,26 @@ export default function AboutPage() {
           <AnimatedSection delay={0.1}>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                I started my career in UX design, building interfaces for
-                complex data products. But as I watched companies struggle to
-                bridge the gap between AI capabilities and usable
-                implementation, I found my real calling.
+                I&apos;m a product designer turned AI builder. I started in UX,
+                designing interfaces for data-heavy products and client
+                websites. Over time, I got pulled deeper into the AI side —
+                first through design work at an AI consulting firm, then into
+                designing conversational AI agents full-time.
               </p>
               <p>
-                Today, I work at the intersection of AI engineering and design
-                thinking. I help companies move from &ldquo;we should use
-                AI&rdquo; to production systems that create measurable business
-                impact — not through slide decks and strategy documents, but
-                through hands-on implementation.
+                I also build AI products on my own. I shipped{" "}
+                <a href="https://www.roomlab.ca" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
+                  RoomLab
+                </a>
+                , an AI-powered interior design tool, from scratch — the AI
+                pipeline, the app, the payments, everything. I&apos;ve also
+                taught a course on AI image generation at Uplimit.
               </p>
               <p>
-                My background in both design and engineering means I build AI
-                systems that aren&apos;t just technically sound — they&apos;re
-                systems that people actually want to use. From LLM architectures
-                and RAG pipelines to agent frameworks and conversational UIs, I
-                bring the full picture.
-              </p>
-              <p>
-                When I&apos;m not building, I&apos;m writing about practical AI
-                implementation and speaking at industry events about closing the
-                gap between AI research and production deployment.
+                What I bring to consulting is uncommon: I can design the
+                product, build the AI integration, and ship the whole thing. No
+                handoffs, no lost-in-translation moments between design and
+                engineering.
               </p>
             </div>
           </AnimatedSection>

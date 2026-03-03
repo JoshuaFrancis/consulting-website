@@ -8,7 +8,7 @@ import { CTABanner } from "@/components/shared/cta-banner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { caseStudies } from "@/lib/data/case-studies";
-import { ArrowLeft, Quote } from "lucide-react";
+import { ArrowLeft, ExternalLink, Quote } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -69,6 +69,17 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <span className="font-medium text-foreground">Timeline:</span>{" "}
                 {study.timeline}
               </div>
+              {study.url && (
+                <a
+                  href={study.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-medium text-accent hover:underline underline-offset-4"
+                >
+                  Visit site
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
             </div>
           </AnimatedSection>
         </div>
@@ -144,8 +155,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
       )}
 
       <CTABanner
-        heading="Want similar results?"
-        subheading="Let's discuss how I can help your team build and deploy AI systems that deliver."
+        heading="Want to build something like this?"
+        subheading="Let's talk about your project and see if I can help."
       />
     </>
   );

@@ -23,7 +23,7 @@ const contactMethods = [
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Toronto, Ontario",
     href: undefined,
   },
 ];

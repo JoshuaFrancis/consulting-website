@@ -12,8 +12,8 @@ interface CTABannerProps {
 }
 
 export function CTABanner({
-  heading = "Ready to integrate AI into your business?",
-  subheading = "Book a free 30-minute consultation to discuss your AI strategy.",
+  heading = "Have something you want to build?",
+  subheading = "Let's talk about your project. Free 30-minute call, no pitch deck required.",
   buttonText = "Schedule a Call",
   buttonHref = "/contact",
 }: CTABannerProps) {

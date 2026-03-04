@@ -39,9 +39,6 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button asChild size="sm">
-            <Link href="/contact">Get in Touch</Link>
-          </Button>
         </nav>
 
         {/* Mobile nav */}
@@ -69,11 +66,6 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="mt-4">
-                <Link href="/contact" onClick={() => setOpen(false)}>
-                  Get in Touch
-                </Link>
-              </Button>
             </nav>
           </SheetContent>
         </Sheet>

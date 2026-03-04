@@ -38,35 +38,14 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact */}
+          {/* Location */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4">
-              Get in Touch
+              Based in
             </h4>
-            <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <a
-                href="mailto:hello@joshuafrancis.co"
-                className="hover:text-foreground transition-colors"
-              >
-                hello@joshuafrancis.co
-              </a>
-              <a
-                href="https://linkedin.com/in/joshuafrancis"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/joshuafrancis"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
-              >
-                GitHub
-              </a>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              Toronto, Ontario
+            </p>
           </div>
         </div>
 

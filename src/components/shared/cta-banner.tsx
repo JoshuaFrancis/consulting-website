@@ -1,21 +1,21 @@
-import Link from "next/link";
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "./animated-section";
 import { ArrowRight } from "lucide-react";
+import { getMailtoHref } from "@/lib/email";
 
 interface CTABannerProps {
   heading?: string;
   subheading?: string;
   buttonText?: string;
-  buttonHref?: string;
 }
 
 export function CTABanner({
   heading = "Have something you want to build?",
   subheading = "Let's talk about your project. Free 30-minute call, no pitch deck required.",
-  buttonText = "Schedule a Call",
-  buttonHref = "/contact",
+  buttonText = "Get in Touch",
 }: CTABannerProps) {
   return (
     <Section className="animated-gradient text-primary-foreground py-20 md:py-24 relative overflow-hidden">
@@ -36,10 +36,10 @@ export function CTABanner({
             variant="secondary"
             className="mt-8 shadow-lg"
           >
-            <Link href={buttonHref}>
+            <a href={getMailtoHref("Project Inquiry")}>
               {buttonText}
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
           </Button>
         </div>
       </AnimatedSection>

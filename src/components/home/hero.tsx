@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { getMailtoHref } from "@/lib/email";
 
 export function Hero() {
   return (
@@ -38,10 +41,10 @@ export function Hero() {
             style={{ animationDelay: "0.4s" }}
           >
             <Button asChild size="lg" className="shadow-lg shadow-accent/20">
-              <Link href="/contact">
-                Book a Consultation
+              <a href={getMailtoHref("Consultation Request")}>
+                Get in Touch
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/work">View My Work</Link>

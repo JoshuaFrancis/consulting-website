@@ -57,6 +57,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    padding-inline: 0.15em;
+    margin-inline: -0.15em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
   /* Gradient border card effect */

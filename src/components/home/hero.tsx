@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-16 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center pt-16 overflow-x-clip">
       {/* Background layers */}
       <div className="absolute inset-0 hero-gradient" aria-hidden="true" />
       <div className="absolute inset-0 dot-pattern" aria-hidden="true" />

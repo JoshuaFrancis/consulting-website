@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
 const contactMethods = [
@@ -7,18 +7,6 @@ const contactMethods = [
     label: "Email",
     value: "hello@joshuafrancis.co",
     href: "mailto:hello@joshuafrancis.co",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "joshuafrancis",
-    href: "https://linkedin.com/in/joshuafrancis",
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    value: "joshuafrancis",
-    href: "https://github.com/joshuafrancis",
   },
   {
     icon: MapPin,

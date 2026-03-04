@@ -9,7 +9,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Product designer turned AI builder. I design and ship AI products, from conversational agents to full SaaS platforms.",
+    "From finance at BMO to building AI products for businesses. I bring a rare mix of business, design, and engineering to every product I ship.",
 };
 
 const values = [
@@ -17,50 +17,57 @@ const values = [
     icon: Target,
     title: "Ship, Don't Slide",
     description:
-      "I build working products, not slide decks. If it doesn't ship, it doesn't count.",
+      "I don't hand off a strategy deck and disappear. I design it, build it, and ship it. You get a working product, not a presentation about one.",
   },
   {
     icon: Users,
-    title: "Design-Driven AI",
+    title: "Design-Led, AI-Powered",
     description:
-      "AI products fail when nobody wants to use them. I bring design thinking to technical products so they actually get adopted.",
+      "Most AI products are built by engineers and look like it. I come from design, so the products I build are ones people actually want to use.",
   },
   {
     icon: BarChart3,
-    title: "Full Picture",
+    title: "Business-Aware",
     description:
-      "I work across design, AI, and product so nothing gets lost in translation between what's built and what users need.",
+      "I spent four years in finance before I ever touched design. I understand unit economics, ROI, and business cases, not just pixels and prompts.",
   },
 ];
 
 const experience = [
   {
-    role: "Conversational AI Agent Designer",
+    role: "AI Consultant & Developer",
     company: "",
     period: "2024 to Present",
     description:
-      "Designing conversational AI agents for enterprise customers at a leading voice AI company.",
+      "Helping businesses design, build, and ship AI products. Experienced across SaaS platforms, AI agents, and LLM-powered tools.",
   },
   {
     role: "AI Image Course Instructor",
     company: "Uplimit",
     period: "2024",
     description:
-      "Created and taught a course on AI image generation, covering practical techniques for creating with generative AI.",
+      "Designed and taught an AI image creation course that earned a perfect 100/100 feedback score, 89 NPS, and 74.5% completion rate.",
   },
   {
     role: "Founding Design Lead",
     company: "SynthMinds",
     period: "2023 to 2024",
     description:
-      "Led design for an AI consulting and education firm working with enterprise clients including NVIDIA, PwC, and Kraft Heinz.",
+      "Built the brand identity and web platform for an AI consulting firm serving NVIDIA, PwC, HP, and Kraft Heinz. Led design strategy across consulting, education, and product.",
   },
   {
     role: "Freelance Product Designer",
     company: "",
     period: "2021 to 2024",
     description:
-      "Designed products for a range of clients, from startup MVPs to corporate websites focused on conversion optimization.",
+      "Designed and shipped products for startups and enterprises, including conversion-focused websites and AI-powered SaaS tools like RoomLab.",
+  },
+  {
+    role: "Senior Analyst, Finance",
+    company: "BMO Financial Group",
+    period: "2017 to 2021",
+    description:
+      "Led automation of reporting processes saving ~$25K annually. Tested and provided UX feedback on pre-release S/4 HANA updates. Built financial models for FX-denominated asset and P&L verification.",
   },
 ];
 
@@ -70,7 +77,7 @@ export default function AboutPage() {
       <PageHeader
         title="About"
         accent="Joshua Francis"
-        subtitle="Product designer turned AI builder. I design and ship AI products, from conversational agents to full SaaS platforms."
+        subtitle="From finance to design to AI. I've worked across all three, and that's what makes the products I build different."
       />
 
       {/* Bio */}
@@ -90,26 +97,37 @@ export default function AboutPage() {
           <AnimatedSection delay={0.1}>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                I&apos;m a product designer turned AI builder. I started in UX,
-                designing interfaces for data-heavy products and client
-                websites. Over time, I got pulled deeper into the AI side —
-                first through design work at an AI consulting firm, then into
-                designing conversational AI agents full-time.
+                I started my career in finance at BMO and State Street,
+                building financial models, automating reporting processes,
+                and analyzing data. That&apos;s where I learned how businesses
+                actually work, and it gave me a foundation most designers
+                and developers don&apos;t have.
               </p>
               <p>
-                I also build AI products on my own. I shipped{" "}
+                I moved into product design because I wanted to build things
+                people use, not just analyze them. I spent years designing
+                products as a freelancer, then joined{" "}
+                <a href="https://synthminds.ai" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
+                  SynthMinds
+                </a>
+                {" "}as founding design lead, where I built the brand and
+                platform for an AI consulting firm serving NVIDIA, PwC, and
+                Kraft Heinz.
+              </p>
+              <p>
+                Now I help businesses build and ship AI products. I&apos;ve
+                designed AI systems at enterprise scale, built{" "}
                 <a href="https://www.roomlab.ca" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
                   RoomLab
                 </a>
-                , an AI-powered interior design tool, from scratch. The AI
-                pipeline, the app, the payments, everything. I&apos;ve also
-                taught a course on AI image generation at Uplimit.
+                {" "}from idea to live SaaS product, and taught AI image
+                creation to professionals at Uplimit.
               </p>
               <p>
-                What I bring to consulting is uncommon: I can design the
-                product, build the AI integration, and ship the whole thing. No
-                handoffs, no lost-in-translation moments between design and
-                engineering.
+                When I consult, you get someone who understands the business
+                case, can design the experience, and can build and ship the
+                product. That&apos;s not typical, and it&apos;s why the things
+                I build actually work.
               </p>
             </div>
           </AnimatedSection>

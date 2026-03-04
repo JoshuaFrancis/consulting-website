@@ -15,24 +15,23 @@ export function Hero() {
             className="text-sm font-medium text-accent uppercase tracking-wider animate-fade-up"
             style={{ animationDelay: "0.1s" }}
           >
-            AI Consulting &amp; Implementation
+            AI Consulting &amp; Development
           </p>
           <h1
             className="mt-6 text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.05] animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Turn AI ambition into{" "}
+            I help businesses{" "}
             <span className="font-serif italic text-gradient">
-              production reality.
+              ship AI products.
             </span>
           </h1>
           <p
             className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl animate-fade-up"
             style={{ animationDelay: "0.3s" }}
           >
-            I design and build AI products, from concept through shipped
-            product. From conversational AI agents to full SaaS platforms,
-            I handle design, AI, and development.
+            Strategy, design, and development. I take AI products
+            from idea to production.
           </p>
           <div
             className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"

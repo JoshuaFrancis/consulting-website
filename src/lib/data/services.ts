@@ -61,14 +61,14 @@ export const services: Service[] = [
     shortTitle: "AI Education",
     icon: GraduationCap,
     summary:
-      "Custom workshops, team trainings, and courses that get your people up to speed on AI. From executive overviews to hands-on prompt engineering bootcamps.",
+      "Custom workshops, team trainings, and courses that get your people confident with AI. From executive overviews to hands-on sessions on design, tooling, and workflows.",
     description:
-      "AI tools are only as good as the people using them. I design and deliver training programs tailored to your team's skill level and goals, whether that's helping executives understand what's possible or teaching engineers to build with LLMs.",
+      "AI tools are only as good as the people using them. I design and deliver training programs tailored to your team's skill level and goals — whether that's helping leaders understand what's possible, or getting teams hands-on with AI design tools and workflows.",
     includes: [
       "Custom curriculum design",
       "Hands-on workshops & bootcamps",
       "Executive AI literacy sessions",
-      "Prompt engineering training",
+      "AI design tools & workflow training",
       "Ongoing learning resources & documentation",
     ],
     whoItsFor:

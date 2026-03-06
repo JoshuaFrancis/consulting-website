@@ -47,10 +47,10 @@ function EducationGraphic({ className }: { className?: string }) {
           {/* Module title */}
           <div className="mb-3">
             <span className="text-[8px] text-amber-400/60 uppercase tracking-wider font-medium">
-              Prompt Engineering
+              AI Design Tools
             </span>
             <div className="mt-1 text-white/50 text-[10px] font-medium">
-              Building effective prompts
+              Working with AI in your workflow
             </div>
           </div>
 
@@ -60,27 +60,27 @@ function EducationGraphic({ className }: { className?: string }) {
               <div className="w-3 h-3 rounded border border-emerald-500/30 bg-emerald-500/10 flex items-center justify-center shrink-0">
                 <span className="text-emerald-400 text-[7px]">✓</span>
               </div>
-              <span className="text-white/40">Zero-shot vs few-shot</span>
+              <span className="text-white/40">AI image generation</span>
             </div>
 
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded border border-emerald-500/30 bg-emerald-500/10 flex items-center justify-center shrink-0">
                 <span className="text-emerald-400 text-[7px]">✓</span>
               </div>
-              <span className="text-white/40">Chain-of-thought</span>
+              <span className="text-white/40">Design-to-code tools</span>
             </div>
 
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded border border-amber-500/30 bg-amber-500/10 flex items-center justify-center shrink-0">
                 <div className="w-1 h-1 rounded-full bg-amber-400/80" />
               </div>
-              <span className="text-white/50">System prompts</span>
+              <span className="text-white/50">AI copywriting</span>
               <span className="text-[7px] text-amber-400/50 ml-auto">In progress</span>
             </div>
 
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded border border-white/[0.08] shrink-0" />
-              <span className="text-white/25">Output formatting</span>
+              <span className="text-white/25">Workflow automation</span>
             </div>
 
             <div className="flex items-center gap-2">

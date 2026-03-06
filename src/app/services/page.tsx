@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/layout/page-header";
+import { ScrollHeroSection } from "@/components/ui/scroll-hero-section";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { CTABanner } from "@/components/shared/cta-banner";
@@ -46,10 +46,7 @@ const processSteps = [
 export default function ServicesPage() {
   return (
     <>
-      <PageHeader
-        title="Services"
-        subtitle="End-to-end AI consulting, from strategy to production deployment."
-      />
+      <ScrollHeroSection />
 
       {/* Service Details */}
       {services.map((service, i) => {

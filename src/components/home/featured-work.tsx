@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { Badge } from "@/components/ui/badge";
@@ -31,27 +32,41 @@ export function FeaturedWork() {
               className="group block rounded-xl overflow-hidden gradient-border h-full"
             >
               <div
-                className={`aspect-[16/10] bg-gradient-to-br ${gradients[i]} flex items-center justify-center relative`}
+                className={`aspect-[16/10] ${study.image ? `relative bg-gradient-to-br ${gradients[i]} p-4` : `bg-gradient-to-br ${gradients[i]} flex items-center justify-center relative`}`}
               >
-                <div className="absolute inset-0 dot-pattern opacity-40" aria-hidden="true" />
-                <div className="relative text-center px-4">
-                  <span className="text-[10px] text-muted-foreground/70 uppercase tracking-[0.2em] font-medium">
-                    {study.client}
-                  </span>
-                  <div className="mt-3 flex justify-center gap-2">
-                    {study.results.slice(0, 1).map((r) => (
-                      <span
-                        key={r.metric}
-                        className="text-3xl md:text-4xl font-bold text-foreground tracking-tight"
-                      >
-                        {r.metric}
-                      </span>
-                    ))}
+                {study.image ? (
+                  <div className="relative w-full h-full rounded-lg overflow-hidden">
+                    <Image
+                      src={study.image}
+                      alt={study.title}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                   </div>
-                  <span className="mt-1 block text-xs text-muted-foreground/80">
-                    {study.results[0]?.description}
-                  </span>
-                </div>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 dot-pattern opacity-40" aria-hidden="true" />
+                    <div className="relative text-center px-4">
+                      <span className="text-[10px] text-muted-foreground/70 uppercase tracking-[0.2em] font-medium">
+                        {study.client}
+                      </span>
+                      <div className="mt-3 flex justify-center gap-2">
+                        {study.results.slice(0, 1).map((r) => (
+                          <span
+                            key={r.metric}
+                            className="text-3xl md:text-4xl font-bold text-foreground tracking-tight"
+                          >
+                            {r.metric}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="mt-1 block text-xs text-muted-foreground/80">
+                        {study.results[0]?.description}
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
               <div className="p-6">
                 <div className="flex flex-wrap gap-1.5">

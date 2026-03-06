@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -84,6 +85,24 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </AnimatedSection>
         </div>
       </div>
+
+      {/* Hero Image */}
+      {study.image && (
+        <Section className="pt-0 pb-0">
+          <AnimatedSection>
+            <div className="aspect-[16/9] rounded-xl overflow-hidden relative">
+              <Image
+                src={study.image}
+                alt={study.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1152px"
+                priority
+              />
+            </div>
+          </AnimatedSection>
+        </Section>
+      )}
 
       {/* Challenge */}
       <Section className="pt-8">

@@ -10,12 +10,14 @@ export interface CaseStudy {
   results: { metric: string; description: string }[];
   testimonial?: { quote: string; author: string; role: string };
   url?: string;
+  image?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
   {
     slug: "ai-image-creation-course",
     title: "AI Image Creation for Everyone: Online Course",
+    image: "/Ai-Image-Course.jpg",
     summary:
       "Designed and launched a top-performing AI image creation course on the Uplimit platform that earned a perfect 100/100 feedback score, an 89 NPS, and a 74.5% completion rate, well above industry averages.",
     categories: ["UX Design", "AI", "Course Design"],
@@ -58,6 +60,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "roomlab-ai-interior-design",
     title: "RoomLab: AI-Powered Interior Design Platform",
+    image: "/Roomlab.png",
     summary:
       "Took an idea from concept to live SaaS product. Built the AI pipeline, web app, payment system, and marketing site, then shipped it.",
     categories: ["AI Product Development", "UX/UI Design"],
@@ -86,6 +89,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "synthminds-brand-platform",
     title: "SynthMinds: AI Consulting Brand & Web Platform",
+    image: "/synthminds-site.png",
     summary:
       "Designed and built the complete brand identity and web platform for SynthMinds, an AI consulting and education firm working with enterprise clients including NVIDIA, PwC, and Kraft Heinz.",
     categories: ["UX/UI Design", "AI Strategy"],

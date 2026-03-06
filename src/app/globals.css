@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+}
+
 @theme inline {
   --color-background: oklch(0.99 0 0);
   --color-foreground: oklch(0.13 0.005 285);
@@ -110,7 +115,6 @@
 
   .gradient-border:hover {
     border-color: transparent;
-    transform: translateY(-2px);
     box-shadow:
       0 12px 40px oklch(0.50 0.13 250 / 0.1),
       0 4px 12px oklch(0.50 0.13 250 / 0.06);
@@ -182,4 +186,13 @@ html {
   background: linear-gradient(135deg, oklch(0.21 0.01 260), oklch(0.30 0.08 250), oklch(0.25 0.06 280), oklch(0.21 0.01 260));
   background-size: 300% 300%;
   animation: gradient-shift 8s ease infinite;
+}
+
+/* Hide scrollbar but keep scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

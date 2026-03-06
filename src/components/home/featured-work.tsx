@@ -17,10 +17,7 @@ export function FeaturedWork() {
   return (
     <Section className="bg-muted/30">
       <AnimatedSection>
-        <p className="text-sm font-medium text-accent uppercase tracking-wider">
-          Selected Work
-        </p>
-        <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
           Real projects.{" "}
           <span className="font-serif italic">Measurable outcomes.</span>
         </h2>

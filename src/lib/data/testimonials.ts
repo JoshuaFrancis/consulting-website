@@ -3,6 +3,7 @@ export interface Testimonial {
   author: string;
   role: string;
   source?: string;
+  image?: string;
 }
 
 export const testimonials: Testimonial[] = [
@@ -12,13 +13,15 @@ export const testimonials: Testimonial[] = [
     author: "Upwork Client",
     role: "UX Review Project",
     source: "upwork",
+    image: "/Testimonial-4.jpg",
   },
   {
     quote:
-      "Josh was excellent and put a lot of attention into my requirements to get a whole collection page made for such a low budget. He's given me a few revisions all for free. I provided him with Loom videos and he made changes accordingly. It was a smooth process. I look forward to working with him more.",
+      "Josh was excellent and put a lot of attention into my requirements. I provided him with Loom videos and he made changes accordingly. It was a smooth process. I look forward to working with him more.",
     author: "MUSCLED Inc",
     role: "Upwork Client",
     source: "upwork",
+    image: "/Testimonial-1.jpg",
   },
   {
     quote:
@@ -26,6 +29,7 @@ export const testimonials: Testimonial[] = [
     author: "Fresco Art",
     role: "Upwork Client",
     source: "upwork",
+    image: "/Testimonial-2.jpg",
   },
   {
     quote:
@@ -33,5 +37,6 @@ export const testimonials: Testimonial[] = [
     author: "Upwork Client",
     role: "Upwork Client",
     source: "upwork",
+    image: "/Testimonial-3.jpg",
   },
 ];

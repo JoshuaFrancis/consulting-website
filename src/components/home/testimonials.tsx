@@ -3,20 +3,7 @@ import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { testimonials } from "@/lib/data/testimonials";
 
-interface TestimonialItem {
-  quote: string;
-  author: string;
-  role: string;
-  image?: string;
-}
-
 export function Testimonials() {
-  const allTestimonials: TestimonialItem[] = testimonials.map((t) => ({
-    quote: t.quote,
-    author: t.author,
-    role: t.role,
-    image: t.image,
-  }));
 
   return (
     <Section>
@@ -29,9 +16,9 @@ export function Testimonials() {
 
       <div className="mt-12 -mx-6 md:-mx-8 px-6 md:px-8">
         <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-          {allTestimonials.map((item, i) => (
+          {testimonials.map((item, i) => (
             <AnimatedSection
-              key={`${item.author}-${i}`}
+              key={`${item.author ?? item.role}-${i}`}
               delay={i * 0.1}
               className="flex-shrink-0 w-[320px] md:w-[380px] snap-start"
             >
@@ -40,7 +27,7 @@ export function Testimonials() {
                 {item.image ? (
                   <Image
                     src={item.image}
-                    alt={`${item.author}`}
+                    alt={item.author ?? item.role}
                     fill
                     className="object-cover object-top"
                     sizes="380px"
@@ -67,12 +54,20 @@ export function Testimonials() {
                   </blockquote>
 
                   <div className="mt-4 pt-4 border-t border-white/15">
-                    <p className="text-sm font-semibold text-white">
-                      {item.author}
-                    </p>
-                    <p className="text-sm text-white/50 mt-0.5">
-                      {item.role}
-                    </p>
+                    {item.author ? (
+                      <>
+                        <p className="text-sm font-semibold text-white">
+                          {item.author}
+                        </p>
+                        <p className="text-sm text-white/50 mt-0.5">
+                          {item.role}
+                        </p>
+                      </>
+                    ) : (
+                      <p className="text-sm font-semibold text-white">
+                        {item.role}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

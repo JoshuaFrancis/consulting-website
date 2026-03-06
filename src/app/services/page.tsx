@@ -4,7 +4,6 @@ import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { services } from "@/lib/data/services";
-import { Search, Lightbulb, Code, Repeat } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -15,31 +14,27 @@ export const metadata: Metadata = {
 const processSteps = [
   {
     step: "01",
-    icon: Search,
     title: "Understand",
     description:
-      "I learn your business, your users, and what you've already tried. I need to understand the problem before I can build the right thing.",
+      "I learn your business, your users, and what you've already tried.",
   },
   {
     step: "02",
-    icon: Lightbulb,
     title: "Plan",
     description:
-      "I figure out what's worth building and how to build it. Practical scope, realistic timeline, clear deliverables.",
+      "I figure out what's worth building and how to build it.",
   },
   {
     step: "03",
-    icon: Code,
     title: "Build",
     description:
-      "I design and build iteratively, shipping early, getting feedback, and refining. You see working software, not status updates.",
+      "I ship early, get feedback, and refine. You see working software, not status updates.",
   },
   {
     step: "04",
-    icon: Repeat,
     title: "Refine",
     description:
-      "After launch, I help optimize what's working and fix what isn't. The first version is rarely the final version.",
+      "After launch, I optimize what's working and fix what isn't.",
   },
 ];
 
@@ -48,103 +43,98 @@ export default function ServicesPage() {
     <>
       <ScrollHeroSection />
 
-      {/* Service Details */}
-      {services.map((service, i) => {
-        const Icon = service.icon;
-        const isEven = i % 2 === 0;
-        return (
-          <Section
-            key={service.slug}
-            id={service.slug}
-            className={isEven ? "" : "bg-muted/50"}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-              <AnimatedSection>
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-accent" />
-                </div>
-                <h2 className="mt-6 text-3xl font-semibold tracking-tight text-foreground">
-                  {service.title}
-                </h2>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="mt-8 p-6 rounded-lg bg-muted/50 border border-border">
-                  <p className="text-sm font-medium text-foreground">
-                    Typical engagement
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {service.typicalEngagement}
-                  </p>
-                </div>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.1}>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-                      What&apos;s Included
-                    </h3>
-                    <ul className="mt-4 space-y-3">
-                      {service.includes.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start gap-3 text-sm text-muted-foreground"
-                        >
-                          <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="pt-4 border-t border-border">
-                    <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
-                      Who It&apos;s For
-                    </h3>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      {service.whoItsFor}
-                    </p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-          </Section>
-        );
-      })}
-
-      {/* Process */}
+      {/* Services */}
       <Section>
         <AnimatedSection>
-          <p className="text-sm font-medium text-accent uppercase tracking-wider">
-            Process
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-            How every engagement works
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            What I do.{" "}
+            <span className="font-serif italic text-muted-foreground">
+              And how.
+            </span>
           </h2>
         </AnimatedSection>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-          {processSteps.map((step, i) => {
-            const Icon = step.icon;
+        <div className="mt-14 space-y-6">
+          {services.map((service, i) => {
+            const Icon = service.icon;
             return (
-              <AnimatedSection key={step.title} delay={i * 0.1}>
-                <div className="space-y-4">
-                  <span className="text-sm font-mono text-accent">
-                    {step.step}
-                  </span>
-                  <div className="w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-accent" />
+              <AnimatedSection key={service.slug} delay={i * 0.08}>
+                <div
+                  id={service.slug}
+                  className="gradient-border rounded-2xl p-8 md:p-10 scroll-mt-24"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-[1fr,1px,1fr] gap-8 md:gap-10">
+                    {/* Left: description */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
+                          <Icon className="w-4.5 h-4.5 text-accent" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-foreground">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                      <p className="mt-5 text-sm text-muted-foreground/70 italic">
+                        {service.typicalEngagement}
+                      </p>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="hidden md:block bg-border" />
+
+                    {/* Right: includes + who it's for */}
+                    <div>
+                      <ul className="space-y-2.5">
+                        {service.includes.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                          >
+                            <div className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-6 text-sm text-foreground/60 leading-relaxed border-t border-border pt-5">
+                        {service.whoItsFor}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
                 </div>
               </AnimatedSection>
             );
           })}
+        </div>
+      </Section>
+
+      {/* Process */}
+      <Section className="bg-muted/30">
+        <AnimatedSection>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            How it{" "}
+            <span className="font-serif italic">works.</span>
+          </h2>
+        </AnimatedSection>
+
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-4 gap-6">
+          {processSteps.map((step, i) => (
+            <AnimatedSection key={step.title} delay={i * 0.1}>
+              <div className="relative">
+                <span className="text-5xl font-bold text-accent/10">
+                  {step.step}
+                </span>
+                <h3 className="mt-2 text-lg font-semibold text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
       </Section>
 

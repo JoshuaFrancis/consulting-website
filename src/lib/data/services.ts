@@ -1,4 +1,4 @@
-import { Brain, MessageSquareCode, Bot, Palette } from "lucide-react";
+import { Brain, MessageSquareCode, GraduationCap, Palette } from "lucide-react";
 
 export interface Service {
   slug: string;
@@ -56,25 +56,25 @@ export const services: Service[] = [
       "4-12 week embedded engagement, working directly with your engineering team.",
   },
   {
-    slug: "agent-development",
-    title: "AI Agent Development",
-    shortTitle: "Agent Development",
-    icon: Bot,
+    slug: "ai-education",
+    title: "AI Education & Training",
+    shortTitle: "AI Education",
+    icon: GraduationCap,
     summary:
-      "Design and build autonomous agent systems that handle complex workflows, from customer support to data analysis to internal operations.",
+      "Custom workshops, team trainings, and courses that get your people up to speed on AI. From executive overviews to hands-on prompt engineering bootcamps.",
     description:
-      "I design and build AI agents that handle real workflows: tool calling, multi-step reasoning, and human-in-the-loop flows. This is what I do day-to-day in my full-time role, and I bring that experience to consulting engagements.",
+      "AI tools are only as good as the people using them. I design and deliver training programs tailored to your team's skill level and goals, whether that's helping executives understand what's possible or teaching engineers to build with LLMs.",
     includes: [
-      "Agent architecture design",
-      "Tool & function calling setup",
-      "Multi-agent orchestration",
-      "Safety guardrails & error handling",
-      "Monitoring, logging & deployment",
+      "Custom curriculum design",
+      "Hands-on workshops & bootcamps",
+      "Executive AI literacy sessions",
+      "Prompt engineering training",
+      "Ongoing learning resources & documentation",
     ],
     whoItsFor:
-      "Companies looking to automate complex workflows with autonomous AI agents.",
+      "Organizations that want their teams to actually understand and use AI effectively, not just talk about it.",
     typicalEngagement:
-      "6-16 week engagement from design through production deployment and monitoring setup.",
+      "Single-day workshops to multi-week training programs, tailored to your team size and objectives.",
   },
   {
     slug: "ux-design",

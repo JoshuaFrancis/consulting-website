@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { navLinks } from "@/lib/data/navigation";
+import { Logo } from "@/components/ui/logo";
 
 export function Footer() {
   return (
@@ -8,11 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              className="text-lg font-semibold tracking-tight text-foreground"
-            >
-              Joshua Francis
+            <Link href="/" className="block w-fit">
+              <Logo />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
               AI product design & development. I design it, build it, and

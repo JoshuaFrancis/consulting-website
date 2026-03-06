@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-function Cursor() {
+export function FigmaCursorIcon() {
   return (
     <svg fill="none" height="18" viewBox="0 0 17 18" width="17">
       <path
@@ -20,42 +20,13 @@ interface AnimatedCursorProps {
   text: string
 }
 
-// Realistic path: select heading → drag to resize → check CTA → move to card area → back up
-const xPath = [
-  "0px",    // start near heading
-  "10px",   // drift right on heading
-  "10px",   // pause (selecting)
-  "40px",   // move to CTA button area
-  "40px",   // pause (inspecting)
-  "-20px",  // move left to sidebar
-  "-20px",  // pause (checking layers)
-  "60px",   // sweep across to card grid
-  "30px",   // move to middle card
-  "30px",   // pause
-  "0px",    // return to start
-]
-
-const yPath = [
-  "0px",    // start
-  "-5px",   // slight up on heading
-  "-5px",   // pause
-  "25px",   // down to CTA
-  "25px",   // pause
-  "10px",   // sidebar height
-  "10px",   // pause
-  "50px",   // down to cards
-  "55px",   // card area
-  "55px",   // pause
-  "0px",    // return
-]
-
 export function AnimatedCursor({ className, text }: AnimatedCursorProps) {
   return (
     <motion.div
       initial={{ x: 0, y: 0 }}
       animate={{
-        x: xPath,
-        y: yPath,
+        x: ["0px", "10px", "10px", "40px", "40px", "-20px", "-20px", "60px", "30px", "30px", "0px"],
+        y: ["0px", "-5px", "-5px", "25px", "25px", "10px", "10px", "50px", "55px", "55px", "0px"],
       }}
       transition={{
         duration: 8,
@@ -65,7 +36,7 @@ export function AnimatedCursor({ className, text }: AnimatedCursorProps) {
       }}
       className="flex items-start gap-1"
     >
-      <Cursor />
+      <FigmaCursorIcon />
       <div
         className={cn(
           "w-fit rounded-full py-0.5 px-2 bg-sky-600 border border-sky-400 text-white text-[8px] whitespace-nowrap",

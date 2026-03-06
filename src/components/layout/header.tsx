@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navLinks } from "@/lib/data/navigation";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/ui/logo";
 
 export function Header() {
   const pathname = usePathname();
@@ -16,11 +17,8 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 md:px-8 flex items-center justify-between h-16">
-        <Link
-          href="/"
-          className="text-lg font-semibold tracking-tight text-foreground"
-        >
-          Joshua Francis
+        <Link href="/" className="block">
+          <Logo />
         </Link>
 
         {/* Desktop nav */}

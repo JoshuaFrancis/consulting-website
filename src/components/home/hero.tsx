@@ -110,17 +110,6 @@ export function Hero() {
       <div className="absolute inset-0 dot-pattern" aria-hidden="true" />
 
       <div className="relative z-10 flex flex-col items-center w-full px-4 sm:px-6">
-        {/* Available badge */}
-        <div
-          className="mb-8 animate-fade-up"
-          style={{ animationDelay: "0.1s" }}
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium text-foreground/80 bg-background/80 backdrop-blur-sm border border-border/60 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]" />
-            Available for projects
-          </span>
-        </div>
-
         {/* Title */}
         <h1
           className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight text-center mb-4 animate-fade-up"

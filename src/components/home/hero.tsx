@@ -4,11 +4,12 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { SendHorizontal, ArrowRight } from "lucide-react";
 import { getMailtoHref } from "@/lib/email";
+import { GridPattern } from "@/components/ui/grid-pattern";
 
 const SERVICE_CHIPS = [
   { label: "AI Strategy", prefill: "We know AI matters but aren't sure where to start. Our business..." },
   { label: "AI Development", prefill: "We need help building an AI-powered tool that..." },
-  { label: "Agent Development", prefill: "We want to automate a workflow using AI agents that..." },
+  { label: "AI Education", prefill: "We want to train our team on AI tools and capabilities..." },
   { label: "UX/UI Design", prefill: "We're building an AI product and need help designing the interface..." },
 ];
 
@@ -107,7 +108,17 @@ export function Hero() {
     <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-16 overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 hero-gradient" aria-hidden="true" />
-      <div className="absolute inset-0 dot-pattern" aria-hidden="true" />
+      <GridPattern
+        width={32}
+        height={32}
+        x={-1}
+        y={-1}
+        className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] stroke-gray-300/40 fill-gray-300/10"
+        squares={[
+          [4, 4], [7, 2], [11, 6], [3, 8], [14, 3],
+          [8, 10], [16, 7], [6, 12], [12, 1], [2, 14],
+        ]}
+      />
 
       <div className="relative z-10 flex flex-col items-center w-full px-4 sm:px-6">
         {/* Title */}

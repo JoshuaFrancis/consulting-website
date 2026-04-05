@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { Target, Users, BarChart3 } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +10,51 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "From finance at BMO to building AI products for businesses. I bring a rare mix of business, design, and engineering to every product I ship.",
+    "Joshua Francis is an AI consultant based in Toronto who combines business experience from BMO, product design expertise, and engineering capability to help businesses design, build, and ship AI products.",
+  alternates: {
+    canonical: "https://joshuafrancis.ca/about",
+  },
+};
+
+const aboutPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Joshua Francis",
+  url: "https://joshuafrancis.ca",
+  image: "https://joshuafrancis.ca/photo.png",
+  jobTitle: "AI Consultant & Developer",
+  description:
+    "AI consultant based in Toronto who combines business experience from finance at BMO, product design expertise, and engineering capability to help startups and enterprises design, build, and ship AI products.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Toronto",
+    addressRegion: "Ontario",
+    addressCountry: "CA",
+  },
+  alumniOf: {
+    "@type": "Organization",
+    name: "BMO Financial Group",
+  },
+  knowsAbout: [
+    "AI Strategy & Roadmapping",
+    "LLM Implementation",
+    "RAG Pipelines",
+    "Prompt Engineering",
+    "AI Agent Development",
+    "UX/UI Design",
+    "Product Design",
+    "AI Education",
+  ],
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "AI Consultant",
+    occupationLocation: {
+      "@type": "Country",
+      name: "Canada",
+    },
+    description:
+      "Helps businesses design, build, and ship AI products including LLM systems, AI agents, and AI-powered SaaS platforms.",
+  },
 };
 
 const values = [
@@ -74,6 +119,7 @@ const experience = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={aboutPersonSchema} />
       <PageHeader
         title="About"
         accent="Joshua Francis"

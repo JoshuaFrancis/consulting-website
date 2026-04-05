@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { Badge } from "@/components/ui/badge";
 import { caseStudies } from "@/lib/data/case-studies";
@@ -12,6 +13,31 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Case studies showcasing AI strategy, LLM implementation, and agent development projects with measurable outcomes.",
+  alternates: {
+    canonical: "https://joshuafrancis.ca/work",
+  },
+};
+
+const caseStudyListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "AI Consulting Case Studies",
+  description:
+    "Case studies from Joshua Francis showcasing AI strategy, LLM implementation, and product design projects with measurable outcomes.",
+  itemListElement: caseStudies.map((study, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Article",
+      headline: study.title,
+      description: study.summary,
+      url: `https://joshuafrancis.ca/work/${study.slug}`,
+      author: {
+        "@type": "Person",
+        name: "Joshua Francis",
+      },
+    },
+  })),
 };
 
 const cardGradients = [
@@ -25,6 +51,7 @@ const cardGradients = [
 export default function WorkPage() {
   return (
     <>
+      <JsonLd data={caseStudyListSchema} />
       <PageHeader
         title="Case Studies"
         subtitle="A look at what I've built. Client work and personal projects across AI, product design, and development."

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { JsonLd } from "@/components/shared/json-ld";
 import { MetricCard } from "@/components/shared/metric-card";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${study.title} | Joshua Francis`,
     description: study.summary,
+    alternates: {
+      canonical: `https://joshuafrancis.ca/work/${slug}`,
+    },
   };
 }
 
@@ -35,8 +39,37 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   if (!study) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: study.title,
+    description: study.summary,
+    url: `https://joshuafrancis.ca/work/${slug}`,
+    author: {
+      "@type": "Person",
+      name: "Joshua Francis",
+      url: "https://joshuafrancis.ca",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Joshua Francis",
+    },
+    ...(study.image && {
+      image: `https://joshuafrancis.ca${study.image}`,
+    }),
+    about: study.categories.map((cat) => ({
+      "@type": "Thing",
+      name: cat,
+    })),
+    mentions: {
+      "@type": "Organization",
+      name: study.client,
+    },
+  };
+
   return (
     <>
+      <JsonLd data={articleSchema} />
       {/* Header */}
       <div className="pt-32 pb-8 md:pt-40 md:pb-12">
         <div className="max-w-6xl mx-auto px-6 md:px-8">

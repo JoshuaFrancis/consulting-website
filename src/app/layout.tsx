@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { JsonLd } from "@/components/shared/json-ld";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -19,6 +20,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://joshuafrancis.ca"),
   title: {
     default: "Joshua Francis | AI Consulting & Implementation",
     template: "%s | Joshua Francis",
@@ -32,6 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Joshua Francis",
+    url: "https://joshuafrancis.ca",
   },
   twitter: {
     card: "summary_large_image",
@@ -42,6 +45,67 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+  alternates: {
+    canonical: "https://joshuafrancis.ca",
+  },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Joshua Francis",
+  url: "https://joshuafrancis.ca",
+  jobTitle: "AI Consultant & Developer",
+  description:
+    "AI consultant specializing in strategy, LLM implementation, agent development, and UX/UI design for AI products. Based in Toronto, serving startups and enterprises.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Toronto",
+    addressRegion: "Ontario",
+    addressCountry: "CA",
+  },
+  knowsAbout: [
+    "AI Strategy",
+    "LLM Implementation",
+    "RAG Pipelines",
+    "Prompt Engineering",
+    "AI Agent Development",
+    "UX/UI Design for AI Products",
+    "AI Education & Training",
+  ],
+  sameAs: [] as string[],
+};
+
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Joshua Francis AI Consulting",
+  url: "https://joshuafrancis.ca",
+  description:
+    "AI consulting services including strategy and roadmapping, LLM implementation, AI education and training, and UX/UI design for AI products.",
+  provider: {
+    "@type": "Person",
+    name: "Joshua Francis",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Canada",
+  },
+  serviceType: [
+    "AI Strategy & Roadmapping",
+    "LLM Implementation",
+    "AI Education & Training",
+    "UX/UI Design for AI Products",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Toronto",
+    addressRegion: "Ontario",
+    addressCountry: "CA",
   },
 };
 
@@ -56,6 +120,8 @@ export default function RootLayout({
       className={`${inter.variable} ${instrumentSerif.variable} ${inter.className}`}
     >
       <body>
+        <JsonLd data={personSchema} />
+        <JsonLd data={professionalServiceSchema} />
         <Header />
         <main>{children}</main>
         <Footer />

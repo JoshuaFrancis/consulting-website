@@ -48,26 +48,18 @@ export function Testimonials() {
                 <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-b from-transparent via-black/40 to-black/80" />
 
                 {/* Text content */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col">
+                <div className="absolute bottom-0 left-0 right-0 h-[55%] p-5 md:p-6 flex flex-col justify-end">
                   <blockquote className="text-white text-sm md:text-base font-medium leading-snug">
                     &ldquo;{item.quote}&rdquo;
                   </blockquote>
 
-                  <div className="mt-4 pt-4 border-t border-white/15">
-                    {item.author ? (
-                      <>
-                        <p className="text-sm font-semibold text-white">
-                          {item.author}
-                        </p>
-                        <p className="text-sm text-white/50 mt-0.5">
-                          {item.role}
-                        </p>
-                      </>
-                    ) : (
-                      <p className="text-sm font-semibold text-white">
-                        {item.role}
-                      </p>
-                    )}
+                  <div className="mt-auto pt-4 border-t border-white/15">
+                    <p className="text-sm font-semibold text-white">
+                      {item.author ?? item.role}
+                    </p>
+                    <p className="text-sm text-white/50 mt-0.5 h-5">
+                      {item.author ? item.role : ""}
+                    </p>
                   </div>
                 </div>
               </div>

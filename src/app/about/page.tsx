@@ -209,12 +209,9 @@ export default function AboutPage() {
               </p>
               <p>
                 Now I help businesses build and ship AI products. I&apos;ve
-                designed AI systems at enterprise scale, built{" "}
-                <a href="https://www.roomlab.ca" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
-                  RoomLab
-                </a>
-                {" "}from idea to live SaaS product, and taught AI image
-                creation to professionals at Uplimit.
+                designed AI systems at enterprise scale, built RoomLab from
+                idea to live SaaS product, and taught AI image creation to
+                professionals at Uplimit.
               </p>
               <p>
                 When I consult, you get someone who understands the business

@@ -66,7 +66,6 @@ export const caseStudies: CaseStudy[] = [
     categories: ["AI Product Development", "UX/UI Design"],
     client: "Self-Initiated Product",
     timeline: "Ongoing",
-    url: "https://www.roomlab.ca",
     challenge:
       "Homeowners trying to visualize renovations face an expensive, slow process: hiring designers for concept mockups, waiting days for revisions, and paying hundreds per room. Interior designers spend hours manually creating mood boards and concept renders for client presentations. Real estate agents need affordable virtual staging but existing solutions are either too expensive for individual listings or produce unrealistic results. There was a clear gap for an accessible, instant AI tool that could generate high-quality room redesigns from a simple photo and text description.",
     approach:

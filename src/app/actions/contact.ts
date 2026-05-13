@@ -36,7 +36,7 @@ export async function sendContactEmail(formData: z.infer<typeof contactSchema>) 
 
   try {
     const { error } = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: "Joshua Francis <hello@joshuafrancis.ca>",
       to: contactEmail,
       replyTo: parsed.data.email,
       subject: `New inquiry from ${parsed.data.name}${parsed.data.company ? ` (${parsed.data.company})` : ""}`,

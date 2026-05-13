@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/lib/data/case-studies";
+import { researchPosts } from "@/lib/data/research";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://joshuafrancis.ca";
@@ -7,6 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const caseStudyUrls = caseStudies.map((study) => ({
     url: `${baseUrl}/work/${study.slug}`,
     lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const researchUrls = researchPosts.map((post) => ({
+    url: `${baseUrl}/research/${post.slug}`,
+    lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
@@ -42,6 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/research`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     ...caseStudyUrls,
+    ...researchUrls,
   ];
 }

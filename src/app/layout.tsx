@@ -95,10 +95,6 @@ const professionalServiceSchema = {
     "@type": "Person",
     name: "Joshua Francis",
   },
-  areaServed: {
-    "@type": "Country",
-    name: "Canada",
-  },
   serviceType: [
     "AI Strategy & Roadmapping",
     "LLM Implementation",

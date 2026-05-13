@@ -3,6 +3,7 @@ import { WhySection } from "@/components/home/why-section";
 import { ServicesPreview } from "@/components/home/services-preview";
 import { FeaturedWork } from "@/components/home/featured-work";
 import { Testimonials } from "@/components/home/testimonials";
+import { FaqSection } from "@/components/home/faq-section";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { JsonLd } from "@/components/shared/json-ld";
 
@@ -29,6 +30,7 @@ export default function HomePage() {
       <ServicesPreview />
       <FeaturedWork />
       <Testimonials />
+      <FaqSection />
       <CTABanner />
     </>
   );

@@ -82,7 +82,12 @@ export default async function BreakdownPostPage({ params }: PageProps) {
             <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
               {post.intro}
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-6 text-xs text-muted-foreground/70">
+              Published{" "}
+              <time dateTime={post.date}>{post.dateLabel}</time> ·{" "}
+              {post.readTime}
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
               Based on{" "}
               <a
                 href={post.source.url}

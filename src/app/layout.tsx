@@ -77,7 +77,11 @@ const personSchema = {
     "UX/UI Design for AI Products",
     "AI Education & Training",
   ],
-  sameAs: [] as string[],
+  sameAs: [
+    "https://www.linkedin.com/in/joshuafrancis1/",
+    "https://www.youtube.com/@JoshFrancisAI",
+    "https://x.com/uxbyjosh",
+  ],
 };
 
 const professionalServiceSchema = {
@@ -100,6 +104,13 @@ const professionalServiceSchema = {
     "LLM Implementation",
     "AI Education & Training",
     "UX/UI Design for AI Products",
+  ],
+  priceRange: "$$$",
+  areaServed: [
+    { "@type": "City", name: "Toronto" },
+    { "@type": "AdministrativeArea", name: "Greater Toronto Area" },
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United States" },
   ],
   address: {
     "@type": "PostalAddress",

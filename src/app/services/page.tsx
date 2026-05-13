@@ -61,10 +61,21 @@ const servicesSchema = {
       "@type": "Service",
       name: service.title,
       description: service.description,
+      serviceType: service.title,
       provider: {
         "@type": "Person",
         name: "Joshua Francis",
         url: "https://joshuafrancis.ca",
+      },
+      areaServed: [
+        { "@type": "City", name: "Toronto" },
+        { "@type": "Country", name: "Canada" },
+        { "@type": "Country", name: "United States" },
+      ],
+      availableChannel: {
+        "@type": "ServiceChannel",
+        serviceUrl: "https://joshuafrancis.ca/contact",
+        availableLanguage: "English",
       },
       url: `https://joshuafrancis.ca/services#${service.slug}`,
     },

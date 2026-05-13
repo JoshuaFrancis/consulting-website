@@ -35,6 +35,11 @@ const aboutPersonSchema = {
     "@type": "Organization",
     name: "BMO Financial Group",
   },
+  sameAs: [
+    "https://www.linkedin.com/in/joshuafrancis1/",
+    "https://www.youtube.com/@JoshFrancisAI",
+    "https://x.com/uxbyjosh",
+  ],
   knowsAbout: [
     "AI Strategy & Roadmapping",
     "LLM Implementation",
@@ -55,6 +60,47 @@ const aboutPersonSchema = {
     description:
       "Helps businesses design, build, and ship AI products including LLM systems, AI agents, and AI-powered SaaS platforms.",
   },
+};
+
+const aboutFaqs = [
+  {
+    question: "Who is Joshua Francis?",
+    answer:
+      "Joshua Francis is an AI consultant based in Toronto, Canada, who helps startups and enterprises design, build, and ship AI products. He combines four years of finance experience at BMO Financial Group, product design expertise, and engineering capability to bridge business strategy and technical implementation. He has shipped AI products including RoomLab and taught AI courses at Uplimit that earned a perfect 100/100 score.",
+  },
+  {
+    question: "Where is Joshua Francis based?",
+    answer:
+      "Joshua Francis is based in Toronto, Ontario, Canada. He works with clients across Canada and the United States, both remotely and on-site in the Greater Toronto Area.",
+  },
+  {
+    question: "What is Joshua Francis's background?",
+    answer:
+      "Joshua started his career as a senior analyst in finance at BMO Financial Group from 2017 to 2021, where he led reporting automation that saved roughly $25K annually. He then moved into product design, freelancing for startups and enterprises, before joining SynthMinds as founding design lead, building the brand and platform for an AI consulting firm serving NVIDIA, PwC, HP, and Kraft Heinz. He now works as an independent AI consultant.",
+  },
+  {
+    question: "What makes Joshua Francis different from other AI consultants?",
+    answer:
+      "Most AI consultants deliver a strategy deck and leave. Joshua designs, builds, and ships working products. His background spans finance, product design, and engineering, so clients get one person who understands the business case, designs the user experience, and builds and deploys the technical solution. He produces working software, not presentations about it.",
+  },
+  {
+    question: "What clients has Joshua Francis worked with?",
+    answer:
+      "Joshua has worked with Uplimit on AI education, taught professionals AI image creation, shipped RoomLab as a solo AI SaaS product, and led design at SynthMinds for an AI consulting practice serving NVIDIA, PwC, HP, and Kraft Heinz. He works across SaaS, education, real estate, financial services, and professional services.",
+  },
+];
+
+const aboutFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: aboutFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
 };
 
 const values = [
@@ -120,6 +166,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={aboutPersonSchema} />
+      <JsonLd data={aboutFaqSchema} />
       <PageHeader
         title="About"
         accent="Joshua Francis"
@@ -246,6 +293,33 @@ export default function AboutPage() {
                     {item.description}
                   </p>
                 </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Section className="bg-muted/30">
+        <AnimatedSection>
+          <p className="text-sm font-medium text-accent uppercase tracking-wider">
+            FAQ
+          </p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            About Joshua Francis
+          </h2>
+        </AnimatedSection>
+
+        <div className="mt-12 max-w-3xl space-y-10">
+          {aboutFaqs.map((faq, i) => (
+            <AnimatedSection key={faq.question} delay={i * 0.06}>
+              <div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  {faq.question}
+                </h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </p>
               </div>
             </AnimatedSection>
           ))}

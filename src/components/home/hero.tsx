@@ -2,8 +2,8 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SendHorizontal, ArrowRight } from "lucide-react";
-import { getMailtoHref } from "@/lib/email";
 import { GridPattern } from "@/components/ui/grid-pattern";
 
 const SERVICE_CHIPS = [
@@ -62,6 +62,7 @@ function useTypewriter(prompts: string[], enabled: boolean) {
 }
 
 export function Hero() {
+  const router = useRouter();
   const [message, setMessage] = useState("");
   const [userHasTyped, setUserHasTyped] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -76,12 +77,11 @@ export function Hero() {
   }, [message]);
 
   const handleSend = () => {
-    const base = getMailtoHref("Project Inquiry");
-    if (message.trim()) {
-      window.location.href = `${base}&body=${encodeURIComponent(message)}`;
-    } else {
-      window.location.href = base;
-    }
+    const trimmed = message.trim();
+    const target = trimmed
+      ? `/contact?message=${encodeURIComponent(trimmed)}`
+      : "/contact";
+    router.push(target);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

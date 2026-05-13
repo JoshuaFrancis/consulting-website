@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -31,6 +32,16 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
+  return (
+    <Suspense fallback={null}>
+      <ContactFormInner />
+    </Suspense>
+  );
+}
+
+function ContactFormInner() {
+  const searchParams = useSearchParams();
+  const prefilledMessage = searchParams.get("message") ?? "";
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -40,8 +51,14 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { honeypot: "" },
+    defaultValues: { honeypot: "", message: prefilledMessage },
   });
+
+  useEffect(() => {
+    if (prefilledMessage) {
+      setValue("message", prefilledMessage, { shouldValidate: false });
+    }
+  }, [prefilledMessage, setValue]);
 
   const onSubmit = async (data: ContactFormData) => {
     const result = await sendContactEmail({

@@ -30,12 +30,12 @@ export async function generateMetadata({
     title: post.title,
     description: post.intro,
     alternates: {
-      canonical: `https://joshuafrancis.ca/research/${slug}`,
+      canonical: `https://joshuafrancis.ca/breakdowns/${slug}`,
     },
   };
 }
 
-export default async function ResearchPostPage({ params }: PageProps) {
+export default async function BreakdownPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = researchPosts.find((p) => p.slug === slug);
   const PostBody = postComponents[slug];
@@ -47,7 +47,7 @@ export default async function ResearchPostPage({ params }: PageProps) {
     headline: post.title,
     description: post.intro,
     datePublished: post.date,
-    url: `https://joshuafrancis.ca/research/${slug}`,
+    url: `https://joshuafrancis.ca/breakdowns/${slug}`,
     author: {
       "@type": "Person",
       name: "Joshua Francis",
@@ -69,11 +69,11 @@ export default async function ResearchPostPage({ params }: PageProps) {
         <div className="max-w-3xl mx-auto px-6 md:px-8">
           <AnimatedSection>
             <Link
-              href="/research"
+              href="/breakdowns"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10"
             >
               <ArrowLeft className="w-4 h-4" />
-              All research breakdowns
+              All breakdowns
             </Link>
 
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">

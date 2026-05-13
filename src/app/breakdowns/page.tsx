@@ -10,38 +10,38 @@ import { researchPosts } from "@/lib/data/research";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Research, Translated",
+  title: "Breakdowns",
   description:
     "Important AI research papers broken down into clear, actionable takeaways for business leaders and product teams.",
   alternates: {
-    canonical: "https://joshuafrancis.ca/research",
+    canonical: "https://joshuafrancis.ca/breakdowns",
   },
 };
 
 const listSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Research, Translated",
+  name: "Breakdowns",
   description:
     "AI research papers broken down into actionable insights for businesses.",
-  url: "https://joshuafrancis.ca/research",
+  url: "https://joshuafrancis.ca/breakdowns",
   blogPost: researchPosts.map((post) => ({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.intro,
     datePublished: post.date,
-    url: `https://joshuafrancis.ca/research/${post.slug}`,
+    url: `https://joshuafrancis.ca/breakdowns/${post.slug}`,
     author: { "@type": "Person", name: "Joshua Francis" },
   })),
 };
 
-export default function ResearchPage() {
+export default function BreakdownsPage() {
   return (
     <>
       <JsonLd data={listSchema} />
       <PageHeader
         title="Research,"
-        accent="Translated"
+        accent="Broken Down"
         subtitle="Important AI research papers, broken down into clear, actionable takeaways. Built for business leaders who need to know what new findings mean for their products, teams, and risk."
       />
 
@@ -50,7 +50,7 @@ export default function ResearchPage() {
           {researchPosts.map((post, i) => (
             <AnimatedSection key={post.slug} delay={i * 0.08}>
               <Link
-                href={`/research/${post.slug}`}
+                href={`/breakdowns/${post.slug}`}
                 className="group block rounded-xl overflow-hidden gradient-border h-full"
               >
                 <div className="aspect-[16/10] bg-gradient-to-br from-accent/12 via-accent/6 to-accent/2 flex items-center justify-center relative">
@@ -82,7 +82,7 @@ export default function ResearchPage() {
                       variant="secondary"
                       className="text-[11px] px-2.5 py-0.5 rounded-full"
                     >
-                      Research breakdown
+                      Paper breakdown
                     </Badge>
                   </div>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">

@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const researchUrls = researchPosts.map((post) => ({
-    url: `${baseUrl}/research/${post.slug}`,
+    url: `${baseUrl}/breakdowns/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.7,
@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/research`,
+      url: `${baseUrl}/breakdowns`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,

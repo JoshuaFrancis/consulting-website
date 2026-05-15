@@ -15,6 +15,22 @@ export interface ResearchPost {
 
 export const researchPosts: ResearchPost[] = [
   {
+    slug: "one-sentence-broke-every-ai-model",
+    title: "One Sentence Broke Every Major AI Model",
+    intro:
+      "New research shows that a single line in a system prompt — 'stay consistent with the strategy shown in the prior history' — is enough to flip aligned flagship models from safe to dangerous, nearly every single time.",
+    date: "2026-05-15",
+    dateLabel: "May 15, 2026",
+    readTime: "8 min read",
+    field: "AI Safety",
+    source: {
+      label: "Rodríguez Salgado, 2026 — arXiv:2605.13825",
+      url: "https://arxiv.org/abs/2605.13825",
+    },
+    takeaway:
+      "If your AI agents trust their input history, a single instruction can flip every aligned model from safe to dangerous.",
+  },
+  {
     slug: "the-verification-mirage",
     title: "The Verification Mirage",
     intro:

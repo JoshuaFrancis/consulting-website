@@ -7,6 +7,7 @@ import { CTABanner } from "@/components/shared/cta-banner";
 import { researchPosts } from "@/lib/data/research";
 import { ArrowLeft } from "lucide-react";
 import { VerificationMiragePost } from "@/components/research/verification-mirage";
+import { HistoryAnchorsPost } from "@/components/research/history-anchors";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -14,6 +15,7 @@ interface PageProps {
 
 const postComponents: Record<string, React.ComponentType> = {
   "the-verification-mirage": VerificationMiragePost,
+  "one-sentence-broke-every-ai-model": HistoryAnchorsPost,
 };
 
 export async function generateStaticParams() {

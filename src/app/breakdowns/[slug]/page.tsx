@@ -15,7 +15,7 @@ interface PageProps {
 
 const postComponents: Record<string, React.ComponentType> = {
   "the-verification-mirage": VerificationMiragePost,
-  "one-sentence-broke-every-ai-model": HistoryAnchorsPost,
+  "how-researchers-broke-every-ai-model": HistoryAnchorsPost,
 };
 
 export async function generateStaticParams() {

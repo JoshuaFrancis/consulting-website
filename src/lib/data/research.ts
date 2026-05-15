@@ -15,8 +15,8 @@ export interface ResearchPost {
 
 export const researchPosts: ResearchPost[] = [
   {
-    slug: "one-sentence-broke-every-ai-model",
-    title: "One Sentence Broke Every Major AI Model",
+    slug: "how-researchers-broke-every-ai-model",
+    title: "How Researchers Broke Every AI Model",
     intro:
       "New research shows that a single line in a system prompt — 'stay consistent with the strategy shown in the prior history' — is enough to flip aligned flagship models from safe to dangerous, nearly every single time.",
     date: "2026-05-15",

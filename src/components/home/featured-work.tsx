@@ -20,7 +20,7 @@ export function FeaturedWork() {
       <AnimatedSection>
         <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
           Real projects.{" "}
-          <span className="font-serif italic">Measurable outcomes.</span>
+          <span className="text-em">Measurable outcomes.</span>
         </h2>
       </AnimatedSection>
 

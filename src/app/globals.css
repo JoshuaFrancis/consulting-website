@@ -6,28 +6,28 @@
 }
 
 @theme inline {
-  --color-background: oklch(0.99 0 0);
-  --color-foreground: oklch(0.13 0.005 285);
-  --color-primary: oklch(0.21 0.01 260);
-  --color-primary-foreground: oklch(0.99 0 0);
-  --color-secondary: oklch(0.96 0.005 250);
-  --color-secondary-foreground: oklch(0.21 0.01 260);
-  --color-accent: oklch(0.50 0.13 250);
-  --color-accent-foreground: oklch(0.99 0 0);
-  --color-muted: oklch(0.96 0.005 250);
-  --color-muted-foreground: oklch(0.45 0.01 250);
-  --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.13 0.005 285);
-  --color-border: oklch(0.92 0.005 250);
-  --color-input: oklch(0.92 0.005 250);
-  --color-ring: oklch(0.50 0.13 250);
+  --color-background: #f5f7fa;
+  --color-foreground: #0f172a;
+  --color-primary: #0f172a;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #eef1f5;
+  --color-secondary-foreground: #0f172a;
+  --color-accent: #2563ff;
+  --color-accent-foreground: #ffffff;
+  --color-muted: #eef1f5;
+  --color-muted-foreground: #64748b;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #2563ff;
   --color-destructive: oklch(0.55 0.2 25);
-  --color-destructive-foreground: oklch(0.99 0 0);
+  --color-destructive-foreground: #ffffff;
 
   --radius: 0.5rem;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-serif: "Instrument Serif", "Georgia", serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
 
@@ -45,6 +45,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
 }
 
 @layer utilities {
@@ -52,13 +59,19 @@
     text-wrap: balance;
   }
 
-  .font-serif {
-    font-family: var(--font-serif);
+  /* Brand-blue emphasis for highlighted headline words */
+  .text-em {
+    color: var(--color-accent);
+  }
+
+  /* Poppins display font for non-semantic headings */
+  .font-display {
+    font-family: var(--font-display);
   }
 
   /* Gradient text utility */
   .text-gradient {
-    background: linear-gradient(135deg, oklch(0.50 0.13 250), oklch(0.55 0.18 280));
+    background: linear-gradient(135deg, #2563ff, #4f46e5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -71,11 +84,11 @@
   /* Gradient border card effect */
   .gradient-border {
     position: relative;
-    background: linear-gradient(180deg, oklch(0.99 0.005 250) 0%, var(--color-card) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, var(--color-card) 100%);
     border: 1px solid var(--color-border);
     box-shadow:
-      0 1px 3px oklch(0.50 0.13 250 / 0.04),
-      0 1px 2px oklch(0.50 0.13 250 / 0.02);
+      0 1px 3px rgb(37 99 255 / 0.04),
+      0 1px 2px rgb(37 99 255 / 0.02);
     transition: all 0.5s cubic-bezier(0.21, 0.47, 0.32, 0.98);
   }
 
@@ -86,7 +99,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, oklch(0.50 0.13 250 / 0.4), oklch(0.55 0.18 280 / 0.2), oklch(0.60 0.12 200 / 0.3));
+    background: linear-gradient(135deg, rgb(37 99 255 / 0.4), rgb(79 70 229 / 0.2), rgb(37 99 255 / 0.3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -103,7 +116,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, oklch(0.50 0.13 250 / 0.2), oklch(0.55 0.18 280 / 0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgb(37 99 255 / 0.2), rgb(79 70 229 / 0.15), transparent);
     border-radius: inherit;
     pointer-events: none;
     z-index: 1;
@@ -116,15 +129,15 @@
   .gradient-border:hover {
     border-color: transparent;
     box-shadow:
-      0 12px 40px oklch(0.50 0.13 250 / 0.1),
-      0 4px 12px oklch(0.50 0.13 250 / 0.06);
+      0 12px 40px rgb(37 99 255 / 0.1),
+      0 4px 12px rgb(37 99 255 / 0.06);
   }
 }
 
 
 /* Selection color */
 ::selection {
-  background-color: oklch(0.50 0.13 250 / 0.15);
+  background-color: rgb(37 99 255 / 0.15);
 }
 
 /* Fade-up entrance animation */
@@ -159,16 +172,16 @@
 
 /* Dot grid pattern */
 .dot-pattern {
-  background-image: radial-gradient(oklch(0.50 0.13 250 / 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgb(37 99 255 / 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 /* Subtle gradient mesh for hero */
 .hero-gradient {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.50 0.13 250 / 0.08), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 50%, oklch(0.55 0.18 280 / 0.05), transparent),
-    radial-gradient(ellipse 50% 50% at 20% 80%, oklch(0.60 0.12 200 / 0.04), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgb(37 99 255 / 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 50%, rgb(37 99 255 / 0.05), transparent),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgb(37 99 255 / 0.04), transparent);
 }
 
 /* Animated gradient for CTA */
@@ -179,18 +192,18 @@
 }
 
 .animated-gradient {
-  background: linear-gradient(135deg, oklch(0.21 0.01 260), oklch(0.30 0.08 250), oklch(0.25 0.06 280), oklch(0.21 0.01 260));
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #1e293b, #0f172a);
   background-size: 300% 300%;
   animation: gradient-shift 8s ease infinite;
 }
 
 /* Static mesh gradient for CTA */
 .cta-mesh {
-  background-color: oklch(0.16 0.01 260);
+  background-color: #0f172a;
   background-image:
-    radial-gradient(ellipse 70% 50% at 20% 50%, oklch(0.24 0.06 250 / 0.5), transparent),
-    radial-gradient(ellipse 50% 60% at 80% 30%, oklch(0.22 0.05 280 / 0.4), transparent),
-    radial-gradient(ellipse 60% 40% at 60% 80%, oklch(0.20 0.04 240 / 0.3), transparent);
+    radial-gradient(ellipse 70% 50% at 20% 50%, rgb(37 99 255 / 0.32), transparent),
+    radial-gradient(ellipse 50% 60% at 80% 30%, rgb(37 99 255 / 0.22), transparent),
+    radial-gradient(ellipse 60% 40% at 60% 80%, rgb(37 99 255 / 0.15), transparent);
 }
 
 /* Vertical marquee animation */
@@ -206,6 +219,60 @@
 .marquee-scroll-vertical {
   animation: marquee-vertical var(--duration, 25s) linear infinite;
 }
+
+/* Horizontal marquee animation */
+@keyframes marquee-horizontal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-scroll-horizontal {
+  animation: marquee-horizontal var(--duration, 40s) linear infinite;
+}
+
+/* Creative wall — parallax scrolling columns */
+@keyframes creative-scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes creative-scroll-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.creative-col-up {
+  animation: creative-scroll-up var(--dur, 36s) linear infinite;
+}
+.creative-col-down {
+  animation: creative-scroll-down var(--dur, 36s) linear infinite;
+}
+.creative-wall:hover .creative-col-up,
+.creative-wall:hover .creative-col-down {
+  animation-play-state: paused;
+}
+
+/* Typing indicator dots */
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
+  30% { transform: translateY(-2px); opacity: 1; }
+}
+
+.typing-dot {
+  animation: typing-bounce 1.4s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.18s; }
+.typing-dot:nth-child(3) { animation-delay: 0.36s; }
 
 /* Hide scrollbar but keep scroll */
 .scrollbar-hide {

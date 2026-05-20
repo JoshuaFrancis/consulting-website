@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -12,11 +12,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const instrumentSerif = Instrument_Serif({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["500", "600", "700"],
   display: "swap",
-  variable: "--font-instrument-serif",
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -124,7 +124,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${inter.className}`}
+      className={`${inter.variable} ${poppins.variable} ${inter.className}`}
     >
       <body>
         <JsonLd data={personSchema} />

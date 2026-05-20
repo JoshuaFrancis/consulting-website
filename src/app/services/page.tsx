@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ScrollHeroSection } from "@/components/ui/scroll-hero-section";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -9,7 +11,7 @@ import { services } from "@/lib/data/services";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "End-to-end AI consulting, from strategy to production deployment. AI strategy, LLM implementation, agent development, and UX/UI design.",
+    "Four ways to put AI to work for your business: Creative Studio, AI Agent, AI Apps, and AI Training. Retainer engagements, end-to-end.",
   alternates: {
     canonical: "https://joshuafrancis.ca/services",
   },
@@ -17,34 +19,24 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "What does an AI consultant do?",
+    question: "How do retainers work?",
     answer:
-      "An AI consultant helps businesses identify where artificial intelligence can create measurable value, then designs and builds the systems to deliver it. This includes assessing AI readiness, selecting the right technologies, architecting LLM pipelines, and shipping production-ready AI products. A good AI consultant bridges the gap between business strategy and technical implementation.",
+      "Most engagements are monthly retainers with a 3-month minimum. The first month is setup and deployment, then ongoing tuning, expansion, and support. You can pause or cancel after the initial period.",
   },
   {
-    question: "How long does an AI implementation typically take?",
+    question: "Can you combine services?",
     answer:
-      "AI implementation timelines vary based on complexity. An AI strategy and roadmap typically takes 2-4 weeks. LLM implementation projects run 4-12 weeks for production deployment, including architecture design, RAG pipeline development, prompt engineering, and monitoring setup. Simpler integrations like adding AI features to an existing product can ship in as little as 2-3 weeks.",
-  },
-  {
-    question: "Do I need AI for my business?",
-    answer:
-      "Not every business needs AI, but most can benefit from it. AI is worth exploring if you have repetitive processes that could be automated, large volumes of unstructured data, customer-facing workflows that need personalization, or content creation needs at scale. The best approach is an AI readiness assessment that evaluates your specific opportunities and their potential ROI before committing to implementation.",
-  },
-  {
-    question: "What's the difference between AI strategy and LLM implementation?",
-    answer:
-      "AI strategy is the planning phase: identifying which AI opportunities will create the most business value, selecting technologies, and building a roadmap with milestones. LLM implementation is the building phase: architecting systems, developing RAG pipelines, engineering prompts, fine-tuning models, and deploying to production. Strategy answers 'what should we build and why.' Implementation answers 'how do we build it and ship it.'",
+      "Yes, most engagements blur the lines. An AI Agent build often folds in a custom internal tool, and a Creative Studio engagement usually includes Training so your team can run the workflow. Pricing scales with scope.",
   },
   {
     question: "What industries do you work with?",
     answer:
-      "I work across industries including technology, SaaS, education, real estate, financial services, and professional services. My clients range from early-stage startups building their first AI product to enterprise companies integrating AI into existing workflows. The common thread is organizations that want to move from AI ambition to production reality with a hands-on partner who designs, builds, and ships.",
+      "Most of my work is with founders, SMBs, agencies, and professional services. I avoid heavily regulated industries (healthcare, finance) unless the engagement has the right legal and compliance support in place.",
   },
   {
     question: "How is your approach different from other AI consultants?",
     answer:
-      "Most AI consultants deliver strategy decks and leave. I design, build, and ship working products. I combine business experience from finance at BMO, product design expertise, and engineering capability, so you get one person who understands the business case, can design the user experience, and can build and deploy the technical solution. You get a working product, not a presentation about one.",
+      "Most AI consultants deliver strategy decks and leave. I design, build, ship, and operate. You get one person who handles the business case, the product design, the engineering, and the ongoing care of what we build together.",
   },
 ];
 
@@ -53,31 +45,21 @@ const servicesSchema = {
   "@type": "ItemList",
   name: "AI Consulting Services",
   description:
-    "End-to-end AI consulting services offered by Joshua Francis, from strategy to production deployment.",
+    "Productized AI consulting services offered by Joshua Francis.",
   itemListElement: services.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
       "@type": "Service",
       name: service.title,
-      description: service.description,
+      description: service.summary,
       serviceType: service.title,
       provider: {
         "@type": "Person",
         name: "Joshua Francis",
         url: "https://joshuafrancis.ca",
       },
-      areaServed: [
-        { "@type": "City", name: "Toronto" },
-        { "@type": "Country", name: "Canada" },
-        { "@type": "Country", name: "United States" },
-      ],
-      availableChannel: {
-        "@type": "ServiceChannel",
-        serviceUrl: "https://joshuafrancis.ca/contact",
-        availableLanguage: "English",
-      },
-      url: `https://joshuafrancis.ca/services#${service.slug}`,
+      url: `https://joshuafrancis.ca/services/${service.slug}`,
     },
   })),
 };
@@ -133,63 +115,49 @@ export default function ServicesPage() {
       <Section>
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-            What I do.{" "}
-            <span className="font-serif italic text-muted-foreground">
-              And how.
+            Four ways I can help.{" "}
+            <span className="text-muted-foreground">
+              Pick one.
             </span>
           </h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl">
+            Each engagement is productized so you know exactly what you&apos;re
+            getting. Most clients start with one and add others as we go.
+          </p>
         </AnimatedSection>
 
-        <div className="mt-14 space-y-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
-              <AnimatedSection key={service.slug} delay={i * 0.08}>
-                <div
-                  id={service.slug}
-                  className="gradient-border rounded-2xl p-8 md:p-10 scroll-mt-24"
+              <AnimatedSection key={service.slug} delay={i * 0.06}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="group block h-full rounded-2xl border border-border bg-card p-7 md:p-8 transition-all hover:border-accent/40 hover:shadow-lg"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-[1fr,1px,1fr] gap-8 md:gap-10">
-                    {/* Left: description */}
-                    <div>
-                      <div className="flex items-center gap-3 mb-5">
-                        <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
-                          <Icon className="w-4.5 h-4.5 text-accent" />
-                        </div>
-                        <h3 className="text-xl font-semibold text-foreground">
-                          {service.title}
-                        </h3>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {service.description}
-                      </p>
-                      <p className="mt-5 text-sm text-muted-foreground/70 italic">
-                        {service.typicalEngagement}
-                      </p>
+                  <div className="flex items-start justify-between">
+                    <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-accent" />
                     </div>
-
-                    {/* Divider */}
-                    <div className="hidden md:block bg-border" />
-
-                    {/* Right: includes + who it's for */}
-                    <div>
-                      <ul className="space-y-2.5">
-                        {service.includes.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2.5 text-sm text-muted-foreground"
-                          >
-                            <div className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="mt-6 text-sm text-foreground/60 leading-relaxed border-t border-border pt-5">
-                        {service.whoItsFor}
-                      </p>
-                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground/50 group-hover:text-accent transition-colors" />
                   </div>
-                </div>
+
+                  <h3 className="mt-5 text-xl font-semibold text-foreground">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-muted-foreground leading-relaxed">
+                    {service.summary}
+                  </p>
+
+                  <div className="mt-6 pt-5 border-t border-border flex items-center justify-between">
+                    <span className="text-sm font-medium text-foreground">
+                      {service.pricingFrom}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {service.shortTitle} →
+                    </span>
+                  </div>
+                </Link>
               </AnimatedSection>
             );
           })}
@@ -201,7 +169,7 @@ export default function ServicesPage() {
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
             How it{" "}
-            <span className="font-serif italic">works.</span>
+            <span className="text-em">works.</span>
           </h2>
         </AnimatedSection>
 
@@ -229,7 +197,7 @@ export default function ServicesPage() {
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
             Frequently asked{" "}
-            <span className="font-serif italic">questions.</span>
+            <span className="text-em">questions.</span>
           </h2>
         </AnimatedSection>
 

@@ -288,7 +288,7 @@ export function BoltStyleChat({
         <div className="text-center mb-6">
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-1">
             {title}{' '}
-            <span className="bg-gradient-to-b from-[#4da5fc] via-[#4da5fc] to-white bg-clip-text text-transparent italic">
+            <span className="bg-gradient-to-b from-[#4da5fc] via-[#4da5fc] to-white bg-clip-text text-transparent">
               build
             </span>
             {' '}today?

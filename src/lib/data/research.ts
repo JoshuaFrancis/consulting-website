@@ -15,6 +15,22 @@ export interface ResearchPost {
 
 export const researchPosts: ResearchPost[] = [
   {
+    slug: "when-agents-should-stop",
+    title: "Your AI Agent Doesn't Know When to Stop",
+    intro:
+      "AI agents now work in loops: generate an answer, check it, revise, repeat. Most stop the moment a check passes. New research shows that rule is statistically broken, and builds a wrapper that actually knows when an agent should ship.",
+    date: "2026-05-20",
+    dateLabel: "May 20, 2026",
+    readTime: "9 min read",
+    field: "Agentic AI",
+    source: {
+      label: "Cho & Sun, 2026 — arXiv:2605.12947",
+      url: "https://arxiv.org/abs/2605.12947",
+    },
+    takeaway:
+      "If your agent stops as soon as a check passes, repeated checking quietly inflates the odds it ships a wrong answer. Accumulate calibrated evidence instead.",
+  },
+  {
     slug: "how-researchers-broke-every-ai-model",
     title: "How Researchers Broke Every AI Model",
     intro:

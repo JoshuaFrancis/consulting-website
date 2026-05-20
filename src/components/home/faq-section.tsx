@@ -49,7 +49,7 @@ export function FaqSection() {
           </p>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
             Questions about{" "}
-            <span className="font-serif italic text-muted-foreground">
+            <span className="text-muted-foreground">
               working together.
             </span>
           </h2>

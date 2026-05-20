@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
-import { services } from "@/lib/data/services";
+import { services, type Service } from "@/lib/data/services";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FigmaCursorIcon } from "@/components/ui/figma-cursor";
@@ -16,6 +16,15 @@ const cardConfig = [
   { colSpan: "md:col-span-2" },
   { colSpan: "md:col-span-2" },
   { colSpan: "md:col-span-4" },
+];
+
+// Home bento: explicit selection so service order and visuals stay paired,
+// independent of the full services list.
+const HOME_BENTO_SLUGS = [
+  "creative-studio",
+  "ai-agent",
+  "ai-training",
+  "ai-apps",
 ];
 
 const imageCards: Record<number, string> = {
@@ -408,7 +417,7 @@ export function ServicesPreview() {
       <AnimatedSection>
         <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
           What I&apos;d build{" "}
-          <span className="font-serif italic">for you</span>
+          <span className="text-em">for you</span>
         </h2>
         <p className="mt-4 text-muted-foreground max-w-2xl">
           Every engagement is different. Most start with one of these.
@@ -416,7 +425,9 @@ export function ServicesPreview() {
       </AnimatedSection>
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-6 gap-5">
-        {services.map((service, i) => {
+        {HOME_BENTO_SLUGS.map((slug) => services.find((s) => s.slug === slug))
+          .filter((s): s is Service => Boolean(s))
+          .map((service, i) => {
           const config = cardConfig[i];
           const cardImage = imageCards[i];
 
@@ -432,7 +443,7 @@ export function ServicesPreview() {
                 className="h-full"
               >
                 <Link
-                  href={`/services#${service.slug}`}
+                  href={`/services/${service.slug}`}
                   className="group block rounded-2xl h-full overflow-hidden relative ring-1 ring-white/10 shadow-lg"
                 >
                   {/* Card visual area */}

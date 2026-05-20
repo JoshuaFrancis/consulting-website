@@ -8,7 +8,7 @@ const SOURCE = "Rodríguez Salgado, 2026";
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
     <blockquote className="my-8 border-l-2 border-accent bg-accent/5 px-5 py-4 rounded-r-md">
-      <p className="font-serif italic text-lg text-foreground leading-relaxed">
+      <p className="text-lg text-foreground leading-relaxed">
         {children}
       </p>
       <cite className="mt-3 block not-italic text-xs uppercase tracking-[0.12em] text-muted-foreground">
@@ -65,7 +65,7 @@ function StatGrid() {
         <div key={s.label} className="bg-card p-5 text-center">
           <div
             className={cn(
-              "font-serif italic text-3xl md:text-4xl leading-none",
+              "text-3xl md:text-4xl leading-none",
               s.tone === "danger" && "text-red-600",
               s.tone === "accent" && "text-accent",
               s.tone === "safe" && "text-emerald-700"
@@ -571,7 +571,7 @@ function FindingsList() {
             i !== 0 && "border-t border-border"
           )}
         >
-          <div className="font-serif italic text-2xl text-border leading-none w-8 flex-shrink-0 pt-1">
+          <div className="text-2xl text-border leading-none w-8 flex-shrink-0 pt-1">
             {String(i + 1).padStart(2, "0")}
           </div>
           <div>

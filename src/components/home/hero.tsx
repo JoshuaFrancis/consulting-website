@@ -127,7 +127,7 @@ export function Hero() {
           style={{ animationDelay: "0.2s" }}
         >
           The gap between your business and AI?{" "}
-          <span className="font-serif italic text-gradient whitespace-nowrap">
+          <span className="text-gradient whitespace-nowrap">
             I close it.
           </span>
         </h1>

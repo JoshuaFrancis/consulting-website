@@ -8,6 +8,7 @@ import { researchPosts } from "@/lib/data/research";
 import { ArrowLeft } from "lucide-react";
 import { VerificationMiragePost } from "@/components/research/verification-mirage";
 import { HistoryAnchorsPost } from "@/components/research/history-anchors";
+import { WorkflowReleasePost } from "@/components/research/workflow-release";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -16,6 +17,7 @@ interface PageProps {
 const postComponents: Record<string, React.ComponentType> = {
   "the-verification-mirage": VerificationMiragePost,
   "how-researchers-broke-every-ai-model": HistoryAnchorsPost,
+  "when-agents-should-stop": WorkflowReleasePost,
 };
 
 export async function generateStaticParams() {

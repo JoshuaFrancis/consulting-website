@@ -18,7 +18,7 @@ export function PageHeader({ title, subtitle, accent }: PageHeaderProps) {
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
             {title}
             {accent && (
-              <span className="font-serif italic text-gradient">
+              <span className="text-gradient">
                 {" "}
                 {accent}
               </span>

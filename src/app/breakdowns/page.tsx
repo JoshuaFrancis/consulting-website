@@ -62,7 +62,7 @@ export default function BreakdownsPage() {
                     <span className="text-[10px] text-muted-foreground/70 uppercase tracking-[0.2em] font-medium">
                       {post.field}
                     </span>
-                    <h3 className="mt-3 font-serif italic text-3xl md:text-4xl text-foreground leading-tight">
+                    <h3 className="mt-3 text-3xl md:text-4xl text-foreground leading-tight">
                       {post.title}
                     </h3>
                     <p className="mt-4 text-xs text-muted-foreground/60">

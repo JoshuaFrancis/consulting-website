@@ -22,12 +22,12 @@ export function WhySection() {
         >
           AI is already transforming how businesses operate. Automating
           workflows, making{" "}
-          <span className="font-serif italic text-accent">
+          <span className="text-accent">
             smarter decisions
           </span>
           , and shipping faster. The space is moving quickly, and the companies
           that move now won&apos;t just keep up. They&apos;ll{" "}
-          <span className="font-serif italic text-accent">pull ahead</span>.
+          <span className="text-accent">pull ahead</span>.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}

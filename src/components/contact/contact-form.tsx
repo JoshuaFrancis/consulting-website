@@ -42,7 +42,9 @@ export function ContactForm() {
 function ContactFormInner() {
   const searchParams = useSearchParams();
   const prefilledMessage = searchParams.get("message") ?? "";
+  const prefilledService = searchParams.get("service") ?? "";
   const [submitted, setSubmitted] = useState(false);
+  const [projectType, setProjectType] = useState(prefilledService);
 
   const {
     register,
@@ -51,7 +53,11 @@ function ContactFormInner() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { honeypot: "", message: prefilledMessage },
+    defaultValues: {
+      honeypot: "",
+      message: prefilledMessage,
+      projectType: prefilledService,
+    },
   });
 
   useEffect(() => {
@@ -59,6 +65,13 @@ function ContactFormInner() {
       setValue("message", prefilledMessage, { shouldValidate: false });
     }
   }, [prefilledMessage, setValue]);
+
+  useEffect(() => {
+    if (prefilledService) {
+      setValue("projectType", prefilledService, { shouldValidate: false });
+      setProjectType(prefilledService);
+    }
+  }, [prefilledService, setValue]);
 
   const onSubmit = async (data: ContactFormData) => {
     const result = await sendContactEmail({
@@ -145,19 +158,21 @@ function ContactFormInner() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="projectType">Project Type</Label>
-          <Select onValueChange={(value) => setValue("projectType", value)}>
+          <Select
+            value={projectType}
+            onValueChange={(value) => {
+              setValue("projectType", value);
+              setProjectType(value);
+            }}
+          >
             <SelectTrigger id="projectType" className="w-full">
               <SelectValue placeholder="Select a service" />
             </SelectTrigger>
             <SelectContent position="popper" sideOffset={4}>
-              <SelectItem value="ai-strategy">AI Strategy</SelectItem>
-              <SelectItem value="llm-implementation">
-                LLM Implementation
-              </SelectItem>
-              <SelectItem value="agent-development">
-                Agent Development
-              </SelectItem>
-              <SelectItem value="ux-design">UX/UI Design</SelectItem>
+              <SelectItem value="ai-agent">AI Agent</SelectItem>
+              <SelectItem value="ai-apps">AI Apps & Internal Tools</SelectItem>
+              <SelectItem value="creative-studio">Creative Studio</SelectItem>
+              <SelectItem value="ai-training">AI Training</SelectItem>
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>

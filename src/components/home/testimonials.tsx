@@ -10,7 +10,7 @@ export function Testimonials() {
       <AnimatedSection>
         <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
           What clients{" "}
-          <span className="font-serif italic">say</span>
+          <span className="text-em">say</span>
         </h2>
       </AnimatedSection>
 

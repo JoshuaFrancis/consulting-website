@@ -8,7 +8,7 @@ const SOURCE = "Jin et al., 2026";
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
     <blockquote className="my-8 border-l-2 border-accent bg-accent/5 px-5 py-4 rounded-r-md">
-      <p className="font-serif italic text-lg text-foreground leading-relaxed">
+      <p className="text-lg text-foreground leading-relaxed">
         {children}
       </p>
       <cite className="mt-3 block not-italic text-xs uppercase tracking-[0.12em] text-muted-foreground">
@@ -139,7 +139,7 @@ function QuadrantWidget() {
                 </span>
                 <span
                   className={cn(
-                    "font-serif italic text-base font-semibold leading-tight",
+                    "text-base font-semibold leading-tight",
                     isMirage
                       ? "text-red-700"
                       : isSafe
@@ -192,7 +192,7 @@ function StatGrid() {
         <div key={s.label} className="bg-card p-5 text-center">
           <div
             className={cn(
-              "font-serif italic text-3xl md:text-4xl leading-none",
+              "text-3xl md:text-4xl leading-none",
               s.tone === "danger" && "text-red-600",
               s.tone === "accent" && "text-accent",
               s.tone === "neutral" && "text-amber-700"
@@ -338,7 +338,7 @@ function TasksWidget() {
       </div>
       <div className="p-5">
         <h4 className="text-lg font-semibold text-foreground">{t.name}</h4>
-        <p className="mt-1 text-xs italic text-muted-foreground">
+        <p className="mt-1 text-xs text-muted-foreground">
           Example: &ldquo;{t.eg}&rdquo;
         </p>
         <div className="mt-5 space-y-4">

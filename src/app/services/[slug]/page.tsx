@@ -655,7 +655,7 @@ export default async function ServicePage({ params }: PageProps) {
       {/* ─── Hero (split: headline + chat mockup) ─────────────── */}
       <Section className="pt-32 md:pt-36 pb-24 md:pb-32">
         <AnimatedSection>
-          <div className="grid grid-cols-12 gap-8 md:gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-12 gap-x-0 gap-y-8 md:gap-10 lg:gap-14 items-center">
             {/* Left: headline + CTA */}
             <div className="col-span-12 lg:col-span-6">
               <h1 className="text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[3.75rem] font-semibold tracking-tight text-foreground leading-[0.96] text-balance">
@@ -1303,7 +1303,7 @@ export default async function ServicePage({ params }: PageProps) {
             {/* Right: Creative Studio — scrolling creative wall */}
             {service.slug === "creative-studio" && (
               <div className="col-span-12 lg:col-span-6 relative">
-                <div className="absolute -inset-x-8 -inset-y-8 bg-gradient-to-br from-rose-500/[0.07] via-transparent to-violet-500/[0.07] rounded-[2.5rem] blur-3xl" />
+                <div className="absolute -inset-x-6 -inset-y-8 bg-gradient-to-br from-rose-500/[0.07] via-transparent to-violet-500/[0.07] rounded-[2.5rem] blur-3xl" />
                 <div
                   className="creative-wall relative grid grid-cols-3 gap-3 md:gap-4 h-[440px] md:h-[560px] overflow-hidden"
                   style={{
@@ -2811,7 +2811,7 @@ export default async function ServicePage({ params }: PageProps) {
               const mediaRight = i % 2 === 1;
               return (
                 <AnimatedSection key={item.lead}>
-                  <div className="grid grid-cols-12 gap-8 md:gap-14 items-center">
+                  <div className="grid grid-cols-12 gap-x-0 gap-y-8 md:gap-14 items-center">
                     {/* Media */}
                     <div
                       className={`col-span-12 md:col-span-5 ${
@@ -3486,7 +3486,7 @@ export default async function ServicePage({ params }: PageProps) {
       {/* ─── Founding spots (creative-studio) ─────────────────────── */}
       {service.slug === "creative-studio" && (
         <Section className="py-28 md:py-40 border-t border-border/60">
-          <div className="grid grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="grid grid-cols-12 gap-x-0 gap-y-10 md:gap-12 items-center">
             <AnimatedSection className="col-span-12 md:col-span-5">
               <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-amber-700 dark:text-amber-500 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
@@ -3568,7 +3568,7 @@ export default async function ServicePage({ params }: PageProps) {
       {/* ─── Founding spots (ai-agent) ────────────────────── */}
       {service.slug === "ai-agent" && (
         <Section className="py-28 md:py-40 border-t border-border/60">
-          <div className="grid grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="grid grid-cols-12 gap-x-0 gap-y-10 md:gap-12 items-center">
             <AnimatedSection className="col-span-12 md:col-span-5">
               <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-amber-700 dark:text-amber-500 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />

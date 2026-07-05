@@ -6,12 +6,14 @@ export interface Testimonial {
   image?: string;
 }
 
+// Named clients lead — anonymous quotes read as filler to a premium buyer.
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "It was a pleasure to work with Joshua. We got an amazing UX review of our product and were very pleased with the results. We will likely hire him in the future.",
-    role: "UX Review Project",
-    image: "/Testimonial-4.jpg",
+      "Working with Joshua was a pleasure. He is undoubtedly a professional! He worked quickly and above my expectations. Hope to work with him again in the future.",
+    author: "Fresco Art",
+    role: "Brand & Design",
+    image: "/Testimonial-2.jpg",
   },
   {
     quote:
@@ -22,10 +24,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Working with Joshua was a pleasure. He is undoubtedly a professional! He worked quickly and above my expectations. Hope to work with him again in the future.",
-    author: "Fresco Art",
-    role: "Brand & Design",
-    image: "/Testimonial-2.jpg",
+      "It was a pleasure to work with Joshua. We got an amazing UX review of our product and were very pleased with the results. We will likely hire him in the future.",
+    role: "UX Review Project",
+    image: "/Testimonial-4.jpg",
   },
   {
     quote:

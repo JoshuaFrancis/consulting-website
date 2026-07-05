@@ -13,8 +13,8 @@ export function Footer() {
               <Logo />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              AI product design & development. I design it, build it, and
-              ship it.
+              Credibility-first websites for premium service brands. Designed
+              and built end-to-end by one owner.
             </p>
           </div>
 

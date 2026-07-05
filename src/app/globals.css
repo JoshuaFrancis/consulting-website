@@ -64,6 +64,33 @@
     color: var(--color-accent);
   }
 
+  /* Gentle hero-mockup float */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .animate-blink {
+    animation: blink 1s step-start infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float {
+      animation: none;
+    }
+  }
+
   /* Poppins display font for non-semantic headings */
   .font-display {
     font-family: var(--font-display);

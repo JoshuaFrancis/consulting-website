@@ -1,211 +1,82 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { SendHorizontal, ArrowRight } from "lucide-react";
-import { GridPattern } from "@/components/ui/grid-pattern";
+import { ArrowRight } from "lucide-react";
+import { ShaderBackground } from "@/components/ui/hero-shader";
 
-const SERVICE_CHIPS = [
-  { label: "AI Strategy", prefill: "We know AI matters but aren't sure where to start. Our business..." },
-  { label: "AI Development", prefill: "We need help building an AI-powered tool that..." },
-  { label: "AI Education", prefill: "We want to train our team on AI tools and capabilities..." },
-  { label: "UX/UI Design", prefill: "We're building an AI product and need help designing the interface..." },
+// In-pitch trust signal: client logos live inside the hero, per the guide.
+type Brand = { name: string; logo?: string; logoClass?: string };
+
+const brands: Brand[] = [
+  { name: "NVIDIA" },
+  { name: "PwC" },
+  { name: "Kraft Heinz", logo: "/logos/kraft-heinz.png", logoClass: "h-5 md:h-6" },
+  { name: "Goodyear", logo: "/logos/goodyear.png", logoClass: "h-6 md:h-7" },
+  { name: "Peppermill Resort Spa", logo: "/logos/peppermill.png", logoClass: "h-9 md:h-10" },
+  { name: "Uplimit" },
 ];
-
-const TYPEWRITER_PROMPTS = [
-  "We want to add AI to our product but don't know where to start...",
-  "Can you build us an AI agent that handles customer onboarding?",
-  "We need a strategy for integrating AI into our operations...",
-  "Help us build an internal tool that uses AI to process documents...",
-  "We want to automate parts of our workflow with AI...",
-  "Our competitors are using AI and we're falling behind...",
-];
-
-function useTypewriter(prompts: string[], enabled: boolean) {
-  const [display, setDisplay] = useState("");
-  const [promptIndex, setPromptIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    if (!enabled) return;
-
-    const current = prompts[promptIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && charIndex < current.length) {
-      // Typing
-      timeout = setTimeout(() => {
-        setDisplay(current.slice(0, charIndex + 1));
-        setCharIndex((c) => c + 1);
-      }, 40 + Math.random() * 30);
-    } else if (!isDeleting && charIndex === current.length) {
-      // Pause at end
-      timeout = setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && charIndex > 0) {
-      // Deleting
-      timeout = setTimeout(() => {
-        setDisplay(current.slice(0, charIndex - 1));
-        setCharIndex((c) => c - 1);
-      }, 20);
-    } else if (isDeleting && charIndex === 0) {
-      // Move to next prompt
-      setIsDeleting(false);
-      setPromptIndex((i) => (i + 1) % prompts.length);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, promptIndex, prompts, enabled]);
-
-  return display;
-}
 
 export function Hero() {
-  const router = useRouter();
-  const [message, setMessage] = useState("");
-  const [userHasTyped, setUserHasTyped] = useState(false);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const typewriterText = useTypewriter(TYPEWRITER_PROMPTS, !userHasTyped);
-
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px`;
-    }
-  }, [message]);
-
-  const handleSend = () => {
-    const trimmed = message.trim();
-    const target = trimmed
-      ? `/contact?message=${encodeURIComponent(trimmed)}`
-      : "/contact";
-    router.push(target);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const val = e.target.value;
-    setMessage(val);
-    if (!userHasTyped && val.length > 0) setUserHasTyped(true);
-    if (val.length === 0) setUserHasTyped(false);
-  };
-
-  const handleChipClick = (prefill: string) => {
-    setMessage(prefill);
-    setUserHasTyped(true);
-    setTimeout(() => textareaRef.current?.focus(), 0);
-  };
-
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-16 overflow-hidden">
-      {/* Background layers */}
-      <div className="absolute inset-0 hero-gradient" aria-hidden="true" />
-      <GridPattern
-        width={32}
-        height={32}
-        x={-1}
-        y={-1}
-        className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] stroke-gray-300/40 fill-gray-300/10"
-        squares={[
-          [4, 4], [7, 2], [11, 6], [3, 8], [14, 3],
-          [8, 10], [16, 7], [6, 12], [12, 1], [2, 14],
-        ]}
-      />
-
-      <div className="relative z-10 flex flex-col items-center w-full px-4 sm:px-6">
-        {/* Title */}
-        <h1
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight text-center mb-4 animate-fade-up"
-          style={{ animationDelay: "0.2s" }}
-        >
-          The gap between your business and AI?{" "}
-          <span className="text-gradient whitespace-nowrap">
-            I close it.
-          </span>
-        </h1>
-        <p
-          className="text-base sm:text-lg text-muted-foreground text-center max-w-lg mb-10 animate-fade-up"
-          style={{ animationDelay: "0.3s" }}
-        >
-          From &ldquo;where do we even start&rdquo; to live in production.
-        </p>
-
-        {/* Chat Input */}
-        <div
-          className="w-full max-w-[680px] mb-8 animate-fade-up"
-          style={{ animationDelay: "0.4s" }}
-        >
-          <div className="relative rounded-2xl bg-card border border-border/80 shadow-[0_2px_20px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.03)] transition-shadow duration-300 focus-within:shadow-[0_4px_30px_rgba(0,0,0,0.08),0_0_0_1px_var(--color-accent)/0.2]">
-            <div className="relative">
-              {/* Typewriter overlay — shown when user hasn't typed */}
-              {!userHasTyped && (
-                <div
-                  className="absolute inset-0 px-5 pt-5 pb-3 text-[15px] text-muted-foreground/70 pointer-events-none select-none"
-                  aria-hidden="true"
-                >
-                  {typewriterText}
-                  <span className="inline-block w-[2px] h-[1.1em] bg-muted-foreground/60 align-text-bottom ml-[1px] animate-pulse" />
-                </div>
-              )}
-              <textarea
-                ref={textareaRef}
-                value={message}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                placeholder=""
-                className="w-full resize-none bg-transparent text-[15px] text-foreground px-5 pt-5 pb-3 focus:outline-none min-h-[80px] max-h-[200px] rounded-t-2xl relative z-10"
-                style={{ height: "80px" }}
-              />
-            </div>
-            <div className="flex items-center justify-between px-3 pb-3 pt-1 border-t border-border/40">
-              <span className="text-[11px] text-muted-foreground/40 pl-2 hidden sm:block">
-                Press Enter to send
-              </span>
-              <div className="flex items-center gap-3 ml-auto">
-                <Link
-                  href="/work"
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
-                >
-                  View My Work
-                  <ArrowRight className="size-3.5" />
-                </Link>
-                <button
-                  onClick={handleSend}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-accent hover:bg-accent/90 text-accent-foreground transition-all duration-200 active:scale-95 shadow-lg shadow-accent/20"
-                >
-                  <span className="hidden sm:inline">Get in Touch</span>
-                  <SendHorizontal className="size-4" />
-                </button>
-              </div>
+    <ShaderBackground>
+      <section className="relative z-20 flex min-h-svh items-center pt-16 pb-36">
+        <div className="w-full px-12 lg:px-20">
+          <div className="max-w-xl lg:max-w-2xl">
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] text-balance animate-fade-up"
+              style={{ animationDelay: "0.1s" }}
+            >
+              In the room, you&apos;re premium. Online, you look{" "}
+              <span className="text-gradient">cheaper than you are.</span>
+            </h1>
+            <p
+              className="mt-5 text-lg text-white/70 leading-relaxed text-balance animate-fade-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              Clients judge your credibility in the first seconds, usually
+              before they ever reach out. I design and build the site that
+              closes that gap, so you win the work and hold your price.
+            </p>
+            <div className="mt-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg shadow-black/20 transition-all duration-200 hover:bg-white/90 active:scale-95"
+              >
+                Book a consultation
+                <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Service chips */}
+        {/* Client logos, pinned to the base of the hero */}
         <div
-          className="flex flex-wrap items-center gap-2 justify-center animate-fade-up"
-          style={{ animationDelay: "0.5s" }}
+          className="absolute inset-x-0 bottom-0 z-20 px-12 pb-10 lg:px-20 animate-fade-up"
+          style={{ animationDelay: "0.45s" }}
         >
-          <span className="text-sm text-muted-foreground/50 mr-1">or pick a service</span>
-          {SERVICE_CHIPS.map((chip) => (
-            <button
-              key={chip.label}
-              onClick={() => handleChipClick(chip.prefill)}
-              className="px-3 py-1.5 rounded-full text-xs font-medium border border-border/80 bg-card hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-all duration-200 active:scale-95 shadow-sm"
-            >
-              {chip.label}
-            </button>
-          ))}
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
+            Work delivered for teams at
+          </p>
+          <div className="mt-5 flex flex-wrap items-center gap-x-10 gap-y-4">
+            {brands.map((brand) =>
+              brand.logo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={brand.name}
+                  src={brand.logo}
+                  alt={brand.name}
+                  className={`${brand.logoClass ?? "h-5 md:h-6"} w-auto object-contain brightness-0 invert opacity-45`}
+                />
+              ) : (
+                <span
+                  key={brand.name}
+                  className="text-base md:text-lg font-semibold tracking-tight text-white/45"
+                >
+                  {brand.name}
+                </span>
+              ),
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </ShaderBackground>
   );
 }

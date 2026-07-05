@@ -22,15 +22,15 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://joshuafrancis.ca"),
   title: {
-    default: "Joshua Francis | AI Consulting & Implementation",
+    default: "Joshua Francis | Credibility-First Websites for Premium Brands",
     template: "%s | Joshua Francis",
   },
   description:
-    "AI strategy, LLM implementation, and agent development for startups and enterprises. Turning AI ambition into production reality.",
+    "I design and build credibility-first websites for premium service brands, engineered to make you look as established as you actually are, so the right clients take you seriously and you can hold your prices. One accountable owner, design and build, no handoff.",
   openGraph: {
-    title: "Joshua Francis | AI Consulting & Implementation",
+    title: "Joshua Francis | Credibility-First Websites for Premium Brands",
     description:
-      "AI strategy, LLM implementation, and agent development. Turning AI ambition into production reality.",
+      "Look as established as you already are. Design-led, custom-built websites engineered to win premium clients before the first call. One accountable owner who designs and builds.",
     type: "website",
     locale: "en_US",
     siteName: "Joshua Francis",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Joshua Francis | AI Consulting & Implementation",
+    title: "Joshua Francis | Credibility-First Websites for Premium Brands",
     description:
-      "AI strategy, LLM implementation, and agent development. Turning AI ambition into production reality.",
+      "Look as established as you already are. Design-led, custom-built websites engineered to win premium clients before the first call. One accountable owner who designs and builds.",
   },
   robots: {
     index: true,
@@ -59,9 +59,9 @@ const personSchema = {
   "@type": "Person",
   name: "Joshua Francis",
   url: "https://joshuafrancis.ca",
-  jobTitle: "AI Consultant & Developer",
+  jobTitle: "Designer & Developer",
   description:
-    "AI consultant specializing in strategy, LLM implementation, agent development, and UX/UI design for AI products. Based in Toronto, serving startups and enterprises.",
+    "Toronto-based designer and developer. Designs and builds credibility-first websites for premium service brands, so they look as established as they are and can hold their prices. One accountable owner, design and build, with an enterprise AI background and finance roots at BMO.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Toronto",
@@ -69,13 +69,12 @@ const personSchema = {
     addressCountry: "CA",
   },
   knowsAbout: [
-    "AI Strategy",
-    "LLM Implementation",
-    "RAG Pipelines",
-    "Prompt Engineering",
-    "AI Agent Development",
-    "UX/UI Design for AI Products",
-    "AI Education & Training",
+    "Website Design for Premium Brands",
+    "Brand Credibility & Positioning",
+    "Conversion-focused Web Development",
+    "Product & UX Design",
+    "Production Engineering",
+    "UX/UI Design",
   ],
   sameAs: [
     "https://www.linkedin.com/in/joshuafrancis1/",
@@ -87,19 +86,18 @@ const personSchema = {
 const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Joshua Francis AI Consulting",
+  name: "Joshua Francis | Credibility-First Websites for Premium Brands",
   url: "https://joshuafrancis.ca",
   description:
-    "AI consulting services including strategy and roadmapping, LLM implementation, AI education and training, and UX/UI design for AI products.",
+    "Credibility-first website design and build for premium service brands, engineered to make them look as established as they are so the right clients take them seriously and they can hold their prices. One owner, design and build.",
   provider: {
     "@type": "Person",
     name: "Joshua Francis",
   },
   serviceType: [
-    "AI Strategy & Roadmapping",
-    "LLM Implementation",
-    "AI Education & Training",
-    "UX/UI Design for AI Products",
+    "Website Design for Premium Brands",
+    "Brand Credibility & Positioning",
+    "Design & Build (one accountable owner)",
   ],
   priceRange: "$$$",
   areaServed: [

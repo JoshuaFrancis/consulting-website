@@ -1,71 +1,104 @@
 import Image from "next/image";
+import { Star } from "lucide-react";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { testimonials } from "@/lib/data/testimonials";
 
+function Stars({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex gap-0.5 ${className}`} aria-label="5 out of 5 stars">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+      ))}
+    </div>
+  );
+}
+
 export function Testimonials() {
+  const [featured, ...rest] = testimonials;
+  const name = (t: (typeof testimonials)[number]) => t.author ?? t.role;
+  const sub = (t: (typeof testimonials)[number]) => (t.author ? t.role : "Client");
 
   return (
     <Section>
       <AnimatedSection>
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-          What clients{" "}
-          <span className="text-em">say</span>
+        <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.05]">
+          What clients say about{" "}
+          <span className="text-em">working with me.</span>
         </h2>
       </AnimatedSection>
 
-      <div className="mt-12 -mx-6 md:-mx-8 px-6 md:px-8">
-        <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-          {testimonials.map((item, i) => (
-            <AnimatedSection
-              key={`${item.author ?? item.role}-${i}`}
-              delay={i * 0.1}
-              className="flex-shrink-0 w-[320px] md:w-[380px] snap-start"
-            >
-              <div className="relative h-[420px] md:h-[480px] rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-lg">
-                {/* Background image or placeholder gradient */}
-                {item.image ? (
-                  <Image
-                    src={item.image}
-                    alt={item.author ?? item.role}
-                    fill
-                    className="object-cover object-top"
-                    sizes="380px"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
-                )}
-
-                {/* Gradient blur overlay — fades in from top */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-[55%] backdrop-blur-xl"
-                  style={{
-                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%)",
-                    maskImage: "linear-gradient(to bottom, transparent 0%, black 40%)",
-                  }}
+      <div className="mt-12 grid grid-cols-1 lg:grid-cols-6 gap-5">
+        {/* Featured testimonial */}
+        <AnimatedSection className="lg:col-span-6">
+          <figure className="grid grid-cols-1 md:grid-cols-5 overflow-hidden rounded-3xl border border-border bg-card">
+            <div className="relative md:col-span-2 aspect-[4/3] md:aspect-auto md:min-h-[20rem] overflow-hidden bg-muted">
+              {featured.image && (
+                <Image
+                  src={featured.image}
+                  alt={name(featured)}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 40vw"
                 />
-                {/* Dark tint */}
-                <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-b from-transparent via-black/40 to-black/80" />
+              )}
+            </div>
+            <div className="md:col-span-3 flex flex-col justify-center p-8 md:p-12">
+              <Stars />
+              <span
+                aria-hidden
+                className="mt-4 block leading-none text-5xl text-accent/30"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                &ldquo;
+              </span>
+              <blockquote className="-mt-3 text-xl md:text-[1.7rem] font-medium text-foreground leading-snug">
+                {featured.quote}
+              </blockquote>
+              <figcaption className="mt-7 flex items-center gap-2 text-sm">
+                <span className="font-semibold text-foreground">{name(featured)}</span>
+                <span className="text-muted-foreground/50">·</span>
+                <span className="text-muted-foreground">{sub(featured)}</span>
+              </figcaption>
+            </div>
+          </figure>
+        </AnimatedSection>
 
-                {/* Text content */}
-                <div className="absolute bottom-0 left-0 right-0 h-[55%] p-5 md:p-6 flex flex-col justify-end">
-                  <blockquote className="text-white text-sm md:text-base font-medium leading-snug">
-                    &ldquo;{item.quote}&rdquo;
-                  </blockquote>
-
-                  <div className="mt-auto pt-4 border-t border-white/15">
-                    <p className="text-sm font-semibold text-white">
-                      {item.author ?? item.role}
-                    </p>
-                    <p className="text-sm text-white/50 mt-0.5 h-5">
-                      {item.author ? item.role : ""}
-                    </p>
-                  </div>
+        {/* Supporting testimonials */}
+        {rest.map((t, i) => (
+          <AnimatedSection
+            key={`${name(t)}-${i}`}
+            delay={i * 0.08}
+            className="lg:col-span-2"
+          >
+            <figure className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:-translate-y-1">
+              <Stars />
+              <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/90">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
+                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted ring-1 ring-border">
+                  {t.image && (
+                    <Image
+                      src={t.image}
+                      alt={name(t)}
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: "50% 22%" }}
+                      sizes="40px"
+                    />
+                  )}
                 </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-semibold text-foreground">
+                    {name(t)}
+                  </div>
+                  <div className="truncate text-xs text-muted-foreground">{sub(t)}</div>
+                </div>
+              </figcaption>
+            </figure>
+          </AnimatedSection>
+        ))}
       </div>
     </Section>
   );

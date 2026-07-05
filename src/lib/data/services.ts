@@ -4,6 +4,9 @@ import {
   AppWindow,
   Sparkles,
   GraduationCap,
+  Workflow,
+  LayoutTemplate,
+  Wrench,
 } from "lucide-react";
 
 export interface ServiceFAQ {
@@ -14,6 +17,24 @@ export interface ServiceFAQ {
 export interface ServiceProcessStep {
   title: string;
   description: string;
+}
+
+export interface ServiceProofPoint {
+  metric: string;
+  label: string;
+}
+
+export interface ProblemQuote {
+  /** The pain, in the buyer's words. */
+  quote: string;
+  /** A substring of `quote` to highlight (the damning phrase). */
+  emphasis?: string;
+  /** What it quietly costs, shown as the consequence. */
+  consequence?: string;
+  /** Light attribution to make it feel like a real voice. */
+  attribution?: string;
+  /** Render at lead (large) scale. */
+  lead?: boolean;
 }
 
 export interface Service {
@@ -45,11 +66,46 @@ export interface Service {
   typicalEngagement: string;
   // legacy field kept for backward compat with existing components
   includes: string[];
+
+  // ── 5P fields (used by the offer-page template) ──────────────
+  // Present on the current three offers; optional so legacy entries still type-check.
+  /** Who it's specifically for, shown as an above-the-fold badge. */
+  forWho?: string;
+  /** One-line trust signal shown in the hero. */
+  trustSignal?: string;
+  /** Felt pain in the buyer's words, for the homepage door card. */
+  doorPain?: string;
+  /** Outcome line for the homepage door card. */
+  doorOutcome?: string;
+  /** PROBLEM section: exact buyer language (the pain sheet). */
+  pains?: string[];
+  /** PROBLEM section: editorial voices-wall (quotes + emphasis + consequence). */
+  problemQuotes?: ProblemQuote[];
+  /** PROBLEM section: why what they've already tried keeps failing. */
+  whyItFails?: string;
+  /** PROBLEM section: bridge line into the proof. */
+  problemBridge?: string;
+  /** PROOF section heading + intro. */
+  proofHeadline?: string;
+  proofIntro?: string;
+  /** PROOF section: headline numbers tied to the problem. */
+  proofPoints?: ServiceProofPoint[];
+  /** PROOF section: case-study slugs from case-studies.ts. */
+  caseStudySlugs?: string[];
+  /** PUSH: "audit" → paid audit entry; "consultation" → intro call. */
+  ctaKind?: "audit" | "consultation";
+  ctaHeadline?: string;
+  ctaSubhead?: string;
+  ctaButton?: string;
+  ctaProof?: string;
+  /** The transformation summary in Josh's voice. */
+  transformation?: string;
 }
 
 const serviceList: Service[] = [
   {
     slug: "creative-studio",
+    disabled: true, // retired offer, preserved for reference / possible reuse
     title: "Creative Studio",
     shortTitle: "Creative Studio",
     tagline: "Video, avatars, and ad creative, weekly",
@@ -174,6 +230,7 @@ const serviceList: Service[] = [
   },
   {
     slug: "ai-agent",
+    disabled: true, // retired offer, preserved for reference / possible reuse
     title: "AI Agent",
     shortTitle: "AI Agent",
     tagline: "An AI agent embedded in your team",
@@ -450,6 +507,7 @@ const serviceList: Service[] = [
   },
   {
     slug: "ai-apps",
+    disabled: true, // retired offer, preserved for reference / possible reuse
     title: "AI Apps & Internal Tools",
     shortTitle: "AI Apps",
     tagline: "Custom AI software, designed and shipped",
@@ -564,6 +622,7 @@ const serviceList: Service[] = [
   },
   {
     slug: "ai-training",
+    disabled: true, // retired offer, preserved for reference / possible reuse
     title: "AI Training",
     shortTitle: "AI Training",
     tagline: "Get your team fluent in AI",
@@ -674,6 +733,601 @@ const serviceList: Service[] = [
       "Recorded sessions and follow-up materials",
       "Ongoing office hours",
       "Tool stack recommendations",
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CURRENT OFFERS (the three-offer suite)
+  // ══════════════════════════════════════════════════════════════
+  {
+    slug: "ai-workflow",
+    disabled: true, // engine-room capability, no longer a standalone offer (umbrella pivot 2026-06-24)
+    title: "AI Workflow Audit + Implementation",
+    shortTitle: "AI Workflow",
+    tagline: "Find the workflow draining your team, and fix it",
+    icon: Workflow,
+    summary:
+      "I find the single workflow costing your team the most time, then turn it into a reliable AI-supported system built into the tools you already use.",
+    heroHeadline: "Get your team's hours back. End the manual busywork.",
+    heroSubhead:
+      "Losing capacity to reporting, follow-ups, onboarding, and handoffs? I find the single workflow costing your team the most time, then turn it into a reliable AI-supported system built inside the tools you already use.",
+    description:
+      "Audit-first AI implementation. Not another tool, not a strategy deck, not a demo that dies in production. One workflow, mapped, fixed, measured, and owned.",
+    forWho: "Growing service businesses ($2–10M) & agencies",
+    trustSignal: undefined,
+    doorPain: "“Everyone’s using ChatGPT, but the workflow is still manual.”",
+    doorOutcome:
+      "Stop the leak, turn your costliest manual workflow into a reliable system.",
+    sectionHeadings: {
+      capabilities: { lead: "What you stop", em: "losing." },
+      pricing: { lead: "Audit first,", em: "build second." },
+      faq: { lead: "The questions", em: "that come up first." },
+      audience: { lead: "Built for teams", em: "losing hours to manual ops." },
+    },
+    pains: [
+      "“Everyone’s using ChatGPT, but the workflow is still manual.”",
+      "“We tried an automation, but it broke or became more work to maintain.”",
+      "“We built a demo, but it doesn’t survive real operations.”",
+      "“We don’t know which workflows are worth automating first.”",
+      "“We need AI connected to our actual tools, not another app.”",
+      "“Leadership wants AI ROI this quarter, not more experiments.”",
+    ],
+    problemQuotes: [
+      {
+        quote: "Everyone’s using ChatGPT, but the workflow is still manual.",
+        emphasis: "still manual",
+        consequence: "Hours gone every week, and nothing actually changed.",
+        attribution: "an ops lead, before the audit",
+        lead: true,
+      },
+      {
+        quote: "We tried an automation, but it broke or became more to maintain.",
+        emphasis: "more to maintain",
+      },
+      {
+        quote: "We built a demo, but it doesn’t survive real operations.",
+        emphasis: "doesn’t survive",
+      },
+      {
+        quote: "We don’t know which workflows are actually worth automating.",
+        emphasis: "worth automating",
+      },
+      {
+        quote: "Leadership wants AI ROI this quarter, not more experiments.",
+        emphasis: "ROI this quarter",
+        consequence: "The pressure lands on you, with nothing to show yet.",
+      },
+    ],
+    whyItFails:
+      "Throwing more tools or more people at it doesn't fix it. Without the process mapped, clean inputs, clear ownership, and guardrails, AI just stacks demos and broken handoffs on top of the same leak. The work keeps eating capacity, the AI spend shows little return, and the team quietly stops trusting it.",
+    problemBridge:
+      "What you need first isn't another tool. It's to know exactly where the workflow leaks, what AI should handle, what your people keep, and a number that proves the cost actually dropped. If this sounds like your team, here's what happened when businesses in the same situation worked with me.",
+    capabilities: [
+      {
+        title: "Workflow audit",
+        description:
+          "I interview your team, inspect your tools, and map the process to find and quantify the highest-value bottleneck. The paid entry point, and an honest read on what's worth automating.",
+      },
+      {
+        title: "Opportunity prioritisation",
+        description:
+          "Workflows ranked by pain, ROI, feasibility, and data readiness. You get a clear picture of what to build first and what to leave human.",
+      },
+      {
+        title: "System build, in your tools",
+        description:
+          "Prompts, automations, integrations, and a knowledge layer built into the tools your team already uses, with human-review points wherever a mistake would be expensive.",
+      },
+      {
+        title: "Production hardening",
+        description:
+          "Edge cases, permissions, handoffs, monitoring, logging, and fallbacks. The part that makes it reliable in real operations, not just a demo.",
+      },
+      {
+        title: "Adoption & measurement",
+        description:
+          "I train your team, document the workflow, and measure the result against the success metric we set up front, so the ROI is provable, not assumed.",
+      },
+      {
+        title: "Expansion partnership",
+        description:
+          "Once one workflow is proven, we move to the next. The relationship becomes your ongoing implementation partner, not a one-off project.",
+      },
+    ],
+    idealClients: [
+      {
+        title: "Agencies losing AM time to ops",
+        description:
+          "Reporting, client updates, onboarding, and handoffs are eating account-manager hours that should go to strategy and retention.",
+      },
+      {
+        title: "Service firms with a visible leak",
+        description:
+          "A specific recurring workflow is bleeding 10+ hours a week or slowing revenue, and the AI tools you've tried haven't fixed it.",
+      },
+      {
+        title: "Leaders mandated to show AI ROI",
+        description:
+          "You've been told to 'do AI this quarter' with a real return, not another pilot that stalls before it ships.",
+      },
+    ],
+    retainerIncludes: [
+      "Fixed-fee workflow audit with a ranked, ROI-prioritised plan",
+      "The first workflow built into your existing tools",
+      "Human-review and approval points where mistakes are costly",
+      "Production hardening: monitoring, logging, fallbacks",
+      "Team training and workflow documentation",
+      "Success metric defined up front and measured after",
+      "Ongoing expansion to the next workflows (retainer)",
+    ],
+    processSteps: [
+      {
+        title: "Audit: find the costliest leak",
+        description:
+          "I map the workflow, inspect your tools, and quantify what the bottleneck is costing you. You get a ranked, honest plan, including what's not worth automating.",
+      },
+      {
+        title: "Build: into the tools you already use",
+        description:
+          "I build the fix where your team already works, with humans kept in the loop wherever a mistake would be expensive. No isolated app, no black box.",
+      },
+      {
+        title: "Prove & expand: measure the hours back",
+        description:
+          "We measure the result against the metric we set up front. Once one workflow is proven, we move to the next, and I stay on as your implementation partner.",
+      },
+    ],
+    pricingFrom: "Starts with an audit",
+    pricingNote:
+      "Fixed-fee audit first. The build is scoped and quoted from it, so there are no blind quotes.",
+    proofHeadline: "Production AI, taught to the people who run it",
+    proofIntro:
+      "My background is making AI actually work in real organisations, not slide decks about it. I've shipped production AI for brands like Goodyear and Peppermill Resort Spa, and delivered AI training to teams at NVIDIA, PwC, and Kraft Heinz.",
+    proofPoints: [
+      { metric: "100/100", label: "Course rating from professionals learning to use AI" },
+      { metric: "89 NPS", label: "On AI training delivered to enterprise teams" },
+      { metric: "Days", label: "Typical audit-to-first-working-system timeline, not months" },
+    ],
+    caseStudySlugs: ["ai-image-creation-course", "roomlab-ai-interior-design"],
+    faqs: [
+      {
+        question: "Why can't I just use ChatGPT or a tool like Zapier myself?",
+        answer:
+          "You can, for individual tasks. The gap shows up when a workflow has to run reliably across messy data, real handoffs, and unclear ownership. That's where DIY tools and brittle automations break. I'm not selling you AI; I'm selling a workflow that survives real operations. The tools are infrastructure underneath it.",
+      },
+      {
+        question: "How much does this cost?",
+        answer:
+          "It starts with a fixed-fee workflow audit, a low-risk first step that surfaces the real ROI and produces a scoped plan. The build is quoted from the audit, so the price reflects the actual work and the value of the hours you'll get back. No blind quotes, no open-ended retainers to start.",
+      },
+      {
+        question: "What if the audit says I shouldn't automate something?",
+        answer:
+          "Then I'll tell you, and you'll have paid for honest prioritisation rather than a pre-sold build. Knowing what to leave human is part of the value, automating the wrong thing is how teams end up with more complexity, not less.",
+      },
+      {
+        question: "How long does it take?",
+        answer:
+          "The audit is quick, usually days, not weeks. The first workflow build is scoped deliberately narrow so you see a working, measurable result fast, rather than a six-month project that never quite ships.",
+      },
+      {
+        question: "What if the AI gets something wrong?",
+        answer:
+          "Anywhere a mistake is expensive, a human stays in the loop by design, review and approval points are built into the workflow. You decide how much runs unattended; I never promise hands-off automation where errors are costly.",
+      },
+      {
+        question: "Do you work with the tools we already have?",
+        answer:
+          "Yes, that's the point. The system is built into your existing stack so the work happens where your team already is, not in yet another subscription they have to remember to open.",
+      },
+    ],
+    ctaKind: "audit",
+    ctaHeadline: "Find out what your costliest workflow is actually costing you.",
+    ctaSubhead:
+      "Start with a workflow audit. You'll get a ranked, ROI-prioritised plan, and the honest version of what's worth building.",
+    ctaButton: "Book a workflow audit",
+    ctaProof: "100/100 course rating from enterprise teams · NVIDIA, PwC & Kraft Heinz · ROI-first, no build sold before the audit",
+    whoItsFor:
+      "Growing service businesses and agencies losing capacity to manual reporting, follow-ups, onboarding, and handoffs.",
+    typicalEngagement:
+      "Fixed-fee audit, then a scoped first-workflow build, then ongoing expansion as an implementation partner.",
+    transformation:
+      "I help service businesses drowning in repeatable admin, reporting, follow-up, or handoffs find the single workflow costing them the most, and turn it into a reliable AI-supported system, so the leak stops instead of getting more people or tools thrown at it.",
+    includes: [
+      "Fixed-fee workflow audit and ROI-ranked plan",
+      "First workflow built into your existing tools",
+      "Production hardening and monitoring",
+      "Team training and measurement against a success metric",
+      "Ongoing expansion to the next workflows",
+    ],
+  },
+  {
+    slug: "website-design",
+    title: "Website Design for Premium Brands",
+    shortTitle: "Website Design",
+    tagline: "A site that wins premium clients before the first call",
+    icon: LayoutTemplate,
+    summary:
+      "Design-led, custom-built websites for premium service brands, engineered to signal trust, justify your fees, and stop you discounting to win work you should have closed at full price.",
+    heroHeadline: "Look as premium as you are, before the first call.",
+    heroSubhead:
+      "Designed and built end-to-end by one person, so the premium positioning survives all the way from first concept to live site. No templates, no outsourced handoffs, no gap between what it looks like and what it earns.",
+    description:
+      "Trust is engineered, not decorated. I design and build the whole thing myself, so the premium positioning survives from first concept to live site.",
+    forWho: "Premium service brands, studios, agencies & firms",
+    trustSignal:
+      "Designed & built SynthMinds (clients incl. NVIDIA, PwC, Kraft Heinz) · 3× qualified leads",
+    doorPain: "“My website makes us look cheaper than we are.”",
+    doorOutcome:
+      "Win high-value clients and justify your fees, before a prospect makes contact.",
+    sectionHeadings: {
+      capabilities: { lead: "What the rebuild", em: "earns you." },
+      pricing: { lead: "What it", em: "takes to work together." },
+      faq: { lead: "The questions", em: "premium firms ask." },
+      audience: { lead: "Built for firms judged on", em: "trust before contact." },
+    },
+    pains: [
+      "“My website makes us look cheaper than we are.”",
+      "“High-value clients judge our credibility before they ever contact us.”",
+      "“We’re forced to discount because the site can’t justify our fees.”",
+      "“A prettier redesign didn’t actually move the business.”",
+      "“My designer and developer were two people, and it was a mess.”",
+      "“Our credibility isn’t showing up, even in search.”",
+    ],
+    problemQuotes: [
+      {
+        quote: "My website makes us look cheaper than we are.",
+        emphasis: "cheaper than we are",
+        consequence: "Premium clients gone before they ever say hello.",
+        attribution: "a firm owner, before we worked together",
+        lead: true,
+      },
+      {
+        quote: "High-value clients judge our credibility before they ever contact us.",
+        emphasis: "before they ever contact us",
+      },
+      {
+        quote: "We’re forced to discount because the site can’t justify our fees.",
+        emphasis: "forced to discount",
+        consequence: "Premium work, sold at a commodity price.",
+      },
+      {
+        quote: "A prettier redesign didn’t actually move the business.",
+        emphasis: "didn’t actually move",
+      },
+      {
+        quote: "My designer and developer were two people, and it was a mess.",
+        emphasis: "two people",
+      },
+    ],
+    whyItFails:
+      "You can't fix this by being better at your craft or adding more case studies to a dated site. High-value clients decide whether they trust you in the first seconds, and most of that happens before they ever contact you. If the site says “cheaper than we are,” your expertise never gets a hearing. A one-off prettier redesign changes the look, not the trust signal, so nothing moves.",
+    problemBridge:
+      "What you need isn't a prettier site. It's one engineered to make you look as established and premium as you actually are, so the right clients take you seriously and your fees feel justified before you're even in the room. If this sounds like your firm, here's what happened when premium service brands in the same position worked with me.",
+    capabilities: [
+      {
+        title: "Design-led prestige rebuild",
+        description:
+          "A site engineered to make a premium firm look as established as it is. Senior, custom design, no template that looks like everyone else's.",
+      },
+      {
+        title: "Trust & credibility layer",
+        description:
+          "Press, proof, case studies, results, the signals that decide trust in seconds, placed exactly where they convert.",
+      },
+      {
+        title: "Fee-justifying positioning",
+        description:
+          "Messaging and structure that let you hold your price and stop discounting to win work you should close at full rate.",
+      },
+      {
+        title: "In-house design + engineering",
+        description:
+          "I design it and build it. No designer-to-developer handoff where the vision gets lost, no finger-pointing when something breaks.",
+      },
+      {
+        title: "Performance & mobile build",
+        description:
+          "Fast, secure, mobile-first. Speed is a trust signal, a slow, broken site quietly undersells you.",
+      },
+      {
+        title: "Care plan (ongoing)",
+        description:
+          "Hosting, monitoring, performance, and small changes on a monthly retainer, so someone owns the site after launch instead of it going stale.",
+      },
+    ],
+    idealClients: [
+      {
+        title: "Premium firms judged on prestige",
+        description:
+          "Studios, agencies, design/architecture firms, consultancies, premium clinics, sold on trust, and judged on it before a prospect makes contact.",
+      },
+      {
+        title: "Firms losing work to worse-but-prettier rivals",
+        description:
+          "You're excellent at what you do, but a more polished competitor keeps winning the pitch before you're even in the room.",
+      },
+      {
+        title: "Firms forced to discount",
+        description:
+          "The site can't justify your fees, so you drop price to close, turning premium work into a commodity sale.",
+      },
+    ],
+    retainerIncludes: [
+      "Senior, custom design, no templates",
+      "Design and engineering by one person, no handoff",
+      "Trust and credibility layer placed to convert",
+      "Fee-justifying messaging and positioning",
+      "Fast, secure, mobile-first build",
+      "On-page credibility / SEO foundation",
+      "Optional care plan: hosting, monitoring, changes",
+    ],
+    processSteps: [
+      {
+        title: "Position, find the trust gap",
+        description:
+          "I learn your firm, your premium buyer, and exactly where the current site is costing you credibility. We decide what has to be true in the first five seconds.",
+      },
+      {
+        title: "Design & build, no handoff",
+        description:
+          "I design and engineer it, senior, custom, fast, mobile-first, with your proof and positioning placed where they convert. One person owns the whole thing.",
+      },
+      {
+        title: "Launch & own, it stays sharp",
+        description:
+          "Fast, secure, and looked after. An optional care plan covers hosting, monitoring, performance, and changes so the site doesn't go stale.",
+      },
+    ],
+    pricingFrom: "By consultation",
+    pricingNote:
+      "Premium, custom rebuilds are typically a five-figure investment, scoped to the firm on a call.",
+    proofHeadline: "Sites that move the business, not just the brand",
+    proofIntro:
+      "I design and build it myself, no template that looks like everyone else's, no designer-to-developer handoff where the vision gets lost. One person owning the whole thing is how a site carries premium positioning all the way to launch.",
+    proofPoints: [
+      { metric: "3×", label: "Increase in qualified enterprise leads (SynthMinds)" },
+      { metric: "+52%", label: "Improvement in average session duration" },
+      { metric: "+40%", label: "Increase in consultation bookings" },
+    ],
+    caseStudySlugs: ["shiki-studios-acting-school", "synthminds-brand-platform"],
+    faqs: [
+      {
+        question: "How is this different from hiring an agency?",
+        answer:
+          "An agency hands you a beautiful site through a chain of people, then leaves. I design and build it myself, so the premium positioning survives from first concept to live site, and I'm still here to own it afterwards. You're buying trust engineering, not a decoration project.",
+      },
+      {
+        question: "How much does a project cost?",
+        answer:
+          "Premium, custom rebuilds are a serious investment, typically five figures, scoped to the firm. When a single high-value client is worth tens of thousands to you, a site that wins more of them and lets you stop discounting pays for itself quickly. We scope it together on a call.",
+      },
+      {
+        question: "I just had a redesign, why didn't it work?",
+        answer:
+          "Most redesigns change how the site looks without changing what it signals. Prettier isn't the same as more trusted. The work here is engineering the credibility signals, proof, positioning, structure, speed, that actually decide whether a premium buyer takes you seriously.",
+      },
+      {
+        question: "How long does it take?",
+        answer:
+          "A focused premium rebuild typically runs a few weeks, depending on scope and how much content and positioning work is needed. You'll have a clear timeline before we start.",
+      },
+      {
+        question: "Do you handle copy and SEO too?",
+        answer:
+          "The site is built with structured content and authority signals from the ground up, and I'll guide the messaging that holds your price. Deep SEO and PR campaigns are partnered or referred out as a phase two, I'd rather do that part properly than half it.",
+      },
+    ],
+    ctaKind: "consultation",
+    ctaHeadline: "Stop entering premium conversations at a trust disadvantage.",
+    ctaSubhead:
+      "Book a consultation and we'll look at where your current site is costing you high-value clients, and what it would take to fix it.",
+    ctaButton: "Book a consultation",
+    ctaProof: "Designed and built end-to-end · 3× qualified leads for a premium service brand · 100 PageSpeed, 6× faster for Shiki Studios",
+    whoItsFor:
+      "Premium service brands, studios, agencies, and firms whose website makes them look cheaper than they are.",
+    typicalEngagement:
+      "A focused custom rebuild over a few weeks, with an optional ongoing care plan after launch.",
+    transformation:
+      "I help premium service brands whose website makes them look cheaper than they are win high-value clients and justify their fees, through a design-led site built to signal trust before a prospect ever makes contact.",
+    includes: [
+      "Senior, custom design and engineering",
+      "Trust and credibility layer that converts",
+      "Fee-justifying positioning",
+      "Fast, secure, mobile-first build",
+      "Optional ongoing care plan",
+    ],
+  },
+  {
+    slug: "development",
+    disabled: true, // folded into the umbrella as "one owner: design + build" / the deep end (umbrella pivot 2026-06-24)
+    title: "Development, Get Your Stuck Product Launched",
+    shortTitle: "Development",
+    tagline: "Get a stuck product launched and working",
+    icon: Wrench,
+    summary:
+      "Audit-first development for founders with a product they've invested in that's stuck. I assess what you've got, keep what works, finish and harden it, and stay on as the developer you wanted from the start.",
+    heroHeadline: "Get your stuck product launched and working, owned by someone who stays.",
+    heroSubhead:
+      "It starts with an honest audit: what's salvageable, what needs replacing, and what the real cost is. Then I finish it, harden it, and stay on the hook for it working. No blank-slate rewrites, no blind quotes, no contractor who disappears after launch.",
+    description:
+      "However it got stuck, DIY stall, vibe-coded, a contractor who bounced, an outgrown v1, a broken outsourced build, the job is the same: get an invested product launched and working, owned by someone you trust.",
+    forWho: "Founders & businesses with an invested-but-stuck product",
+    trustSignal:
+      "Rescued a broken, never-launched outsourced build (CueActor) · shipped RoomLab end-to-end, solo",
+    doorPain: "“I’ve sunk months and money into this and it still isn’t live.”",
+    doorOutcome:
+      "Get it launched and working, owned by someone you can actually trust.",
+    sectionHeadings: {
+      capabilities: { lead: "How I get it", em: "unstuck." },
+      pricing: { lead: "Audit first,", em: "no blind quotes." },
+      faq: { lead: "What founders", em: "ask first." },
+      audience: { lead: "Built for an invested product", em: "that's stuck." },
+    },
+    pains: [
+      "“I’ve sunk months and money into this and it still isn’t live.”",
+      "“I built it / vibe-coded it and now I can’t safely take it to production.”",
+      "“The person building it stalled, bounced, or ghosted.”",
+      "“It works in a demo but breaks in the real world.”",
+      "“I can’t tell if the existing code is any good.”",
+      "“I just want it launched and working, by someone I trust.”",
+    ],
+    problemQuotes: [
+      {
+        quote: "I’ve sunk months and money into this and it still isn’t live.",
+        emphasis: "still isn’t live",
+        consequence: "Every week it’s stuck is money you can’t get back.",
+        attribution: "a founder, mid-rescue",
+        lead: true,
+      },
+      {
+        quote: "The person building it stalled, bounced, or ghosted.",
+        emphasis: "ghosted",
+      },
+      {
+        quote: "It works in a demo but falls apart in the real world.",
+        emphasis: "falls apart in the real world",
+      },
+      {
+        quote: "I built it myself and now I can’t safely take it to production.",
+        emphasis: "can’t safely",
+      },
+      {
+        quote: "I just want it launched and working, by someone I trust.",
+        emphasis: "someone I trust",
+        consequence: "Trust, not price, is what’s actually blocking you.",
+      },
+    ],
+    whyItFails:
+      "You can't fix this by repeating whatever got you here, another cheap contractor, another DIY push, another team like the last one. Stuck products stay stuck for the same reasons: no clear technical owner, work that won't scale past the demo, and nobody accountable for actually getting it launched. More of the same just burns more time and money.",
+    problemBridge:
+      "What you need isn't another developer. It's one accountable owner who assesses what you've already got, keeps what's salvageable, finishes and hardens it properly, and stays on the hook for it working. If this sounds like where your build is stuck, here's what happened when founders in the same position worked with me.",
+    capabilities: [
+      {
+        title: "Build audit & code review",
+        description:
+          "A paid first step. I assess the existing build, tell you straight what's salvageable, and scope the work, so the quote is accurate and you know whether it's worth finishing before you commit.",
+      },
+      {
+        title: "Take it over & get it unstuck",
+        description:
+          "I take ownership of the codebase, keep what works, and re-architect only what genuinely won't scale. No starting from zero, no throwing away your investment.",
+      },
+      {
+        title: "Finish & harden to launch",
+        description:
+          "I complete the unfinished work and make it real: stable, secure, deployed. The part that turns a demo into a product that survives the real world.",
+      },
+      {
+        title: "One accountable owner",
+        description:
+          "A direct line and straight answers in plain language. No jargon, no ghosting, no junior hidden behind a salesperson.",
+      },
+      {
+        title: "Ongoing ownership",
+        description:
+          "I stay on after launch for maintenance, new features, and the next phase, the developer you can keep, not the one you replace.",
+      },
+    ],
+    idealClients: [
+      {
+        title: "Founders with a stalled build",
+        description:
+          "You've invested months and money, the person on it stalled or ghosted, and if it doesn't get unstuck it just dies.",
+      },
+      {
+        title: "Vibe-coded or DIY products",
+        description:
+          "You got it most of the way yourself, but you can't safely take it to production and need someone to finish it properly.",
+      },
+      {
+        title: "Broken outsourced or outgrown v1s",
+        description:
+          "A team handed you a broken build, or your v1 has outgrown itself and you can't move it forward without a real owner.",
+      },
+    ],
+    retainerIncludes: [
+      "Paid build audit: what's salvageable, scoped and quoted",
+      "Codebase takeover, keep what works, replace what won't scale",
+      "Finish and harden the unfinished work to launch",
+      "Stable, secure deployment",
+      "One accountable owner with a direct line",
+      "Ongoing maintenance, features, and the next phase",
+    ],
+    processSteps: [
+      {
+        title: "Build audit: what's salvageable?",
+        description:
+          "A paid first step. I assess the existing build, tell you what's worth keeping, and scope the work, so the quote is accurate and you know whether it's even worth finishing before you commit.",
+      },
+      {
+        title: "Take it over & finish",
+        description:
+          "I take ownership of the codebase, keep what works, re-architect what won't scale, and complete the unfinished work, stable, secure, deployed.",
+      },
+      {
+        title: "Launch & stay",
+        description:
+          "It goes live and works. Then I stay on for maintenance, new features, and the next phase, the accountable owner you wanted from the start.",
+      },
+    ],
+    pricingFrom: "Starts with a build audit",
+    pricingNote:
+      "Fixed-fee audit first. The build is quoted from what we find, not guessed blind.",
+    proofHeadline: "I take over messes and ship them",
+    proofIntro:
+      "However it got stuck, the job is the same: get an invested product launched and working. I've done it on a broken build someone else abandoned, and I've shipped a full product end-to-end on my own.",
+    proofPoints: [
+      { metric: "End-to-end", label: "AI, app, payments & marketing shipped solo (RoomLab)" },
+      { metric: "Live", label: "Rescued a buggy, never-launched outsourced app (CueActor)" },
+      { metric: "1 owner", label: "Audit → finish → launch → stay, no handoffs" },
+    ],
+    caseStudySlugs: ["roomlab-ai-interior-design"],
+    faqs: [
+      {
+        question: "Can my existing code be saved, or do I have to start over?",
+        answer:
+          "That's exactly what the audit answers. Usually a lot is salvageable, the point is to keep what works and only replace what genuinely won't scale, so you're not throwing away the investment you've already made. If starting over really is cheaper, I'll tell you that too.",
+      },
+      {
+        question: "How much will it cost to finish?",
+        answer:
+          "I quote the build from the audit, not blind. The audit assesses the difficulty and real scope first, so the price reflects the actual state of the code, not a guess that balloons later. The audit itself is a fixed, low-commitment fee.",
+      },
+      {
+        question: "How do I know you won't stall or ghost like the last person?",
+        answer:
+          "One accountable owner, a direct line, and straight answers in plain language, no junior hidden behind a salesperson. The audit is also where I prove competence before you commit to the build, so you're not betting big on faith.",
+      },
+      {
+        question: "What if you look at it and it's a bigger mess than expected?",
+        answer:
+          "Then the audit will say so, with an honest scope and price, or an honest “this isn't worth saving.” You make the call with real information instead of finding out three months and another invoice in.",
+      },
+      {
+        question: "Will you stay on after launch?",
+        answer:
+          "Yes. Most of this work becomes an ongoing relationship, maintenance, new features, the next build. Getting it launched is the start; being the developer you can keep is the point.",
+      },
+    ],
+    ctaKind: "audit",
+    ctaHeadline: "Stop pouring money into a build that won't ship.",
+    ctaSubhead:
+      "Start with a build audit. I'll tell you what's salvageable, what it'll take to launch, and whether it's worth it, straight, before you spend another dollar.",
+    ctaButton: "Book a build audit",
+    ctaProof: "Rescued a never-launched outsourced build · shipped RoomLab solo end-to-end · audit-first, no blind quotes",
+    whoItsFor:
+      "Founders and businesses with a product they're invested in that's stuck and will fail if it doesn't get unstuck.",
+    typicalEngagement:
+      "Fixed-fee build audit, then a scoped takeover-to-launch, then ongoing ownership.",
+    transformation:
+      "I help founders with a product they're invested in that's stuck and won't launch get it working and owned by someone they trust, by auditing what they've got, finishing it properly, and becoming the developer they wanted from the start.",
+    includes: [
+      "Paid build audit and honest scope",
+      "Codebase takeover and re-architecture where needed",
+      "Finish and harden to a stable, secure launch",
+      "One accountable owner, plain language",
+      "Ongoing maintenance and feature work",
     ],
   },
 ];

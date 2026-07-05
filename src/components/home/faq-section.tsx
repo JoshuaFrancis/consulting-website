@@ -4,24 +4,39 @@ import { JsonLd } from "@/components/shared/json-ld";
 
 export const homeFaqs = [
   {
-    question: "What does Joshua Francis do?",
+    question: "How is this different from hiring an agency?",
     answer:
-      "Joshua Francis is an AI consultant based in Toronto who helps startups and enterprises design, build, and ship AI products. He offers four core services: AI strategy and roadmapping, LLM implementation including RAG pipelines and agent development, AI education and training for teams, and UX/UI design for AI-powered products. Unlike most consultants, he designs, builds, and ships working products end-to-end.",
+      "An agency hands you a beautiful site through a chain of people, then leaves. I design and build it myself, so the premium positioning survives from first concept to live site, and I'm still here to own it afterwards. You're buying credibility engineering, not a decoration project.",
   },
   {
-    question: "What is AI consulting?",
+    question: "How much does it cost?",
     answer:
-      "AI consulting is a professional service that helps businesses identify where artificial intelligence can create measurable value, then designs and builds the systems to deliver it. A good AI consultant assesses AI readiness, selects appropriate technologies, architects LLM pipelines, and ships production-ready AI products. The role bridges business strategy and technical implementation, turning AI ambition into real systems.",
+      "Premium, custom rebuilds are typically a five-figure investment, scoped to the firm on a call. When a single high-value client is worth tens of thousands to you, a site that wins more of them and lets you stop discounting pays for itself quickly. No blind quotes, we scope it together first.",
   },
   {
-    question: "How much does AI consulting cost?",
+    question: "Couldn't I just use Squarespace or a cheaper freelancer?",
     answer:
-      "AI consulting fees vary based on scope and engagement model. AI strategy and roadmapping projects typically run as fixed-fee engagements over 2-4 weeks. LLM implementation projects run 4-12 weeks depending on complexity, including architecture, RAG pipelines, prompt engineering, and deployment. Joshua works with both fixed-fee and retainer arrangements. A free 30-minute consultation is the easiest way to scope your project.",
+      "You can, and for many businesses that's the right call. But your buyer is judging whether you're worth a premium fee, and a template that looks like everyone else's quietly answers that question for them. If your site's job is to justify your prices, it can't look like it was chosen to save money.",
   },
   {
-    question: "How do I hire an AI consultant?",
+    question: "I just had a redesign. Why didn't it work?",
     answer:
-      "Start by defining your goal: are you exploring where AI fits in your business, building a specific AI feature, training your team, or designing an AI product? Then look for someone whose track record matches that goal. Joshua Francis takes new engagements through a free 30-minute call with no pitch deck required — the goal of the call is to understand what you're building and decide together whether it's a fit.",
+      "Most redesigns change how the site looks without changing what it signals. Prettier isn't the same as more trusted. The work here is engineering the credibility signals, proof, positioning, structure, speed, that actually decide whether a premium buyer takes you seriously in the first seconds.",
+  },
+  {
+    question: "How long does it take?",
+    answer:
+      "A focused premium rebuild typically runs a few weeks, depending on scope and how much positioning and content work is needed. You'll have a clear timeline before we start, not a guess designed to make you commit.",
+  },
+  {
+    question: "Do you use AI to build these?",
+    answer:
+      "I use AI to move faster on research, prototyping, and build, the same way a serious studio uses every tool available. But it stays in the engine room. What you're buying is senior design and product judgment and one accountable owner, not a prompt. The craft, and the credibility it earns, is the point.",
+  },
+  {
+    question: "Do you work with brands outside Canada?",
+    answer:
+      "Yes. Most of my work is remote. Clients are based across Canada, the US, and internationally. If your website makes you look smaller than you are, the geography doesn't change what needs fixing.",
   },
 ];
 

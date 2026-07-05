@@ -1,3 +1,22 @@
+export interface CaseReport {
+  /** Lighthouse-style 0-100 score dials that animate before → after. */
+  gauges: { label: string; before: number; after: number }[];
+  /** Before/after metrics shown as shrinking bars (lower is better). */
+  bars: { label: string; before: number; after: number; unit: string }[];
+}
+
+/**
+ * The approach narrative is an ordered list of blocks so visuals can sit inline,
+ * exactly where the text discusses them. Image paths point to /public; an empty
+ * or missing path renders a labelled placeholder so it still looks intentional.
+ */
+export type ApproachBlock =
+  | { kind: "heading"; label: string }
+  | { kind: "text"; text: string }
+  | { kind: "list"; ordered?: boolean; label?: string; items: string[] }
+  | { kind: "image"; src?: string; caption?: string; wide?: boolean }
+  | { kind: "beforeAfter"; title?: string; before?: string; after?: string };
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -6,53 +25,249 @@ export interface CaseStudy {
   client: string;
   timeline: string;
   challenge: string | string[];
+  /** Skimmable challenge narrative (headings, text, lists). Falls back to `challenge`. */
+  challengeBlocks?: ApproachBlock[];
   approach: string | string[];
   results: { metric: string; description: string }[];
+  /** Terse, dot-separated results shown as chips under the headline. */
+  resultsLine?: string;
+  /** "The result" narrative: summary lead + skimmable breakdown lists. */
+  resultBlocks?: ApproachBlock[];
+  /** A pull-quote lifted from the narrative, shown as an editorial breaker. */
+  pullQuote?: string;
+  /** Optional animated performance report (the dramatic results chapter). */
+  report?: CaseReport;
+  /** Ordered approach narrative with visuals interleaved inline. Falls back to `approach`. */
+  approachBlocks?: ApproachBlock[];
   testimonial?: { quote: string; author: string; role: string };
+  /** The offer this case study is proof for — drives the closing push. */
+  relatedOffer?: { slug: string; label: string };
   url?: string;
   image?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "ai-image-creation-course",
-    title: "AI Image Creation for Everyone: Online Course",
-    image: "/Ai-Image-Course.jpg",
+    slug: "shiki-studios-acting-school",
+    title:
+      "How I Rebuilt the Website for a Toronto Acting School Whose Alumni Appear on Netflix, Prime Video, and Paramount+",
+    image: "/shiki-studios.jpg",
+    url: "https://shikistudios.com",
     summary:
-      "Designed and launched a top-performing AI image creation course on the Uplimit platform that earned a perfect 100/100 feedback score, an 89 NPS, and a 74.5% completion rate, well above industry averages.",
-    categories: ["UX Design", "AI", "Course Design"],
-    client: "Uplimit",
-    timeline: "May 2023",
+      "A premium rebuild for a Toronto on-camera acting school whose alumni appear on Netflix, Prime Video, and Paramount+. A demo-reel-led hero, instant Cal.com and Stripe booking on every service, and a build that scored a perfect 100 on desktop PageSpeed, up from 44.",
+    categories: ["Website Design", "Web Development", "Conversion"],
+    client: "Shiki Studios",
+    timeline: "2026",
+    relatedOffer: { slug: "website-design", label: "Website Design" },
     challenge: [
-      "We believed that AI image creation shouldn't be locked behind technical expertise. In early 2023, generative AI was exploding, but there was a disconnect: the people who stood to benefit most from these tools, marketers, content creators, designers, and entrepreneurs, were the ones least equipped to use them. The technology was moving fast, but the education wasn't keeping up.",
-      "The evidence was everywhere. Scroll through any social feed and you'd see AI-generated images with mangled hands, garbled text, and an uncanny lack of photorealism. People were experimenting, but without guidance, most were getting mediocre results and giving up. The tools themselves weren't the problem. The gap was in understanding how to use them with intention.",
-      "Existing tutorials were either too technical (aimed at engineers and researchers) or too shallow (surface-level prompt tips with no real-world application). There was nothing that met professionals where they were and gave them a structured path from \"I've never used this\" to \"I'm creating production-quality visuals for my business.\"",
-      "That was the opportunity. Not just to teach a tool, but to change how people think about visual content creation in the age of AI.",
+      "Kayleigh Shikanai is a working actor and the founder of Shiki Studios, a premium on-camera acting school in Toronto whose alumni have gone on to appear on Netflix, Prime Video, and Paramount+. She had already built something special. My job was to give it a digital home that matched.",
+      "Shiki Studios had a thriving school, a loyal community, and a genuinely impressive track record. The opportunity was to bring the website up to the same level as the work, to create an online presence that reflected the calibre of the school, communicated its results immediately, and made it effortless for an interested actor to take the next step.",
+      "There were a few specific things I wanted the new site to do well. I wanted it to feel premium from the first second, the way the school itself does. I wanted to remove any friction between someone being interested and someone booking, so a prospective student could move forward the moment they were ready rather than waiting on a back-and-forth. And I wanted to give Kayleigh real visibility into her own marketing, a way to actually see what was working so that the money she puts into advertising could be spent with confidence rather than guesswork.",
+      "That last point mattered more than it might sound. Like a lot of business owners, Kayleigh was investing in paid advertising without analytics in place to tell her where her traffic was coming from or what was converting. Giving her that clarity was one of the most valuable things I could do.",
+    ],
+    resultsLine:
+      "100/100 desktop PageSpeed (up from 44) · 6× faster load · 97% less Total Blocking Time · mobile 43 → 83",
+    challengeBlocks: [
+      {
+        kind: "text",
+        text: "Kayleigh Shikanai is a working actor and the founder of Shiki Studios, a premium on-camera acting school in Toronto whose alumni have gone on to appear on Netflix, Prime Video, and Paramount+. She had already built something special. My job was to give it a digital home that matched.",
+      },
+      {
+        kind: "text",
+        text: "The school was thriving, with a loyal community and a genuinely impressive track record. The opportunity was to bring the website up to the same level as the work, so it reflected the calibre of the school, communicated its results immediately, and made it effortless for an interested actor to take the next step.",
+      },
+      { kind: "heading", label: "Website Goals" },
+      {
+        kind: "text",
+        text: "I wanted the new site to do three things well:",
+      },
+      {
+        kind: "list",
+        ordered: true,
+        items: [
+          "Feel premium from the first second, the way the school itself does.",
+          "Remove the friction between interest and booking, so a prospective student could move forward the moment they were ready instead of waiting on back-and-forth.",
+          "Give Kayleigh real visibility into her marketing, so the money she spends on advertising could be spent with confidence rather than guesswork.",
+        ],
+      },
+      {
+        kind: "text",
+        text: "That last point mattered more than it sounds. Like a lot of business owners, Kayleigh was paying for ads without analytics to tell her where her traffic came from or what was converting. Giving her that clarity was one of the most valuable things I could do.",
+      },
     ],
     approach: [
-      "I designed the course from the ground up, starting with a core belief: if we built the learning experience around real professional needs rather than technical novelty, we could make AI image creation genuinely accessible to anyone.",
-      "We developed a user persona to anchor every design decision. Our target learner wasn't an AI enthusiast. They were a marketing manager who needed better visuals, a freelance designer exploring new tools, or a founder trying to create brand assets without a design team. Everything in the course had to serve that person.",
-      "The curriculum was structured as a three-week program, each week building on the last. Week one introduced generative AI fundamentals, prompt engineering, and the ethical considerations that professionals need to understand. Week two went deeper into photorealism techniques, design principles, and advanced tool features. Week three brought it all together with professional applications: creating presentations, marketing materials, and visual narratives that participants could use immediately in their work.",
-      "One of the biggest design challenges was serving two audiences at once. Complete beginners needed confidence-building and accessible tools. More experienced users wanted advanced techniques and sophisticated workflows. We solved this with a dual-track approach: the core lectures used DALL-E, which is intuitive and forgiving for newcomers, while optional advanced sessions introduced Midjourney and Leonardo AI for participants ready to go deeper.",
-      "We built an iterative feedback loop into the structure of the course itself. After each week, we collected participant feedback on content clarity, difficulty level, and practical applicability. Between cohorts, we rewrote sections that felt unclear, added step-by-step tutorials where participants got stuck, simplified concepts that were unnecessarily complex, and introduced multimedia elements for a more dynamic experience. The course wasn't just delivered. It was continuously redesigned based on what learners actually needed.",
+      "If there is one part of a website worth obsessing over, it is the hero, the first screen someone sees before they scroll. Research consistently shows that visitors form an impression of a site within the first few seconds, and a large share decide in that window whether they are going to keep exploring. You do not get a second chance at it. Whatever the hero communicates is, for most visitors, the entire first impression of the business. So the central question I asked was simple: in those first few seconds, what is the single most powerful thing I can show someone?",
+      "For Shiki Studios, the answer was clear. The most persuasive thing about the school is the work it produces and the track record behind it, so I built the hero around exactly that. The new hero leads with a demo reel, the exact thing a student walks away with after taking the class. Rather than telling a visitor what they would get, I show them. Within the first second of landing on the site, a prospective actor is watching the precise outcome they are there for. That is far more convincing than any headline could be, because it is proof of the deliverable rather than a claim about it.",
+      "Alongside that, I placed strong social proof directly in the hero, a deliberate strategic choice that came out of researching how other acting studios present themselves. A consistent pattern stood out. Many studios have genuinely impressive social proof, well-known actors who trained with them and major credits among their alumni, but it tends to live deep inside the site, several scrolls down or on a separate page. It is great material, but most visitors never get far enough to see it.",
+      "I saw that as an opportunity. Shiki Studios has a real, recognizable track record, so I made sure that track record is one of the first things a visitor sees rather than something they have to go looking for. If the strongest thing about the school is its results, those results should be working on the visitor from the very first second. I then reinforced and expanded on the social proof further down the page, so the credibility the hero introduces gets backed up and deepened as someone keeps reading.",
+      "The next focus was making it as easy as possible for someone to actually book once they were interested. For a service business, the window between someone deciding they want something and actually committing can be narrow, and every extra step in that window costs you people. I integrated Cal.com across every bookable service on the site: coaching sessions, self-tape bookings, demo reel shoots, career consultations, and studio rentals. Every service now has live calendar availability built right into the page. An interested actor can see real openings, pick their time, and confirm their booking in under a minute, without sending a single email.",
+      "For the flagship five-week acting class, I integrated Stripe directly into the site with two clear payment paths: a $100 deposit to hold a seat, or full payment upfront for those who prefer. Payment now happens on the spot, at the point of decision, instead of becoming another thing to coordinate over email. The through line across all of it was the same: when someone decides they want to work with Shiki Studios, nothing should stand between that decision and the booking.",
+      "I set up full analytics tracking through Google Analytics so that, for the first time, Kayleigh has complete visibility into her own site. Where her traffic is coming from, which services are getting the most attention, how visitors move through the pages, and where they convert. Every future marketing decision can now be made based on real data rather than guesswork, which means her advertising spend can be directed with far more confidence.",
+      "Performance was treated as seriously as design. The site is built on Next.js with a server-side architecture engineered for speed. Assets are optimised, the hero video is compressed and served at the right resolution for each device, and the build is tuned specifically for fast loading on mobile, where most of the school's traffic lands.",
+      "The improvement is dramatic and measurable. On desktop, the site now scores a perfect 100 on Google's PageSpeed performance benchmark, up from 44. The largest piece of content on the page loads in 0.6 seconds rather than 3.8, making it more than 6 times faster, an 84% reduction in load time. The overall Speed Index improved by 71%, and Total Blocking Time, the amount of time the page is frozen and unresponsive while it loads, dropped from 720 milliseconds to just 20, a 97% reduction. Best Practices and SEO both score 100 as well.",
+      "The mobile gains were even larger, which matters because most visitors arrive on a phone and phones are where people abandon a slow page fastest. The mobile performance score nearly doubled, from 43 to 83. The main content now loads in 4.4 seconds instead of 15.4, roughly 3.5 times faster. And the Speed Index, which measures how quickly the page visibly fills in, went from 23.7 seconds to 2.2, making the new site close to 11 times faster to load on mobile, a reduction of more than 90%.",
+      "Kayleigh now has a website that works as hard as she does. It reflects the premium school she has built, it shows prospective students the calibre of work they can expect within seconds of arriving, and it lets them book any service the moment they are ready. Behind the scenes, she finally has the data to understand what is working and to spend her marketing budget with real confidence. A school with alumni on Netflix and Paramount+ deserves a website that shows it. Now it has one.",
+    ],
+    results: [
+      { metric: "100/100", description: "Desktop PageSpeed performance, up from 44" },
+      { metric: "6× faster", description: "Largest content loads in 0.6s, down from 3.8s" },
+      { metric: "97% less", description: "Total Blocking Time, from 720ms to 20ms" },
+      { metric: "43 → 83", description: "Mobile performance score, nearly doubled" },
+    ],
+    resultBlocks: [
+      {
+        kind: "text",
+        text: "The improvement was dramatic and measurable, on both desktop and mobile. Faster load times, stronger SEO, and a site that finally showcases the calibre of Kayleigh's work while making it effortless to take the next step.",
+      },
+      {
+        kind: "list",
+        label: "Desktop",
+        items: [
+          "A perfect 100 on Google's PageSpeed performance benchmark, up from 44.",
+          "84% faster load time, the largest content now appears in 0.6s instead of 3.8s.",
+          "71% improvement in overall Speed Index.",
+          "Total Blocking Time cut 97%, from 720ms to just 20ms.",
+          "A perfect 100 on both Best Practices and SEO.",
+        ],
+      },
+      {
+        kind: "list",
+        label: "Mobile",
+        items: [
+          "Performance score nearly doubled, from 43 to 83.",
+          "Main content now loads in 4.4s instead of 15.4s, about 3.5× faster.",
+          "Speed Index dropped from 23.7s to 2.2s, roughly 11× faster to visibly load.",
+        ],
+      },
+    ],
+    pullQuote:
+      "If the strongest thing about the school is its results, those results should be working on the visitor from the very first second.",
+    // Approach narrative with visuals inline. Drop screenshots into /public and
+    // fill the empty `src` / `before` paths; until then they show clean placeholders.
+    approachBlocks: [
+      { kind: "heading", label: "Hero Section" },
+      {
+        kind: "text",
+        text: "If one part of a website is worth obsessing over, it's the hero, the first screen before anyone scrolls. Visitors form an impression within seconds and decide in that window whether to keep exploring.",
+      },
+      {
+        kind: "text",
+        text: "So the question was simple: in those first few seconds, what's the single most powerful thing I could show someone on Shiki Studios' site?",
+      },
+      {
+        kind: "text",
+        text: "The answer was the work itself. The new hero leads with a demo reel, the exact thing a student walks away with after the class. Rather than telling a visitor what they'd get, I show them, the precise outcome they're there for, within the first second.",
+      },
+      {
+        kind: "beforeAfter",
+        title: "The hero, before and after",
+        before: "",
+        after: "/shiki-studios.jpg",
+      },
+      {
+        kind: "text",
+        text: "I paired that with social proof placed directly in the hero, a choice that came out of studying how other acting studios present themselves. Many have impressive credentials, well-known actors and major credits, but bury them several scrolls down or on a separate page, where most visitors never see them.",
+      },
+      {
+        kind: "text",
+        text: "Shiki has a real, recognizable track record, so I led with it, then reinforced and expanded it further down the page.",
+      },
+      { kind: "heading", label: "Booking Page" },
+      {
+        kind: "text",
+        text: "The next focus was making it as easy as possible to book once someone was interested. For a service business, the window between deciding and committing is narrow, and every extra step costs you people. I integrated Cal.com across every bookable service: coaching, self-tape sessions, demo reel shoots, career consultations, and studio rentals. An interested actor can see live availability, pick a time, and confirm in under a minute, without sending a single email.",
+      },
+      {
+        kind: "image",
+        wide: true,
+        caption: "Cal.com booking built into every service page, with live availability.",
+      },
+      {
+        kind: "text",
+        text: "For the flagship five-week class, I integrated Stripe directly into the site with two clear paths: a $100 deposit to hold a seat, or full payment upfront. Payment now happens at the point of decision instead of becoming another thing to coordinate over email. The through line was the same throughout: when someone decides they want to work with Shiki Studios, nothing should stand between that decision and the booking.",
+      },
+      {
+        kind: "image",
+        caption: "Stripe checkout: a $100 deposit, or pay in full.",
+      },
+      {
+        kind: "image",
+        caption: "Self-tape sessions, headshots, and studio rental, each instantly bookable.",
+      },
+      { kind: "heading", label: "Analytics" },
+      {
+        kind: "text",
+        text: "I set up full Google Analytics tracking so that, for the first time, Kayleigh can see where her traffic comes from, which services get the most attention, how visitors move through the site, and where they convert. Every marketing decision can now be made on real data, which means her ad spend can be directed with far more confidence.",
+      },
+      { kind: "heading", label: "Performance" },
+      {
+        kind: "text",
+        text: "Performance was treated as seriously as design. The site is built on Next.js with a server-side architecture engineered for speed: optimised assets, a compressed hero video served at the right resolution per device, and a build tuned for fast loading on mobile, where most of the school's traffic lands.",
+      },
+      {
+        kind: "image",
+        caption: "Built mobile-first, where most of the school's traffic lands.",
+      },
+    ],
+    report: {
+      gauges: [
+        { label: "Desktop PageSpeed", before: 44, after: 100 },
+        { label: "Mobile PageSpeed", before: 43, after: 83 },
+      ],
+      bars: [
+        { label: "Largest Contentful Paint", before: 3.8, after: 0.6, unit: "s" },
+        { label: "Total Blocking Time", before: 720, after: 20, unit: "ms" },
+        { label: "Mobile Speed Index", before: 23.7, after: 2.2, unit: "s" },
+      ],
+    },
+    testimonial: {
+      quote:
+        "Shiki Studios is one of the top studios for acting classes and coaching not only in Toronto but the entire province. Kayleigh's first-hand experience in the industry gives her a unique perspective. I've grown immensely.",
+      author: "Lambert Mungakali",
+      role: "Google Review",
+    },
+  },
+  {
+    slug: "ai-image-creation-course",
+    title:
+      "From Manual Grind to a Repeatable AI Visual Workflow, in Three Weeks",
+    image: "/Ai-Image-Course.jpg",
+    summary:
+      "Marketers, designers, and founders were losing hours to manual visual work, outsourcing it, waiting on designers, or fighting AI tools that gave them unusable results. I built a three-week workflow that took them from overwhelmed to producing production-quality visuals themselves, fast. It earned a perfect 100/100 rating, an 89 NPS, and a 74.5% completion rate.",
+    categories: ["UX Design", "AI", "Course Design"],
+    client: "SynthMinds · on Uplimit",
+    timeline: "May 2023",
+    relatedOffer: { slug: "ai-workflow", label: "AI Workflow" },
+    challenge: [
+      "Everyone I built this for had the same problem. Marketers, designers, and founders needed strong visuals, and creating them was slow, manual, and expensive. They were hiring it out, waiting on designers, or trying to do it themselves and losing hours they didn't have.",
+      "Generative AI looked like the way out, but in 2023 it mostly wasn't delivering. Without a process, people got mangled hands, garbled text, and mediocre results, then gave up. The tools were never the problem. They had no repeatable way to use them with intention.",
+      "So the gap wasn't a tool. It was a workflow: a structured path from \"I've never used this\" to \"I can produce the visuals my work needs, myself.\"",
+    ],
+    approach: [
+      "I built that workflow as a focused three-week course, designed for the non-technical professional rather than the AI enthusiast. Every lesson had to earn its place by moving someone closer to producing usable visuals on their own.",
+      "It built week over week: fundamentals and prompt engineering, then photorealism and design technique, then real professional output, decks, marketing assets, and visual narratives they could use immediately. To serve beginners and power users at once, I ran a dual track: DALL-E as the forgiving core, with optional Midjourney and Leonardo sessions for anyone ready to go further.",
+      "And I treated it like a product, not a one-off. After each week I collected feedback and, between cohorts, rewrote what was unclear and added tutorials wherever people got stuck, so the workflow kept getting sharper at the exact points that slowed people down.",
+      "The outcome was the relief they came for. Instead of outsourcing visuals or fighting the tools, participants left with a process they could run themselves, fast. It rated a perfect 100/100, earned an 89 NPS, and 74.5% of them finished, the number most online courses never hit.",
     ],
     results: [
       {
         metric: "100/100",
-        description: "Customer feedback score from course participants",
+        description: "Perfect feedback score from course participants",
       },
       {
         metric: "89 NPS",
-        description: "Net promoter score, indicating strong advocacy",
+        description: "Net promoter score, a sign of strong advocacy",
       },
       {
         metric: "74.5%",
-        description: "Average completion rate, well above industry standard",
+        description: "Completion rate, far above the online-course norm",
       },
     ],
+    pullQuote:
+      "They didn't need to become AI experts. They needed a repeatable process, and that's what I built.",
     testimonial: {
       quote:
-        "The expert instruction, guidance, and support were pivotal to me learning a vast world of AI-powered image generation techniques. I learned about color theory, camera lens effects, artistic styles, and so much more. I feel like I truly haven't been leveraging these AI tools nearly enough, so I am incredibly thankful I took this course.",
+        "SynthMinds' expert instruction, guidance, and support were pivotal to me learning a vast world of AI-powered image generation techniques. I learned about color theory, camera lens effects, artistic styles, and so much more that absolutely blew me away. I feel like I truly haven't been leveraging these AI tools nearly enough, so I am incredibly thankful I took this course and got to learn from the industry's best on GenAI.",
       author: "Brian H. Hough",
       role: "Founder & Software Engineer",
     },
@@ -66,6 +281,7 @@ export const caseStudies: CaseStudy[] = [
     categories: ["AI Product Development", "UX/UI Design"],
     client: "Self-Initiated Product",
     timeline: "Ongoing",
+    relatedOffer: { slug: "development", label: "Development" },
     challenge:
       "Homeowners trying to visualize renovations face an expensive, slow process: hiring designers for concept mockups, waiting days for revisions, and paying hundreds per room. Interior designers spend hours manually creating mood boards and concept renders for client presentations. Real estate agents need affordable virtual staging but existing solutions are either too expensive for individual listings or produce unrealistic results. There was a clear gap for an accessible, instant AI tool that could generate high-quality room redesigns from a simple photo and text description.",
     approach:
@@ -94,6 +310,7 @@ export const caseStudies: CaseStudy[] = [
     categories: ["UX/UI Design", "AI Strategy"],
     client: "SynthMinds AI",
     timeline: "6 weeks",
+    relatedOffer: { slug: "website-design", label: "Website Design" },
     url: "https://synthminds.ai",
     challenge:
       "SynthMinds needed a digital presence that matched the caliber of their enterprise client roster (NVIDIA, PwC, HP, Kraft Heinz) while making complex AI consulting and education services feel approachable. Their existing presence lacked the visual authority to convert enterprise leads and failed to communicate the breadth of their four service pillars: consulting, education, design, and integration.",

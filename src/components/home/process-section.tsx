@@ -16,7 +16,7 @@ const STEPS = [
   },
   {
     num: "03",
-    title: "You look as established as you are",
+    title: "Premium buyers understand your value faster",
     body: "The right clients take you seriously before the first call, and your fees feel justified. An optional Care Plan keeps the site fast, secure, and sharp.",
   },
 ];
@@ -26,8 +26,8 @@ export function ProcessSection() {
     <Section>
       <AnimatedSection>
         <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.05]">
-          Three steps to{" "}
-          <span className="text-em">being taken seriously.</span>
+          Three steps to a website{" "}
+          <span className="text-em">buyers trust faster.</span>
         </h2>
         <p className="mt-4 text-muted-foreground max-w-2xl">
           No fifteen-step methodology, no committee. One call, one owner, one
@@ -61,20 +61,6 @@ export function ProcessSection() {
             30 minutes. Free. No pitch.
           </span>
         </div>
-      </AnimatedSection>
-
-      {/* Post-process testimonial — Video 6 requirement: smooth/easy working experience */}
-      <AnimatedSection delay={0.35}>
-        <figure className="mt-14 rounded-2xl border border-border bg-card p-8 md:p-10">
-          <blockquote className="text-lg md:text-xl font-medium text-foreground leading-snug">
-            &ldquo;Everything went smoothly, communication was fluent, delivered on time and as expected. I highly recommend working with Joshua.&rdquo;
-          </blockquote>
-          <figcaption className="mt-5 flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">Product Design Client</span>
-            <span className="text-muted-foreground/40">·</span>
-            <span>Verified engagement</span>
-          </figcaption>
-        </figure>
       </AnimatedSection>
     </Section>
   );

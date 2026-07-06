@@ -5,6 +5,7 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { researchPosts } from "@/lib/data/research";
+import { BREAKDOWNS_ENABLED } from "@/lib/flags";
 import { ArrowLeft } from "lucide-react";
 import { VerificationMiragePost } from "@/components/research/verification-mirage";
 import { HistoryAnchorsPost } from "@/components/research/history-anchors";
@@ -40,6 +41,7 @@ export async function generateMetadata({
 }
 
 export default async function BreakdownPostPage({ params }: PageProps) {
+  if (!BREAKDOWNS_ENABLED) notFound();
   const { slug } = await params;
   const post = researchPosts.find((p) => p.slug === slug);
   const PostBody = postComponents[slug];
@@ -114,6 +116,7 @@ export default async function BreakdownPostPage({ params }: PageProps) {
       <CTABanner
         heading="Want help applying findings like this to your AI roadmap?"
         subheading="Free 30-minute call. We'll talk through what new research means for your product."
+        buttonText="Book your free consultation"
       />
     </>
   );

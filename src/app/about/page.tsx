@@ -76,7 +76,7 @@ const aboutFaqs = [
   {
     question: "What is Joshua Francis's background?",
     answer:
-      "Joshua started his career as a senior analyst in finance at BMO Financial Group from 2017 to 2021, where he led reporting automation that saved roughly $25K annually. He then moved into product design, freelancing for startups and enterprises, before joining SynthMinds as founding design lead, building the brand and platform for an AI consulting firm serving NVIDIA, PwC, HP, and Kraft Heinz. He now works as an independent AI consultant.",
+      "Joshua started his career as a senior analyst in finance at BMO Financial Group from 2017 to 2021, where he led reporting automation that saved roughly $25K annually. He then moved into product design, freelancing for startups and enterprises, before joining Synthminds as founding design lead, building the brand and platform for an AI consulting firm serving NVIDIA, PwC, HP, and Kraft Heinz. He now works as an independent AI consultant.",
   },
   {
     question: "What makes Joshua Francis different from other AI consultants?",
@@ -86,7 +86,7 @@ const aboutFaqs = [
   {
     question: "What clients has Joshua Francis worked with?",
     answer:
-      "Joshua has worked with Uplimit on AI education, taught professionals AI image creation, shipped RoomLab as a solo AI SaaS product, and led design at SynthMinds for an AI consulting practice serving NVIDIA, PwC, HP, and Kraft Heinz. He works across SaaS, education, real estate, financial services, and professional services.",
+      "Joshua has worked with Uplimit on AI education, taught professionals AI image creation, shipped RoomLab as a solo AI SaaS product, and led design at Synthminds for an AI consulting practice serving NVIDIA, PwC, HP, and Kraft Heinz. He works across SaaS, education, real estate, financial services, and professional services.",
   },
 ];
 
@@ -141,7 +141,7 @@ const experience = [
   },
   {
     role: "Founding Design Lead",
-    company: "SynthMinds",
+    company: "Synthminds",
     period: "2023 to 2024",
     description:
       "Built the brand identity and web platform for an AI consulting firm serving NVIDIA, PwC, HP, and Kraft Heinz. Led design strategy across consulting, education, and product.",
@@ -201,7 +201,7 @@ export default function AboutPage() {
                 people use, not just analyze them. I spent years designing
                 products as a freelancer, then joined{" "}
                 <a href="https://synthminds.ai" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline underline-offset-4">
-                  SynthMinds
+                  Synthminds
                 </a>
                 {" "}as founding design lead, where I built the brand and
                 platform for an AI consulting firm serving NVIDIA, PwC, and

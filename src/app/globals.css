@@ -15,7 +15,7 @@
   --color-accent: #2563ff;
   --color-accent-foreground: #ffffff;
   --color-muted: #eef1f5;
-  --color-muted-foreground: #64748b;
+  --color-muted-foreground: #556173;
   --color-card: #ffffff;
   --color-card-foreground: #0f172a;
   --color-border: #e2e8f0;
@@ -106,6 +106,15 @@
     margin-inline: -0.15em;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+  }
+
+  .hero-highlight {
+    color: #ffffff;
+    text-shadow: 0 0 28px rgb(255 255 255 / 0.28);
+    text-decoration-line: underline;
+    text-decoration-color: rgb(125 211 252 / 0.75);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.12em;
   }
 
   /* Gradient border card effect */
@@ -309,4 +318,3 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-

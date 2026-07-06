@@ -3,8 +3,6 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { JsonLd } from "@/components/shared/json-ld";
-import { ContactForm } from "@/components/contact/contact-form";
-import { ContactInfo } from "@/components/contact/contact-info";
 import { CalEmbed } from "@/components/booking/cal-embed";
 
 export const metadata: Metadata = {
@@ -41,35 +39,16 @@ export default function ContactPage() {
     <>
       <JsonLd data={contactPageSchema} />
       <PageHeader
-        title="Book a call."
-        accent="Or send a note."
-        subtitle="Grab a free 30-minute discovery call, no pitch deck, no obligation. Prefer to write first? Use the form below."
+        title="Let's find where your site is costing you trust."
+        subtitle="Book a free 30-minute consultation. We'll look at where premium buyers may be hesitating, what needs to change, and whether a credibility-first rebuild is the right move. No pitch deck."
+        className="pb-8 md:pb-10"
       />
 
       {/* Primary: Cal.com discovery booking */}
-      <Section className="pt-0">
+      <Section className="pt-0 md:pt-0">
         <AnimatedSection>
           <CalEmbed />
         </AnimatedSection>
-      </Section>
-
-      {/* Alternative: message form */}
-      <Section className="pt-0">
-        <AnimatedSection>
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
-            Rather send a message?
-          </h2>
-        </AnimatedSection>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16">
-          <div className="md:col-span-3">
-            <AnimatedSection>
-              <ContactForm />
-            </AnimatedSection>
-          </div>
-          <div className="md:col-span-2">
-            <ContactInfo />
-          </div>
-        </div>
       </Section>
     </>
   );

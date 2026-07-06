@@ -3,22 +3,22 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 
 const PROBLEMS = [
   {
-    pain: "\"My website makes me look cheaper than I am.\"",
+    pain: "\"People say they love my work, but the site makes us look smaller than we are.\"",
     cost: "Premium clients decide against you before you ever get the call. You discount to win work you should have closed at full price.",
   },
   {
-    pain: "\"High-value clients judge my credibility before they ever contact me.\"",
+    pain: "\"Prospects are interested, but I can feel them checking if we're really worth the fee.\"",
     cost: "The trust decision happens in the first seconds on the site. A dated or cheap-looking one means your expertise never gets a hearing.",
   },
   {
-    pain: "\"I hired someone and got a pretty site that still didn't make me look serious.\"",
+    pain: "\"The redesign looked better, but it still didn't make us feel more credible.\"",
     cost: "A prettier redesign changes the look, not the trust signal. Decoration doesn't move the business; engineered credibility does.",
   },
 ];
 
 export function WhySection() {
   return (
-    <Section className="bg-muted/30 border-y border-border/60">
+    <Section className="bg-muted/30">
       <AnimatedSection>
         <h2 className="max-w-4xl text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.05] text-balance">
           You don&apos;t have a design problem. You have a{" "}
@@ -45,8 +45,14 @@ export function WhySection() {
       </div>
 
       <AnimatedSection delay={0.15}>
-        <p className="mt-12 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-          If any of this sounds familiar, here&apos;s what happened when firms in the same situation worked with me.
+        <p className="mt-12 max-w-2xl text-xl leading-relaxed">
+          <span className="font-semibold text-foreground">
+            That gap is fixable.
+          </span>{" "}
+          <span className="text-muted-foreground">
+            Here&apos;s what changed when the website finally matched the
+            reputation behind it.
+          </span>
         </p>
       </AnimatedSection>
     </Section>

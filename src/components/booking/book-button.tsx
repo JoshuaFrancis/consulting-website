@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
+import { track } from "@vercel/analytics";
 import { cn } from "@/lib/utils";
 
 const CAL_LINK = "joshua-francis/discovery";
@@ -52,6 +53,11 @@ export function BookButton({
       data-cal-namespace={CAL_NAMESPACE}
       data-cal-link={CAL_LINK}
       data-cal-config={calConfig}
+      onClick={() =>
+        track("booking_open", {
+          label: typeof children === "string" ? children : variant,
+        })
+      }
       className={cn(base, variants[variant], className)}
     >
       {children}

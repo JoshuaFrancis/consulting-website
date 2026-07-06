@@ -16,7 +16,14 @@ function Panel({
 }) {
   if (src) {
     return (
-      <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 1024px) 100vw, 1024px" />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        draggable={false}
+        className="pointer-events-none object-cover object-top"
+        sizes="(max-width: 1024px) 100vw, 1024px"
+      />
     );
   }
   return (
@@ -62,9 +69,10 @@ export function BeforeAfterSlider({
         ref={ref}
         className="group relative aspect-[16/9] w-full cursor-ew-resize select-none overflow-hidden rounded-2xl border border-border shadow-xl"
         style={{ touchAction: "none" }}
+        onDragStart={(e) => e.preventDefault()}
         onPointerDown={(e) => {
           dragging.current = true;
-          (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+          (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
           move(e.clientX);
         }}
         onPointerMove={(e) => dragging.current && move(e.clientX)}
@@ -84,10 +92,10 @@ export function BeforeAfterSlider({
         </div>
 
         {/* labels */}
-        <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-black/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/80 backdrop-blur">
+        <span className="pointer-events-none absolute left-3 bottom-3 rounded-full bg-black/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/80 backdrop-blur">
           Before
         </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white">
+        <span className="pointer-events-none absolute right-3 bottom-3 rounded-full bg-accent px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white">
           After
         </span>
 
@@ -106,9 +114,6 @@ export function BeforeAfterSlider({
           </div>
         </div>
       </div>
-      <p className="mt-3 text-center text-xs text-muted-foreground">
-        Drag to compare
-      </p>
     </div>
   );
 }

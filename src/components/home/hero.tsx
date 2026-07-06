@@ -17,45 +17,46 @@ const brands: Brand[] = [
 export function Hero() {
   return (
     <ShaderBackground>
-      <section className="relative z-20 flex min-h-svh items-center pt-16 pb-36">
-        <div className="w-full px-12 lg:px-20">
+      <section className="relative z-20 flex min-h-svh flex-col px-6 pb-10 pt-24 sm:px-8 lg:px-20 lg:pt-16">
+        <div className="flex flex-1 items-center">
           <div className="max-w-xl lg:max-w-2xl">
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] text-balance animate-fade-up"
               style={{ animationDelay: "0.1s" }}
             >
-              In the room, you&apos;re premium. Online, you look{" "}
-              <span className="text-gradient">cheaper than you are.</span>
+              Your website is making premium clients{" "}
+              <span className="hero-highlight">hesitate before they call.</span>
             </h1>
             <p
-              className="mt-5 text-lg text-white/70 leading-relaxed text-balance animate-fade-up"
+              className="mt-5 max-w-xl text-base sm:text-lg text-white/70 leading-relaxed text-balance animate-fade-up"
               style={{ animationDelay: "0.2s" }}
             >
-              Clients judge your credibility in the first seconds, usually
-              before they ever reach out. I design and build the site that
-              closes that gap, so you win the work and hold your price.
+              If your site feels smaller than the business behind it, buyers
+              start questioning your value before you ever speak. I rebuild
+              that first impression so trust is already there by the time they
+              reach out.
             </p>
             <div className="mt-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg shadow-black/20 transition-all duration-200 hover:bg-white/90 active:scale-95"
               >
-                Book a consultation
+                Fix the credibility gap
                 <ArrowRight className="size-4" />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Client logos, pinned to the base of the hero */}
+        {/* Client logos, sitting at the base of the hero in normal flow */}
         <div
-          className="absolute inset-x-0 bottom-0 z-20 px-12 pb-10 lg:px-20 animate-fade-up"
+          className="mt-14 animate-fade-up"
           style={{ animationDelay: "0.45s" }}
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
-            Work delivered for teams at
+            Work connected to teams at
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-x-10 gap-y-4">
+          <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-4 sm:gap-x-10">
             {brands.map((brand) =>
               brand.logo ? (
                 // eslint-disable-next-line @next/next/no-img-element

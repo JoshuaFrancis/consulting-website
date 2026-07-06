@@ -10,7 +10,8 @@ import { PerformanceReport } from "@/components/work/performance-report";
 import { BeforeAfterSlider } from "@/components/work/before-after-slider";
 import { BookButton } from "@/components/booking/book-button";
 import { caseStudies, type ApproachBlock } from "@/lib/data/case-studies";
-import { ArrowLeft, ArrowUpRight, ExternalLink, Star, ImageIcon } from "lucide-react";
+import { ReviewQuote } from "@/components/shared/review-placeholder";
+import { ArrowLeft, ArrowUpRight, ExternalLink, ImageIcon } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -214,130 +215,172 @@ export default async function CaseStudyPage({ params }: PageProps) {
         />
 
         <div className="relative max-w-6xl mx-auto px-6 md:px-8">
+          {/* breadcrumb */}
           <AnimatedSection>
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to case studies
-            </Link>
-            <h1 className="mt-8 max-w-4xl text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.02] text-balance">
-              {study.title}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-              {study.summary}
-            </p>
-
-            {study.resultsLine && (
-              <div className="mt-6 flex flex-wrap gap-2">
-                {study.resultsLine.split(" · ").map((chip) => (
-                  <span
-                    key={chip}
-                    className="inline-flex items-center rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              {study.url && (
-                <a
-                  href={study.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground shadow-lg shadow-accent/20 transition-colors hover:bg-accent/90"
-                >
-                  Visit live site
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              )}
-              <BookButton variant="outline">Book a call</BookButton>
+            <div className="flex items-center gap-4 border-b border-border/70 pb-5">
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Case Studies
+              </Link>
+              <span className="hidden text-border sm:inline">/</span>
+              <span className="hidden truncate text-sm font-medium text-foreground sm:inline">
+                {study.client}
+              </span>
             </div>
-
-            {/* spec row */}
-            <dl className="mt-10 flex flex-wrap gap-x-12 gap-y-5 border-t border-border/70 pt-7">
-              <div>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
-                  Client
-                </dt>
-                <dd className="mt-1 text-sm font-medium text-foreground">{study.client}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
-                  Year
-                </dt>
-                <dd className="mt-1 text-sm font-medium text-foreground">{study.timeline}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
-                  Scope
-                </dt>
-                <dd className="mt-1 text-sm font-medium text-foreground">
-                  {study.categories.join("  ·  ")}
-                </dd>
-              </div>
-            </dl>
           </AnimatedSection>
 
-          {/* framed live site + floating results */}
-          {study.image && (
-            <AnimatedSection delay={0.1}>
-              <div className="relative mt-12 md:mt-16">
-                <div
-                  className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-accent/[0.14] via-transparent to-accent/[0.10] blur-3xl"
-                  aria-hidden="true"
-                />
-                <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/[0.14]">
-                  {siteHost && (
-                    <div className="flex h-10 items-center gap-2 border-b border-border bg-muted/60 px-4">
-                      <div className="flex gap-1.5">
-                        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                      </div>
-                      <div className="mx-auto flex items-center gap-1.5 rounded-md bg-background px-3 py-1 font-mono text-[11px] text-muted-foreground">
-                        <span className="text-emerald-500">●</span>
-                        {siteHost}
-                      </div>
-                      <div className="w-12" />
-                    </div>
-                  )}
-                  <div className="relative aspect-[16/9]">
-                    <Image
-                      src={study.image}
-                      alt={study.title}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 1152px"
-                      priority
-                    />
-                  </div>
-                </div>
+          {/* two-column hero: pitch left, framed site right */}
+          <div className="mt-10 grid grid-cols-1 items-start gap-10 md:mt-14 lg:grid-cols-12 lg:gap-14 lg:pt-2">
+            <div className="lg:col-span-7">
+              <AnimatedSection>
+                <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-foreground leading-[1.05] text-balance md:text-5xl">
+                  {study.title}
+                </h1>
+                <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
+                  {study.summary}
+                </p>
 
-                {study.results.length >= 3 && (
-                  <div className="relative z-10 mx-auto -mt-8 md:-mt-10 w-[calc(100%-1.5rem)] md:w-[90%] overflow-hidden rounded-2xl border border-border bg-card/95 shadow-xl backdrop-blur">
-                    <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4 md:divide-y-0">
-                      {study.results.slice(0, 4).map((r) => (
-                        <div key={r.description} className="p-5 text-center">
-                          <div className="text-2xl md:text-3xl font-semibold tracking-tight text-gradient">
-                            {r.metric}
-                          </div>
-                          <div className="mx-auto mt-1 max-w-[12rem] text-[11px] leading-tight text-muted-foreground line-clamp-2">
-                            {r.description}
-                          </div>
-                        </div>
-                      ))}
+                {study.contact && (
+                  <div className="mt-8 flex items-center gap-3">
+                    {study.contact.image && (
+                      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-muted ring-1 ring-border">
+                        <Image
+                          src={study.contact.image}
+                          alt={study.contact.name}
+                          fill
+                          className="object-cover"
+                          sizes="44px"
+                        />
+                      </span>
+                    )}
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground/60">
+                        In collaboration with
+                      </p>
+                      <p className="text-sm font-medium text-foreground">
+                        {study.contact.name}{" "}
+                        <span className="font-normal text-muted-foreground">
+                          — {study.contact.role}
+                        </span>
+                      </p>
                     </div>
                   </div>
                 )}
+
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  {study.url && (
+                    <a
+                      href={study.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground shadow-lg shadow-accent/20 transition-colors hover:bg-accent/90"
+                    >
+                      Visit live site
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  )}
+                  <BookButton variant="outline">Book a call</BookButton>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* framed live site */}
+            {study.image && (
+              <div className="lg:col-span-5">
+                <AnimatedSection delay={0.1}>
+                  <div className="relative">
+                    <div
+                      className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-accent/[0.14] via-transparent to-accent/[0.10] blur-3xl"
+                      aria-hidden="true"
+                    />
+                    <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/[0.14]">
+                      {siteHost && (
+                        <div className="flex h-10 items-center gap-2 border-b border-border bg-muted/60 px-4">
+                          <div className="flex gap-1.5">
+                            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+                            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+                            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+                          </div>
+                          <div className="mx-auto flex items-center gap-1.5 rounded-md bg-background px-3 py-1 font-mono text-[11px] text-muted-foreground">
+                            <span className="text-emerald-500">●</span>
+                            {siteHost}
+                          </div>
+                          <div className="w-12" />
+                        </div>
+                      )}
+                      <div className="relative aspect-[4/3]">
+                        <Image
+                          src={study.image}
+                          alt={study.title}
+                          fill
+                          className="object-cover object-top"
+                          sizes="(max-width: 1024px) 100vw, 40vw"
+                          priority
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              </div>
+            )}
+          </div>
+
+          {/* results strip — flat, full width, no overlap */}
+          {study.results.length >= 3 && (
+            <AnimatedSection delay={0.2}>
+              <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-sm md:mt-16">
+                <div className={`grid grid-cols-2 divide-x divide-y divide-border md:divide-y-0 ${study.results.length >= 4 ? "md:grid-cols-4" : "md:grid-cols-3"}`}>
+                  {study.results.slice(0, 4).map((r) => (
+                    <div key={r.description} className="p-5 text-center">
+                      <div className="text-2xl md:text-3xl font-semibold tracking-tight text-gradient">
+                        {r.metric}
+                      </div>
+                      <div className="mx-auto mt-1 max-w-[12rem] text-[11px] leading-tight text-muted-foreground line-clamp-2">
+                        {r.description}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </AnimatedSection>
           )}
         </div>
       </section>
+
+      {/* About / Challenge / Solution meta band */}
+      <Section className="border-y border-border/60 bg-muted/40 py-12 md:py-14">
+        <div className="grid grid-cols-1 divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
+          <div className="md:pr-10">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
+              About
+            </p>
+            <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">{study.client}</span>
+              {study.clientBlurb && <> — {study.clientBlurb}</>}
+            </p>
+          </div>
+          <div className="pt-8 md:pt-0 md:px-10">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
+              Challenge
+            </p>
+            <p className="mt-2.5 text-sm leading-relaxed text-foreground">
+              {study.challengeSummary ??
+                (Array.isArray(study.challenge) ? study.challenge[0] : study.challenge)}
+            </p>
+          </div>
+          <div className="pt-8 md:pt-0 md:pl-10">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/60">
+              Solution
+            </p>
+            <p className="mt-2.5 text-sm leading-relaxed text-foreground">
+              {study.solution ?? study.summary}
+            </p>
+          </div>
+        </div>
+      </Section>
 
       {/* Challenge */}
       <Section className="pt-16 md:pt-24">
@@ -447,56 +490,32 @@ export default async function CaseStudyPage({ params }: PageProps) {
       {study.report ? (
         <PerformanceReport report={study.report} />
       ) : (
-        <Section>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {study.results.map((result, i) => (
-              <MetricCard
-                key={result.description}
-                metric={result.metric}
-                description={result.description}
-                delay={i * 0.1}
-              />
-            ))}
-          </div>
-        </Section>
+        study.results.length > 0 && (
+          <Section>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {study.results.map((result, i) => (
+                <MetricCard
+                  key={result.description}
+                  metric={result.metric}
+                  description={result.description}
+                  delay={i * 0.1}
+                />
+              ))}
+            </div>
+          </Section>
+        )
       )}
 
-      {/* Testimonial */}
+      {/* Testimonial — same component/format as the homepage review */}
       {study.testimonial && (
-        <Section>
-          <AnimatedSection>
-            <figure className="max-w-4xl">
-              <div className="flex items-start gap-5 md:gap-8">
-                <span
-                  aria-hidden
-                  className="shrink-0 select-none text-7xl md:text-9xl leading-[0.62] text-accent"
-                  style={{ fontFamily: "Georgia, serif" }}
-                >
-                  &ldquo;
-                </span>
-                <div>
-                  <blockquote className="text-2xl md:text-4xl font-medium tracking-tight text-foreground leading-[1.18] text-balance">
-                    {study.testimonial.quote}
-                  </blockquote>
-                  <figcaption className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <span className="text-base font-semibold text-foreground">
-                      {study.testimonial.author}
-                    </span>
-                    <span className="h-4 w-px bg-border" />
-                    <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                      <span className="flex gap-0.5" aria-label="5 out of 5">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                        ))}
-                      </span>
-                      {study.testimonial.role}
-                    </span>
-                  </figcaption>
-                </div>
-              </div>
-            </figure>
-          </AnimatedSection>
-        </Section>
+        <ReviewQuote
+          className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-24"
+          quote={study.testimonial.quote}
+          author={study.testimonial.author}
+          role={study.testimonial.role}
+          image={study.testimonial.image}
+          href={study.testimonial.href}
+        />
       )}
 
       {/* ─── PUSH ──────────────────────────────────────────── */}
@@ -519,15 +538,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-5">
                 <BookButton variant="inverted">Book a call</BookButton>
-                {study.relatedOffer && (
-                  <Link
-                    href={`/services/${study.relatedOffer.slug}`}
-                    className="inline-flex items-center gap-1.5 border-b border-white/30 pb-0.5 text-sm font-medium text-white/80 transition-colors hover:border-white hover:text-white"
-                  >
-                    See the {study.relatedOffer.label} offer
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-                )}
               </div>
             </AnimatedSection>
           </div>

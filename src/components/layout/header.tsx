@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { navLinks } from "@/lib/data/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/ui/logo";
@@ -38,9 +38,9 @@ export function Header() {
           : "bg-background/80 backdrop-blur-xl border-b border-border/50",
       )}
     >
-      <div className="w-full px-12 lg:px-20 flex items-center justify-between h-16">
+      <div className="w-full px-6 sm:px-8 lg:px-20 flex items-center justify-between h-16">
         <Link href="/" className="block">
-          <Logo className={cn(overHero && "text-white")} />
+          <Logo plain className={cn(overHero && "text-white")} />
         </Link>
 
         {/* Desktop nav */}
@@ -80,6 +80,7 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[320px] px-6 pt-12">
+            <SheetTitle className="sr-only">Menu</SheetTitle>
             <nav className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <Link

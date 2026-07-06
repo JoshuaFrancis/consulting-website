@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { BREAKDOWNS_ENABLED } from "@/lib/flags";
 import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -36,6 +38,7 @@ const listSchema = {
 };
 
 export default function BreakdownsPage() {
+  if (!BREAKDOWNS_ENABLED) notFound();
   return (
     <>
       <JsonLd data={listSchema} />
@@ -106,6 +109,7 @@ export default function BreakdownsPage() {
       <CTABanner
         heading="Want help translating research into product decisions?"
         subheading="I help teams cut through AI hype and build systems that actually work."
+        buttonText="Book your free consultation"
       />
     </>
   );

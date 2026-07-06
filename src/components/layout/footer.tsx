@@ -10,7 +10,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="block w-fit">
-              <Logo />
+              <Logo plain />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
               Credibility-first websites for premium service brands. Designed

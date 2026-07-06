@@ -956,7 +956,7 @@ const serviceList: Service[] = [
       "Trust is engineered, not decorated. I design and build the whole thing myself, so the premium positioning survives from first concept to live site.",
     forWho: "Premium service brands, studios, agencies & firms",
     trustSignal:
-      "Designed & built SynthMinds (clients incl. NVIDIA, PwC, Kraft Heinz) · 3× qualified leads",
+      "Designed & built Synthminds (clients incl. NVIDIA, PwC, Kraft Heinz) · Shiki Studios: 100/100 PageSpeed, 6× faster",
     doorPain: "“My website makes us look cheaper than we are.”",
     doorOutcome:
       "Win high-value clients and justify your fees, before a prospect makes contact.",
@@ -1086,9 +1086,9 @@ const serviceList: Service[] = [
     proofIntro:
       "I design and build it myself, no template that looks like everyone else's, no designer-to-developer handoff where the vision gets lost. One person owning the whole thing is how a site carries premium positioning all the way to launch.",
     proofPoints: [
-      { metric: "3×", label: "Increase in qualified enterprise leads (SynthMinds)" },
-      { metric: "+52%", label: "Improvement in average session duration" },
-      { metric: "+40%", label: "Increase in consultation bookings" },
+      { metric: "100/100", label: "Desktop PageSpeed for Shiki Studios, up from 44" },
+      { metric: "6×", label: "Faster load time for Shiki Studios" },
+      { metric: "+24%", label: "More actors enrolled after Shiki Studios' launch" },
     ],
     caseStudySlugs: ["shiki-studios-acting-school", "synthminds-brand-platform"],
     faqs: [
@@ -1123,7 +1123,7 @@ const serviceList: Service[] = [
     ctaSubhead:
       "Book a consultation and we'll look at where your current site is costing you high-value clients, and what it would take to fix it.",
     ctaButton: "Book a consultation",
-    ctaProof: "Designed and built end-to-end · 3× qualified leads for a premium service brand · 100 PageSpeed, 6× faster for Shiki Studios",
+    ctaProof: "Designed and built end-to-end · 100 PageSpeed, 6× faster for Shiki Studios · +24% more enrollments after launch",
     whoItsFor:
       "Premium service brands, studios, agencies, and firms whose website makes them look cheaper than they are.",
     typicalEngagement:

@@ -29,9 +29,9 @@ export const homeFaqs = [
       "A focused premium rebuild typically runs a few weeks, depending on scope and how much positioning and content work is needed. You'll have a clear timeline before we start, not a guess designed to make you commit.",
   },
   {
-    question: "Do you use AI to build these?",
+    question: "What happens on the first call?",
     answer:
-      "I use AI to move faster on research, prototyping, and build, the same way a serious studio uses every tool available. But it stays in the engine room. What you're buying is senior design and product judgment and one accountable owner, not a prompt. The craft, and the credibility it earns, is the point.",
+      "We look at where your current site is creating doubt, what needs to change, and whether a rebuild would actually be worth it. If I don't think the site is the bottleneck, I'll tell you.",
   },
   {
     question: "Do you work with brands outside Canada?",

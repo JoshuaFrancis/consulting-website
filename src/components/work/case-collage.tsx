@@ -80,7 +80,7 @@ function TextTile({ study, fill }: { study: CaseStudy; fill: CollageFill }) {
         </span>
       </div>
       <h3 className={cn("mt-5 text-2xl md:text-[1.9rem] font-semibold leading-[1.15] tracking-tight line-clamp-3", TITLE[fill])}>
-        {study.title}
+        {study.cardTitle ?? study.title}
       </h3>
       <p className={cn("mt-4 max-w-md text-[15px] leading-relaxed line-clamp-3", BODY[fill])}>
         {study.summary}

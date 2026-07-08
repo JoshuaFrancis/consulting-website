@@ -31,21 +31,21 @@ export default function HomePage() {
       <Hero />
       <ReviewQuote
         className="mx-auto mt-12 max-w-6xl px-6 md:px-8"
-        quote="For a long time, our website was the weakest part of how we showed up. It didn't represent the level we were at. Josh led the redesign, and the difference is night and day. Now prospects compliment the site before the first call. If you want someone who treats your site like it's their own, it's Josh."
-        author="William Shields"
-        role="Founder and Principal of Synthminds"
-        image="/william-shields.png"
-        href="https://fa0ac5d6.click.kit-mail3.com/v8u4gm5v3gimuxk2g03ughvkooonpf9hd0n8m/qvh8h7hd5x7456ilhk/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3NoaWVsZHMtd2Vz"
+        quote="Before working with Josh, our website didn't reflect the reputation Shiki Studios had earned. The new site finally feels like the level of the school, and booking is easier than ever. Since launch, enrollment is up 24%, and we've barely had to spend more on marketing to get there. The website has become a real part of how the business sells."
+        author="Kayleigh Shikanai"
+        role="Founder of Shiki Studios, the Toronto acting school behind actors now on Netflix, Prime Video, and Paramount+"
+        image="/founder-kayleigh.webp"
+        href="/work/shiki-studios-acting-school"
       />
       {/* PROBLEM — ends on the bridge line, so proof must come next */}
       <WhySection />
       <ReviewQuote
         className="mx-auto mt-12 max-w-6xl px-6 md:px-8"
-        quote="Before working with Josh, our website didn't reflect the reputation Shiki Studios had earned. The new site finally feels like the level of the school, and booking is easier than ever. In a month I expected to be slow, we filled two classes with barely any marketing. The website has become a real part of how the business sells."
-        author="Kayleigh Shikanai"
-        role="Founder of Shiki Studios"
-        image="/founder-kayleigh.webp"
-        href="/work/shiki-studios-acting-school"
+        quote="For a long time, our website was the weakest part of how we showed up. It didn't represent the level we were at. Josh led the redesign, and the difference is night and day. Now prospects compliment the site before the first call. If you want someone who treats your site like it's their own, it's Josh."
+        author="William Shields"
+        role="Founder and Principal of Synthminds, an AI consultancy and prompt engineering firm whose work has supported teams such as NVIDIA, HP, PwC, and Kraft Heinz"
+        image="/william-shields.png"
+        href="https://fa0ac5d6.click.kit-mail3.com/v8u4gm5v3gimuxk2g03ughvkooonpf9hd0n8m/qvh8h7hd5x7456ilhk/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3NoaWVsZHMtd2Vz"
       />
       {/* PROOF — case studies (data) then testimonials (social) */}
       <FeaturedWork />

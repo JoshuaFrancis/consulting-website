@@ -175,12 +175,17 @@ export default async function CaseStudyPage({ params }: PageProps) {
       text: t,
     }));
 
+  // Build-time stamp — a real "last updated" freshness signal for AI/search.
+  const lastModified = new Date().toISOString();
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: study.title,
     description: study.summary,
     url: `https://joshuafrancis.ca/work/${slug}`,
+    dateModified: lastModified,
+    ...(study.datePublished && { datePublished: study.datePublished }),
     author: {
       "@type": "Person",
       name: "Joshua Francis",
@@ -203,9 +208,35 @@ export default async function CaseStudyPage({ params }: PageProps) {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://joshuafrancis.ca",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Work",
+        item: "https://joshuafrancis.ca/work",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: study.client,
+        item: `https://joshuafrancis.ca/work/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* ─── Hero ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-28 md:pt-36 pb-16 md:pb-20">
         <div className="absolute inset-0 hero-gradient opacity-70" aria-hidden="true" />

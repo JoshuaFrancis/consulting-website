@@ -59,9 +59,9 @@ export function ServicesPreview() {
     <Section id="offer">
       <AnimatedSection>
         <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.05]">
-          One owner. One website built to{" "}
+          Here&apos;s what{" "}
           <span className="text-em md:whitespace-nowrap">
-            close the credibility gap.
+            closes the credibility gap.
           </span>
         </h2>
         <p className="mt-4 text-muted-foreground max-w-2xl">

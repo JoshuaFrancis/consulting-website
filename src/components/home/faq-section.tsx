@@ -4,24 +4,9 @@ import { JsonLd } from "@/components/shared/json-ld";
 
 export const homeFaqs = [
   {
-    question: "How is this different from hiring an agency?",
+    question: "What can I expect from working with you?",
     answer:
-      "An agency hands you a beautiful site through a chain of people, then leaves. I design and build it myself, so the premium positioning survives from first concept to live site, and I'm still here to own it afterwards. You're buying credibility engineering, not a decoration project.",
-  },
-  {
-    question: "How much does it cost?",
-    answer:
-      "Premium, custom rebuilds are typically a five-figure investment, scoped to the firm on a call. When a single high-value client is worth tens of thousands to you, a site that wins more of them and lets you stop discounting pays for itself quickly. No blind quotes, we scope it together first.",
-  },
-  {
-    question: "Couldn't I just use Squarespace or a cheaper freelancer?",
-    answer:
-      "You can, and for many businesses that's the right call. But your buyer is judging whether you're worth a premium fee, and a template that looks like everyone else's quietly answers that question for them. If your site's job is to justify your prices, it can't look like it was chosen to save money.",
-  },
-  {
-    question: "I just had a redesign. Why didn't it work?",
-    answer:
-      "Most redesigns change how the site looks without changing what it signals. Prettier isn't the same as more trusted. The work here is engineering the credibility signals, proof, positioning, structure, speed, that actually decide whether a premium buyer takes you seriously in the first seconds.",
+      "A site that looks and reads like the business you've actually built, positioning, proof, and speed engineered to make premium buyers take you seriously before you ever speak. Past clients have seen real movement from it. One acting school saw a 24% jump in enrollment after launch, on almost no extra marketing, plus a perfect 100 PageSpeed score. Every business is different, so I won't promise a specific number for yours, but the site becomes something that actively works for you instead of quietly working against you.",
   },
   {
     question: "How long does it take?",
@@ -34,9 +19,24 @@ export const homeFaqs = [
       "We look at where your current site is creating doubt, what needs to change, and whether a rebuild would actually be worth it. If I don't think the site is the bottleneck, I'll tell you.",
   },
   {
-    question: "Do you work with brands outside Canada?",
+    question: "I just had a redesign. Why didn't it work?",
     answer:
-      "Yes. Most of my work is remote. Clients are based across Canada, the US, and internationally. If your website makes you look smaller than you are, the geography doesn't change what needs fixing.",
+      "Most redesigns change how the site looks without changing what it signals. Prettier isn't the same as more trusted. The work here is engineering the credibility signals, proof, positioning, structure, speed, that actually decide whether a premium buyer takes you seriously in the first seconds.",
+  },
+  {
+    question: "How is this different from hiring an agency?",
+    answer:
+      "An agency hands you a beautiful site through a chain of people, then leaves. I design and build it myself, so the premium positioning survives from first concept to live site, and I'm still here to own it afterwards. You're buying credibility engineering, not a decoration project.",
+  },
+  {
+    question: "Couldn't I just use Squarespace or a cheaper freelancer?",
+    answer:
+      "You can, and for many businesses that's the right call. But your buyer is judging whether you're worth a premium fee, and a template that looks like everyone else's quietly answers that question for them. If your site's job is to justify your prices, it can't look like it was chosen to save money.",
+  },
+  {
+    question: "How much does it cost?",
+    answer:
+      "Premium, custom rebuilds are typically a five-figure investment, scoped to the firm on a call. When a single high-value client is worth tens of thousands to you, a site that wins more of them and lets you stop discounting pays for itself quickly. No blind quotes, we scope it together first.",
   },
 ];
 

@@ -114,6 +114,20 @@ const professionalServiceSchema = {
     addressRegion: "Ontario",
     addressCountry: "CA",
   },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Kayleigh Shikanai" },
+      reviewBody:
+        "Before working with Josh, our website didn't reflect the reputation Shiki Studios had earned. The new site finally feels like the level of the school, and booking is easier than ever. Since launch, enrollment is up 24%, and we've barely had to spend more on marketing to get there. The website has become a real part of how the business sells.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "William Shields" },
+      reviewBody:
+        "For a long time, our website was the weakest part of how we showed up. It didn't represent the level we were at. Josh led the redesign, and the difference is night and day. Now prospects compliment the site before the first call. If you want someone who treats your site like it's their own, it's Josh.",
+    },
+  ],
 };
 
 export default function RootLayout({

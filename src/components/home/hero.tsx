@@ -25,23 +25,21 @@ export function Hero() {
               style={{ animationDelay: "0.1s" }}
             >
               Your website is making premium clients{" "}
-              <span className="hero-highlight">hesitate before they call.</span>
+              <span className="hero-highlight">hesitate before they take action.</span>
             </h1>
             <p
               className="mt-5 max-w-xl text-base sm:text-lg text-white/70 leading-relaxed text-balance animate-fade-up"
               style={{ animationDelay: "0.2s" }}
             >
-              If your site feels smaller than the business behind it, buyers
-              start questioning your value before you ever speak. I rebuild
-              that first impression so trust is already there by the time they
-              reach out.
+              Website rebuilds that build trust on first contact, so more of
+              your ideal customers take the next step.
             </p>
             <div className="mt-8 animate-fade-up" style={{ animationDelay: "0.3s" }}>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg shadow-black/20 transition-all duration-200 hover:bg-white/90 active:scale-95"
               >
-                Fix the credibility gap
+                Book a call
                 <ArrowRight className="size-4" />
               </Link>
             </div>

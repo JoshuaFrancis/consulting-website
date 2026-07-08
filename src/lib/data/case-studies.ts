@@ -20,10 +20,14 @@ export type ApproachBlock =
 export interface CaseStudy {
   slug: string;
   title: string;
+  /** Shorter title for the collage/grid card, where a long title clips. Falls back to `title`. */
+  cardTitle?: string;
   summary: string;
   categories: string[];
   client: string;
   timeline: string;
+  /** ISO date (e.g. "2026-06-01") the project launched. Feeds Article datePublished when set. */
+  datePublished?: string;
   challenge: string | string[];
   /** Skimmable challenge narrative (headings, text, lists). Falls back to `challenge`. */
   challengeBlocks?: ApproachBlock[];
@@ -61,6 +65,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "shiki-studios-acting-school",
     title:
       "How I Rebuilt the Website for a Toronto Acting School Whose Alumni Appear on Netflix, Prime Video, and Paramount+",
+    cardTitle: "How I Rebuilt the Website for a Toronto Acting School",
     image: "/shiki-studios.jpg",
     cover: "/case-shiki-stage.png",
     url: "https://shikistudios.com",
@@ -392,7 +397,7 @@ export const caseStudies: CaseStudy[] = [
       quote:
         "For a long time, our website was the weakest part of how we showed up. It didn't represent the level we were at. Josh led the redesign, and the difference is night and day. Now prospects compliment the site before the first call. If you want someone who treats your site like it's their own, it's Josh.",
       author: "William Shields",
-      role: "Founder and Principal of Synthminds",
+      role: "Founder and Principal of Synthminds, an AI consultancy and prompt engineering firm whose work has supported teams such as NVIDIA, HP, PwC, and Kraft Heinz",
       image: "/william-shields.png",
       href: "https://fa0ac5d6.click.kit-mail3.com/v8u4gm5v3gimuxk2g03ughvkooonpf9hd0n8m/qvh8h7hd5x7456ilhk/aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3NoaWVsZHMtd2Vz",
     },

@@ -3,8 +3,8 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 
 const PROBLEMS = [
   {
-    pain: "\"People say they love my work, but the site makes us look smaller than we are.\"",
-    cost: "Premium clients decide against you before you ever get the call. You discount to win work you should have closed at full price.",
+    pain: "\"A client admitted they almost went with someone else, our website nearly talked them out of it.\"",
+    cost: "A referral can save a sale like that once. Every visitor who arrives without one is deciding based on a site that undersells what you actually deliver.",
   },
   {
     pain: "\"Prospects are interested, but I can feel them checking if we're really worth the fee.\"",
@@ -21,8 +21,8 @@ export function WhySection() {
     <Section className="bg-muted/30">
       <AnimatedSection>
         <h2 className="max-w-4xl text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.05] text-balance">
-          You don&apos;t have a design problem. You have a{" "}
-          <span className="text-em">trust problem.</span>
+          You do great work.{" "}
+          <span className="text-em">So why does your site undersell it?</span>
         </h2>
       </AnimatedSection>
 
@@ -47,7 +47,8 @@ export function WhySection() {
       <AnimatedSection delay={0.15}>
         <p className="mt-12 max-w-2xl text-xl leading-relaxed">
           <span className="font-semibold text-foreground">
-            That gap is fixable.
+            It&apos;s not your talent. It&apos;s trust, and it&apos;s
+            fixable.
           </span>{" "}
           <span className="text-muted-foreground">
             Here&apos;s what changed when the website finally matched the

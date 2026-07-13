@@ -39,8 +39,8 @@ export default function ContactPage() {
     <>
       <JsonLd data={contactPageSchema} />
       <PageHeader
-        title="Let's find where your site is costing you trust."
-        subtitle="Book a free 30-minute consultation. We'll look at where premium buyers may be hesitating, what needs to change, and whether a credibility-first rebuild is the right move. No pitch deck."
+        title="Let's build a site that earns their trust."
+        subtitle="Book a free 30-minute consultation. We'll look at where premium buyers may be hesitating, what would move the needle, and whether a credibility-first build or rebuild is the right move. No pitch deck."
         className="pb-8 md:pb-10"
       />
 

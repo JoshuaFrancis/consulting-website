@@ -119,7 +119,7 @@ const professionalServiceSchema = {
       "@type": "Review",
       author: { "@type": "Person", name: "Kayleigh Shikanai" },
       reviewBody:
-        "Before working with Josh, our website didn't reflect the reputation Shiki Studios had earned. The new site finally feels like the level of the school, and booking is easier than ever. Since launch, enrollment is up 24%, and we've barely had to spend more on marketing to get there. The website has become a real part of how the business sells.",
+        "I've received a lot of compliments on the website. It gives Shiki Studios a more prestige, high-quality look. Sign-ups are up 24% since the new site launched. It's summer, when I expected them to dip, but we nearly matched my best month of the year. I love it.",
     },
     {
       "@type": "Review",

@@ -136,7 +136,7 @@ export const caseStudies: CaseStudy[] = [
       "Kayleigh now has a website that works as hard as she does. It reflects the premium school she has built, it shows prospective students the calibre of work they can expect within seconds of arriving, and it lets them book any service the moment they are ready. Behind the scenes, she finally has the data to understand what is working and to spend her marketing budget with real confidence. A school with alumni on Netflix and Paramount+ deserves a website that shows it. Now it has one.",
     ],
     results: [
-      { metric: "+24%", description: "More actors enrolled after launch, on almost no marketing" },
+      { metric: "+41%", description: "More actors enrolled after launch, on almost no marketing" },
       { metric: "100/100", description: "Desktop PageSpeed performance, up from 44" },
       { metric: "6× faster", description: "Largest content loads in 0.6s, down from 3.8s" },
       { metric: "43 → 83", description: "Mobile performance score, nearly doubled" },

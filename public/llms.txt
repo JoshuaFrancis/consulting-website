@@ -10,7 +10,7 @@
 
 ## Work (case studies)
 
-- [Shiki Studios](https://joshuafrancis.ca/work/shiki-studios-acting-school): Rebuilt the website for a Toronto acting school whose alumni appear on Netflix, Prime Video, and Paramount+. Enrollment up 24% since launch on almost no extra marketing; desktop PageSpeed 100/100 (up from 44).
+- [Shiki Studios](https://joshuafrancis.ca/work/shiki-studios-acting-school): Rebuilt the website for a Toronto acting school whose alumni appear on Netflix, Prime Video, and Paramount+. Enrollment up 41% since launch on almost no extra marketing; desktop PageSpeed 100/100 (up from 44).
 - [Synthminds](https://joshuafrancis.ca/work/synthminds-brand-platform): Brand identity and web platform for an AI consulting firm serving NVIDIA, PwC, HP, and Kraft Heinz.
 - [All work](https://joshuafrancis.ca/work): Full case study index.
 

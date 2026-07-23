@@ -1088,7 +1088,7 @@ const serviceList: Service[] = [
     proofPoints: [
       { metric: "100/100", label: "Desktop PageSpeed for Shiki Studios, up from 44" },
       { metric: "6×", label: "Faster load time for Shiki Studios" },
-      { metric: "+24%", label: "More actors enrolled after Shiki Studios' launch" },
+      { metric: "+41%", label: "More actors enrolled after Shiki Studios' launch" },
     ],
     caseStudySlugs: ["shiki-studios-acting-school", "synthminds-brand-platform"],
     faqs: [
@@ -1123,7 +1123,7 @@ const serviceList: Service[] = [
     ctaSubhead:
       "Book a consultation and we'll look at where your current site is costing you high-value clients, and what it would take to fix it.",
     ctaButton: "Book a consultation",
-    ctaProof: "Designed and built end-to-end · 100 PageSpeed, 6× faster for Shiki Studios · +24% more enrollments after launch",
+    ctaProof: "Designed and built end-to-end · 100 PageSpeed, 6× faster for Shiki Studios · +41% more enrollments after launch",
     whoItsFor:
       "Premium service brands, studios, agencies, and firms whose website makes them look cheaper than they are.",
     typicalEngagement:

@@ -6,7 +6,7 @@ export const homeFaqs = [
   {
     question: "What can I expect from working with you?",
     answer:
-      "A site that looks and reads like the business you've actually built, positioning, proof, and speed engineered to make premium buyers take you seriously before you ever speak. Past clients have seen real movement from it. One acting school saw a 24% jump in enrollment after launch, on almost no extra marketing, plus a perfect 100 PageSpeed score. Every business is different, so I won't promise a specific number for yours, but the site becomes something that actively works for you instead of quietly working against you.",
+      "A site that looks and reads like the business you've actually built, positioning, proof, and speed engineered to make premium buyers take you seriously before you ever speak. Past clients have seen real movement from it. One acting school saw a 41% jump in enrollment after launch, on almost no extra marketing, plus a perfect 100 PageSpeed score. Every business is different, so I won't promise a specific number for yours, but the site becomes something that actively works for you instead of quietly working against you.",
   },
   {
     question: "How long does it take?",

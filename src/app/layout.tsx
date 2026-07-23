@@ -119,7 +119,7 @@ const professionalServiceSchema = {
       "@type": "Review",
       author: { "@type": "Person", name: "Kayleigh Shikanai" },
       reviewBody:
-        "I've received a lot of compliments on the website. It gives Shiki Studios a more prestige, high-quality look. Sign-ups are up 24% since the new site launched. It's summer, when I expected them to dip, but we nearly matched my best month of the year. I love it.",
+        "I've received a lot of compliments on the website. It gives Shiki Studios a more prestige, high-quality look. Sign-ups are up 41% since the new site launched. It's summer, when I expected them to dip, but we nearly matched my best month of the year. I love it.",
     },
     {
       "@type": "Review",

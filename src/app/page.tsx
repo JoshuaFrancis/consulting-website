@@ -31,7 +31,7 @@ export default function HomePage() {
       <Hero />
       <ReviewQuote
         className="mx-auto mt-12 max-w-6xl px-6 md:px-8"
-        quote="I've received a lot of compliments on the website. It gives Shiki Studios a more prestige, high-quality look. Sign-ups are up 24% since the new site launched. It's summer, when I expected them to dip, but we nearly matched my best month of the year. I love it."
+        quote="I've received a lot of compliments on the website. It gives Shiki Studios a more prestige, high-quality look. Sign-ups are up 41% since the new site launched. It's summer, when I expected them to dip, but we nearly matched my best month of the year. I love it."
         author="Kayleigh Shikanai"
         role="Founder of Shiki Studios, the Toronto acting school behind actors now on Netflix, Prime Video, and Paramount+"
         image="/founder-kayleigh.webp"

@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 // Social share card (LinkedIn, iMessage, Slack, X). Generated on-brand so a
 // shared link reinforces "established" instead of rendering blank.
 export const alt =
-  "Joshua Francis — Credibility-first websites for premium service brands";
+  "Joshua Francis: Credibility-first websites for premium service brands";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

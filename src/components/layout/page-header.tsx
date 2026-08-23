@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   accent?: string;
   className?: string;
 }
@@ -31,9 +31,11 @@ export function PageHeader({ title, subtitle, accent, className }: PageHeaderPro
               </span>
             )}
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            {subtitle}
-          </p>
+          {subtitle && (
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              {subtitle}
+            </p>
+          )}
         </AnimatedSection>
       </div>
     </div>

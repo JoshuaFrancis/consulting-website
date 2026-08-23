@@ -35,7 +35,7 @@ function useCountUp(to: number, play: boolean, from = 0, duration = 1500, reduce
   return val;
 }
 
-function Gauge({ label, before, after, play, reduced }: { label: string; before: number; after: number; play: boolean; reduced: boolean }) {
+function Gauge({ label, before, after, unit = "", play, reduced }: { label: string; before: number; after: number; unit?: string; play: boolean; reduced: boolean }) {
   const value = useCountUp(after, play, before, 1500, reduced);
   const r = 54;
   const C = 2 * Math.PI * r;
@@ -62,10 +62,10 @@ function Gauge({ label, before, after, play, reduced }: { label: string; before:
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className="text-4xl font-semibold tabular-nums" style={{ color }}>
-            {Math.round(value)}
+            {Math.round(value)}{unit}
           </span>
           <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
-            from {before}
+            from {before}{unit}
           </span>
         </div>
       </div>
@@ -74,10 +74,10 @@ function Gauge({ label, before, after, play, reduced }: { label: string; before:
   );
 }
 
-function Bar({ label, before, after, unit, play, reduced }: { label: string; before: number; after: number; unit: string; play: boolean; reduced: boolean }) {
+function Bar({ label, before, after, unit, word = "faster", play, reduced }: { label: string; before: number; after: number; unit: string; word?: string; play: boolean; reduced: boolean }) {
   const afterPct = Math.max(2, (after / before) * 100);
   const ratio = before / after;
-  const faster = ratio >= 10 ? `${Math.round(ratio)}× faster` : `${ratio.toFixed(1)}× faster`;
+  const faster = ratio >= 10 ? `${Math.round(ratio)}× ${word}` : `${ratio.toFixed(1)}× ${word}`;
   const fmt = (n: number) => `${n % 1 === 0 ? n : n.toFixed(1)}${unit}`;
 
   return (
@@ -170,7 +170,8 @@ export function PerformanceReport({ report }: { report: CaseReport }) {
             The numbers, <span className="text-accent">before and after.</span>
           </h2>
           <p className="mt-4 max-w-xl text-lg text-white/55">
-            Real Google PageSpeed scores, measured on the same pages before and after the rebuild.
+            {report.subtitle ??
+              "Real Google PageSpeed scores, measured on the same pages before and after the rebuild."}
           </p>
         </AnimatedSection>
 
@@ -178,13 +179,13 @@ export function PerformanceReport({ report }: { report: CaseReport }) {
           {/* score dials */}
           <div className="lg:col-span-5 flex justify-center gap-10 sm:gap-14">
             {report.gauges.map((g) => (
-              <Gauge key={g.label} {...g} play={play} reduced={reduced} />
+              <Gauge key={g.label} {...g} unit={report.gaugeUnit} play={play} reduced={reduced} />
             ))}
           </div>
           {/* before/after bars */}
           <div className="lg:col-span-7 space-y-7">
             {report.bars.map((b) => (
-              <Bar key={b.label} {...b} play={play} reduced={reduced} />
+              <Bar key={b.label} {...b} word={report.improvementWord} play={play} reduced={reduced} />
             ))}
           </div>
         </div>

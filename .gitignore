@@ -41,3 +41,4 @@ next-env.d.ts
 # Agent worktrees and local scratch
 .claude/worktrees/
 /code-samples/
+scratchpad/

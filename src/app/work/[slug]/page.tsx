@@ -11,7 +11,7 @@ import { BeforeAfterSlider } from "@/components/work/before-after-slider";
 import { BookButton } from "@/components/booking/book-button";
 import { caseStudies, type ApproachBlock } from "@/lib/data/case-studies";
 import { ReviewQuote } from "@/components/shared/review-placeholder";
-import { ArrowLeft, ArrowUpRight, ExternalLink, ImageIcon } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ImageIcon } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -123,14 +123,20 @@ function CaseBlocks({
           <AnimatedSection key={i} className="py-3">
             <figure>
               <div
-                className={`relative ${block.wide ? "aspect-[16/9]" : "aspect-[16/10]"} overflow-hidden rounded-2xl border border-border bg-muted`}
+                className={`relative ${block.wide ? "aspect-[16/9]" : "aspect-[16/10]"} overflow-hidden rounded-2xl border border-border ${
+                  block.gradient
+                    ? "bg-[linear-gradient(165deg,#f6fcff_0%,#dceff9_48%,#b7dcef_100%)]"
+                    : block.contain
+                      ? "bg-white"
+                      : "bg-muted"
+                }`}
               >
                 {block.src ? (
                   <Image
                     src={block.src}
                     alt={block.caption ?? studyTitle}
                     fill
-                    className="object-cover object-top"
+                    className={block.contain || block.gradient ? "object-contain p-12 md:p-20" : "object-cover object-top"}
                     sizes="(max-width: 768px) 100vw, 768px"
                   />
                 ) : (
@@ -292,9 +298,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
                         In collaboration with
                       </p>
                       <p className="text-sm font-medium text-foreground">
-                        {study.contact.name}{" "}
+                        {study.contact.name},{" "}
                         <span className="font-normal text-muted-foreground">
-                          — {study.contact.role}
+                          {study.contact.role}
                         </span>
                       </p>
                     </div>
@@ -302,18 +308,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 )}
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  {study.url && (
-                    <a
-                      href={study.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground shadow-lg shadow-accent/20 transition-colors hover:bg-accent/90"
-                    >
-                      Visit live site
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                  <BookButton variant="outline">Book a call</BookButton>
+                  <BookButton>Book a call</BookButton>
                 </div>
               </AnimatedSection>
             </div>
@@ -390,7 +385,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </p>
             <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
               <span className="font-semibold text-foreground">{study.client}</span>
-              {study.clientBlurb && <> — {study.clientBlurb}</>}
+              {study.clientBlurb && <>. {study.clientBlurb}</>}
             </p>
           </div>
           <div className="pt-8 md:pt-0 md:px-10">

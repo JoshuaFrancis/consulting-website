@@ -20,8 +20,9 @@ export const metadata: Metadata = {
 // row to row. Balanced across 3 studies, every image paired with its own text.
 const ROWS: CollageRow[] = [
   { slug: "shiki-studios-acting-school", fill: "navy", imageLeft: true },
-  { slug: "synthminds-brand-platform", fill: "white", imageLeft: false },
-  { slug: "ai-image-creation-course", fill: "blue", imageLeft: true },
+  { slug: "splash-inn-dive-resort", fill: "blue", imageLeft: false },
+  { slug: "synthminds-brand-platform", fill: "white", imageLeft: true },
+  { slug: "ai-image-creation-course", fill: "navy", imageLeft: false },
 ];
 
 const caseStudyListSchema = {

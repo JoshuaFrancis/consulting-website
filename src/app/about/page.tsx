@@ -168,7 +168,6 @@ export default function AboutPage() {
       <PageHeader
         title="About"
         accent="Joshua Francis"
-        subtitle="From finance to enterprise AI to design. That range is what lets me engineer credibility into a website, not just decorate it."
       />
 
       {/* Bio */}

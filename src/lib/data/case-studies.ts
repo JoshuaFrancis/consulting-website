@@ -1,4 +1,10 @@
 export interface CaseReport {
+  /** Overrides the section subtitle (defaults to the PageSpeed wording). */
+  subtitle?: string;
+  /** Suffix on the gauge numbers, e.g. "%". Defaults to none. */
+  gaugeUnit?: string;
+  /** The word in the bar badge, e.g. "fewer". Defaults to "faster". */
+  improvementWord?: string;
   /** Lighthouse-style 0-100 score dials that animate before → after. */
   gauges: { label: string; before: number; after: number }[];
   /** Before/after metrics shown as shrinking bars (lower is better). */
@@ -14,7 +20,7 @@ export type ApproachBlock =
   | { kind: "heading"; label: string }
   | { kind: "text"; text: string }
   | { kind: "list"; ordered?: boolean; label?: string; items: string[] }
-  | { kind: "image"; src?: string; caption?: string; wide?: boolean }
+  | { kind: "image"; src?: string; caption?: string; wide?: boolean; contain?: boolean; gradient?: boolean }
   | { kind: "beforeAfter"; title?: string; before?: string; after?: string };
 
 export interface CaseStudy {
@@ -228,6 +234,225 @@ export const caseStudies: CaseStudy[] = [
         { label: "Largest Contentful Paint", before: 3.8, after: 0.6, unit: "s" },
         { label: "Total Blocking Time", before: 720, after: 20, unit: "ms" },
         { label: "Mobile Speed Index", before: 23.7, after: 2.2, unit: "s" },
+      ],
+    },
+  },
+  {
+    slug: "splash-inn-dive-resort",
+    title:
+      "Rebuilding the Website for Roatán's #1 Rated Dive Resort, Trilingual and Measured Line by Line",
+    cardTitle: "Rebuilding the Website for Roatán's #1 Rated Dive Resort",
+    image: "/case-splashinn-home-after.png",
+    cover: "/case-splashinn-cover.jpg",
+    url: "https://roatansplashinn.com",
+    summary:
+      "Roatán's #1 rated dive resort on TripAdvisor was selling $1,000 to $1,600 packages off a decade-old WordPress site that had quietly fallen behind the business: rates locked inside JPEGs, no structured data, and pages out of sync across its three languages. I rebuilt it as 232 pages across three languages on Next.js, recovered the content search engines couldn't read, and measured every result, including the ones that didn't flatter the new site.",
+    categories: ["Website Design", "Branding", "Web Development", "SEO"],
+    client: "Splash Inn Dive Resort",
+    timeline: "2026",
+    datePublished: "2026-08-05",
+    relatedOffer: { slug: "website-design", label: "Website Design" },
+    clientBlurb:
+      "The #1 rated dive resort in Roatán on TripAdvisor: a family-run, 25-room boutique hotel and five-star dive centre on the waterfront in West End, Honduras. Its guests fly in from North America and Europe and book $1,000 to $1,600 packages weeks in advance, almost entirely on the strength of the website.",
+    challengeSummary:
+      "A decade-old WordPress site was the top of the funnel for a business whose products cost over $1,000 a person, but it had aged out: end-of-life software, rates locked inside images, and pages out of sync across its three languages.",
+    solution:
+      "A trilingual Next.js rebuild: 232 pages, every rate recovered into structured data, one clean URL per room in every language, and a full accessibility and privacy pass.",
+    contact: {
+      name: "Rafa",
+      role: "Owner, Splash Inn Dive Resort",
+    },
+    challenge: [
+      "For a resort like Splash Inn, the website is where the sale is won or lost. Guests commit to a $1,000 to $1,600 package weeks before they ever arrive, almost entirely on what they find online. So a site that undersells the experience quietly costs bookings and caps the prices a five-star operation should be able to charge, and the old site was doing exactly that.",
+      "It simply hadn't kept pace with the business. It was slow to load, hard for Google to make sense of, and easy to mistake for a lesser resort. Underneath, it had run on the same decade-old WordPress install for years, still on PHP 7.4, which stopped receiving security patches in 2022, and had gathered the layers a busy site collects over a decade: 17 render-blocking stylesheets and 10 blocking scripts loading before anything appeared, and two of nearly everything, two WhatsApp buttons and two booking widgets from different plugins and vendors.",
+      "The bigger issues weren't visible to a guest at all, but they were obvious to a search engine: no structured data anywhere, almost no image alt text, most pages missing a meta description, and every package rate baked into a JPEG that search engines and screen readers couldn't read.",
+      "The site had also drifted out of sync across its own three languages. And when Google shut off Universal Analytics in 2023, its analytics went dark, leaving three years with no data to work from.",
+    ],
+    resultsLine:
+      "0 → 100% structured data · 1 → 100% image alt text · 39 → 100% meta descriptions · every legacy URL preserved · 232 pages in three languages",
+    challengeBlocks: [
+      {
+        kind: "text",
+        text: "For a resort like Splash Inn, the website is where the sale is won or lost. Guests commit to a $1,000 to $1,600 package weeks before they ever arrive, almost entirely on what they find online. So a site that undersells the experience doesn't just look dated, it quietly costs bookings and caps the prices a five-star operation should be able to charge. The old site was doing exactly that.",
+      },
+      {
+        kind: "text",
+        text: "It simply hadn't kept pace with the business. It was slow to load, hard for Google to make sense of, and easy to mistake for a lesser resort, the opposite of the first impression a five-star operation needs. Underneath, it had run on the same decade-old WordPress install for years, still on PHP 7.4, which stopped receiving security patches in 2022, and had gathered the layers a busy site collects over a decade: 17 render-blocking stylesheets and 10 blocking scripts loading before anything appeared, and two of nearly everything, two WhatsApp buttons and two booking widgets from different plugins and vendors.",
+      },
+      { kind: "heading", label: "What a Search Engine Saw" },
+      {
+        kind: "text",
+        text: "The bigger issues weren't visible to a guest at all, but they were obvious to Google:",
+      },
+      {
+        kind: "list",
+        items: [
+          "Every price was a picture. The all-inclusive rates, all four occupancy tiers, lived inside a single image file. Google can't read text inside an image, a screen reader can't announce it to a guest who's blind, and a prospective guest can't copy a number into an email to ask about it. The most important thing on the site, what it costs, was effectively invisible.",
+          "Nothing labelled the pages. Search engines look for labelled facts, this is a hotel, this is a room, it costs this much, this page is a diving course, and the old site carried that on 0% of its pages. To Google it was an unlabelled wall of text, with no way to know it was a resort with rooms and prices worth showing off in search.",
+          "The photography couldn't be found. Alt text is the short description attached to a photo that tells Google, and a blind visitor's screen reader, what the image shows. Only 1% of pages had it, so a dive resort's single strongest asset, its reef and room photography, was invisible to image search.",
+          "Google was writing their pitch for them. The one-line summary under a search result is a page's only chance to sell itself before a click. 61% of pages had none, so Google used whatever text it found first, rarely the words anyone would have chosen.",
+        ],
+      },
+      { kind: "heading", label: "One Business, Three Disconnected Languages" },
+      {
+        kind: "text",
+        text: "The same room had three unrelated addresses in English, Spanish, and French, with nothing connecting them, so Google had no way to know they were translations, and no reason to serve the Spanish page to a Spanish-speaking searcher. And when Google shut off Universal Analytics in 2023, the site's analytics went dark, leaving three years with no data to work from.",
+      },
+    ],
+    approach: [
+      "In hospitality, the experience on the ground makes or breaks a vacation, and booking a room means trusting a stranger with your time off. So the site had to make a visitor feel the place and trust that booking here meant a great trip. I rebuilt it around full-scale, immersive photography of the rooms and setting, in place of the old site's small, cramped images, working with the client to put their strongest assets front and centre.",
+      "I rebuilt the site from the ground up on Next.js with React Server Components, TypeScript, and Tailwind: 232 pages, 73 in each of the three languages, served from Vercel instead of an aging WordPress host. On the homepage, 17 render-blocking stylesheets became 1, and 10 blocking scripts became 1.",
+      "The three languages were made first-class rather than a translation plugin. Every page in every language is a real static page under a shared path, so the English, Spanish, and French versions of a room live at the same address. That single decision is what makes hreflang meaningful, and it is the biggest search improvement in the project.",
+      "Every rate was transcribed out of the JPEGs into structured data and rendered as real, readable text with Product and Offer schema. Non-diver companion rates were published for the first time, along with an entire upgrade price list that had never appeared on the site in any form.",
+      "Every one of the old site's 181 links was mapped to a live page on the new one, with none left behind. The site got a full accessibility and privacy pass, and GA4 was wired in behind a consent gate, the first working analytics in three years.",
+    ],
+    results: [
+      {
+        metric: "0 → 100%",
+        description: "Pages with structured data, from none to every page",
+      },
+      {
+        metric: "1 → 100%",
+        description: "Images with alt text, from almost none to all",
+      },
+      {
+        metric: "181 URLs",
+        description: "Every link from the old site preserved, none broken",
+      },
+      {
+        metric: "232 pages",
+        description: "Built across English, Spanish, and French",
+      },
+    ],
+    resultBlocks: [
+      {
+        kind: "text",
+        text: "Every problem from the challenge now has a number against it. The invisible prices, the unlabelled pages, the buried photography, the slow load, each was measured on the live old site the same day, then again on the new one, so the before-and-after below is like-for-like rather than a guess.",
+      },
+      {
+        kind: "list",
+        label: "Foundation",
+        items: [
+          "Structured data: 0% → 100% of pages, valid JSON-LD across Resort, HotelRoom, Course, Product, Restaurant, and FAQ types.",
+          "Image alt text: 1% → 100% of pages.",
+          "Meta descriptions: 39% → 100%, all unique.",
+          "hreflang: 44% → 100%, with x-default.",
+          "Render-blocking resources: 17 stylesheets → 1, and 10 scripts → 1.",
+          "Third-party origins: 22 → 7, with no trackers among the seven.",
+        ],
+      },
+      {
+        kind: "list",
+        label: "Content & Structure",
+        items: [
+          "Median words per page: 162 → 335. Pages under 200 words: 95 → 9.",
+          "All 181 of the old site's links still resolve, with no broken links.",
+          "Spanish pages 28 → 73, French 23 → 73, each a full mirror of the English site.",
+          "Reader-mode linearisation issues: 357 → 80.",
+        ],
+      },
+      {
+        kind: "list",
+        label: "Reported honestly, including against us",
+        items: [
+          "The new HTML document is larger, 244 KB vs 70 KB. That is the React Server Components payload inlined: one bigger document against a smaller one that then blocked on 27 more files across 22 hosts. A real trade, stated rather than hidden.",
+          "Small tap targets on the homepage went from 7 to 18, the language switcher and carousel controls are compact by design. That metric goes against the new site, so it belongs in the record.",
+          "There is no before-and-after traffic data, and won't be for months: there was no Search Console property and analytics had been dead since 2023. Any launch-day traffic claim would be invented. What this rebuild delivered is the measurement baseline that never existed.",
+        ],
+      },
+    ],
+    approachBlocks: [
+      { kind: "heading", label: "Designing for the Experience" },
+      {
+        kind: "text",
+        text: "A resort website has a harder job than most. Booking a room isn't buying something you can return, it's handing over your whole vacation, weeks ahead, on trust. In hospitality the experience on the ground is the entire product, and it can make a trip or break it. So when someone is deciding whether to book, they're really deciding whether to trust you with their time off. The site's job is to earn that trust before a single email, to make a visitor feel the place and come away thinking: if I book here, I'm going to have a great trip.",
+      },
+      {
+        kind: "text",
+        text: "That conviction shaped the biggest design decision on the project. The old site showed the resort in small, cramped images, its best assets shrunk down and easy to scroll past. I rebuilt it around full-scale, immersive photography, the water, the dock, the reef, and the rooms shown at the size they deserve, so the site feels less like a brochure and more like standing there. And I worked closely with the client to bring their strongest assets, the rooms and the setting, right to the front and early, where they do the most to turn a browser into a booking.",
+      },
+      {
+        kind: "beforeAfter",
+        title: "The homepage, before and after",
+        before: "/case-splashinn-home-before.png",
+        after: "/case-splashinn-home-after.png",
+      },
+      {
+        kind: "beforeAfter",
+        title: "The rooms: small thumbnails, then full-scale imagery",
+        before: "/case-splashinn-rooms-before.png",
+        after: "/case-splashinn-rooms-after.png",
+      },
+      { kind: "heading", label: "Brand & Logo" },
+      {
+        kind: "text",
+        text: "The rebuild started with the brand itself. I designed the Splash Inn wordmark, a hand-worked script paired with a clean, spaced DIVE RESORT lockup, so the identity finally looked like the five-star operation behind it. It runs through the whole site and down into the favicon, rebuilt as crisp SVG so the mark holds up at every size.",
+      },
+      {
+        kind: "image",
+        src: "/case-splashinn-logo.png",
+        caption: "The Splash Inn Dive Resort wordmark.",
+        gradient: true,
+        wide: true,
+      },
+      { kind: "heading", label: "Rebuilt for Speed and Scale" },
+      {
+        kind: "text",
+        text: "With the look settled, I rebuilt the site from the ground up on Next.js with React Server Components, TypeScript, and Tailwind: 232 pages, 73 in each of the three languages, served from Vercel instead of an aging WordPress host. On the homepage, 17 render-blocking stylesheets became 1, and 10 blocking scripts became 1, so all that full-scale imagery still loads fast.",
+      },
+      { kind: "heading", label: "Trilingual By Design" },
+      {
+        kind: "text",
+        text: "The three languages are first-class, not a translation plugin. Every page in every language is a real static page under a shared path, so the English, Spanish, and French versions of a room live at the same address. That single decision is what makes hreflang meaningful, and it is the biggest search improvement in the project: Google can finally tell the translations apart and serve the right one.",
+      },
+      {
+        kind: "beforeAfter",
+        title: "The Spanish homepage, before and after",
+        before: "/case-splashinn-es-before.png",
+        after: "/case-splashinn-es-after.png",
+      },
+      {
+        kind: "text",
+        text: "The Spanish site grew from 28 pages to 73, the French from 23 to 73, each now a full mirror of the 109-page English site rather than a thin afterthought.",
+      },
+      { kind: "heading", label: "Recovering Content Nobody Could Read" },
+      {
+        kind: "text",
+        text: "Every rate was transcribed out of the JPEGs into structured data and rendered as real text with Product and Offer schema, all occupancy tiers, per package. Non-diver companion rates were published for the first time. An entire upgrade price list, standard-plus, ocean view, nitrox, night and shark dives, had never appeared on the site in any form.",
+      },
+      {
+        kind: "beforeAfter",
+        title: "The rates and packages page, before and after",
+        before: "/case-splashinn-rates-before.png",
+        after: "/case-splashinn-rates-after.png",
+      },
+      { kind: "heading", label: "Moving Without Breaking Anything" },
+      {
+        kind: "text",
+        text: "The new site changed the address of nearly every page, so every one of the old site's 181 links was mapped to a live page on the new one, with none left behind. Nothing a guest had bookmarked, and nothing Google had already indexed, was lost in the move.",
+      },
+      { kind: "heading", label: "Accessibility & Privacy" },
+      {
+        kind: "text",
+        text: "Skip links, one H1 per page, alt text on 100% of images, focus management, and all animation behind prefers-reduced-motion. Contrast was measured by compositing the actual pixels rather than eyeballed. Analytics is GA4, the first working measurement in three years, and it does not load at all until a visitor in the EEA, UK, or Switzerland consents, on a card where Accept and Decline are identical in size and weight.",
+      },
+    ],
+    report: {
+      subtitle:
+        "Every number measured against the live old site on the same day.",
+      gaugeUnit: "%",
+      improvementWord: "fewer",
+      gauges: [
+        { label: "Structured data", before: 0, after: 100 },
+        { label: "Image alt text", before: 1, after: 100 },
+        { label: "Meta descriptions", before: 39, after: 100 },
+        { label: "hreflang", before: 44, after: 100 },
+      ],
+      bars: [
+        { label: "Render-blocking stylesheets", before: 17, after: 1, unit: "" },
+        { label: "Render-blocking scripts", before: 10, after: 1, unit: "" },
+        { label: "Third-party origins", before: 22, after: 7, unit: "" },
+        { label: "Reader-mode issues", before: 357, after: 80, unit: "" },
       ],
     },
   },

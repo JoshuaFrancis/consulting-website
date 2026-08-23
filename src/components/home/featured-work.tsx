@@ -8,8 +8,9 @@ import { CaseStudyCollage, type CollageRow } from "@/components/work/case-collag
 // Same rows/order as the /work page collage, so the two stay visually identical.
 const ROWS: CollageRow[] = [
   { slug: "shiki-studios-acting-school", fill: "navy", imageLeft: true },
-  { slug: "synthminds-brand-platform", fill: "white", imageLeft: false },
-  { slug: "ai-image-creation-course", fill: "blue", imageLeft: true },
+  { slug: "splash-inn-dive-resort", fill: "blue", imageLeft: false },
+  { slug: "synthminds-brand-platform", fill: "white", imageLeft: true },
+  { slug: "ai-image-creation-course", fill: "navy", imageLeft: false },
 ];
 
 export function FeaturedWork() {

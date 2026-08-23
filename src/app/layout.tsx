@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -114,20 +115,6 @@ const professionalServiceSchema = {
     addressRegion: "Ontario",
     addressCountry: "CA",
   },
-  review: [
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Kayleigh Shikanai" },
-      reviewBody:
-        "I've received a lot of compliments on the website. It gives Shiki Studios a more prestige, high-quality look. Sign-ups are up 41% since the new site launched. It's summer, when I expected them to dip, but we nearly matched my best month of the year. I love it.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "William Shields" },
-      reviewBody:
-        "For a long time, our website was the weakest part of how we showed up. It didn't represent the level we were at. Josh led the redesign, and the difference is night and day. Now prospects compliment the site before the first call. If you want someone who treats your site like it's their own, it's Josh.",
-    },
-  ],
 };
 
 export default function RootLayout({
@@ -149,6 +136,7 @@ export default function RootLayout({
         <Toaster position="bottom-right" />
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics gaId="G-M34JFTPZL0" />
       </body>
     </html>
   );

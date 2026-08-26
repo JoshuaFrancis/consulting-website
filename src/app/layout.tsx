@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { SiteShell } from "@/components/layout/site-shell";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
@@ -130,9 +131,9 @@ export default function RootLayout({
       <body>
         <JsonLd data={personSchema} />
         <JsonLd data={professionalServiceSchema} />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SiteShell header={<Header />} footer={<Footer />}>
+          {children}
+        </SiteShell>
         <Toaster position="bottom-right" />
         <Analytics />
         <SpeedInsights />

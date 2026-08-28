@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "You're in | The Premium Credibility Audit",
-  description: "Your free credibility audit is on its way to your inbox.",
+  title: "You're in | How to Tell If Your Website Is Turning Away Premium Buyers",
+  description:
+    "Your free guide, How to Tell If Your Website Is Turning Away Premium Buyers, is on its way to your inbox.",
   // Thank-you pages shouldn't be indexed or surfaced in search.
   robots: { index: false, follow: false },
 };
@@ -40,9 +41,10 @@ export default function AuditThankYouPage() {
               Your audit is on its way.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              Check your inbox for The Premium Credibility Audit. If it&apos;s
-              not there in a couple of minutes, check your spam or promotions
-              tab. While you wait, take a minute to watch this.
+              Check your inbox for your copy of How to Tell If Your Website Is
+              Turning Away Premium Buyers. If it&apos;s not there in a couple of
+              minutes, check your spam or promotions tab. While you wait, take a
+              minute to watch this.
             </p>
 
             <div className="mt-10 w-full max-w-2xl">

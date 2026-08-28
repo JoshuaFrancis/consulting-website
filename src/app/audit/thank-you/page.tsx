@@ -42,8 +42,20 @@ export default function AuditThankYouPage() {
             <p className="mt-5 max-w-xl text-lg text-muted-foreground leading-relaxed">
               Check your inbox for The Premium Credibility Audit. If it&apos;s
               not there in a couple of minutes, check your spam or promotions
-              tab.
+              tab. While you wait, take a minute to watch this.
             </p>
+
+            <div className="mt-10 w-full max-w-2xl">
+              <video
+                controls
+                playsInline
+                preload="none"
+                poster="/thank-you-poster.jpg"
+                className="aspect-video w-full rounded-2xl border border-white/10 bg-black shadow-2xl shadow-[#1B1D5B]/30 ring-1 ring-white/10"
+              >
+                <source src="/thank-you.mp4" type="video/mp4" />
+              </video>
+            </div>
 
             {/* CTA */}
             <div className="mt-10">

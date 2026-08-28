@@ -46,15 +46,15 @@ export default function AuditThankYouPage() {
             </p>
 
             <div className="mt-10 w-full max-w-2xl">
-              <video
-                controls
-                playsInline
-                preload="none"
-                poster="/thank-you-poster.jpg"
-                className="aspect-video w-full rounded-2xl border border-white/10 bg-black shadow-2xl shadow-[#1B1D5B]/30 ring-1 ring-white/10"
-              >
-                <source src="/thank-you.mp4" type="video/mp4" />
-              </video>
+              <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-[#1B1D5B]/30 ring-1 ring-white/10">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube-nocookie.com/embed/-eRpDIVdKqY"
+                  title="How to Tell If Your Website Is Turning Away Premium Buyers"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
             </div>
 
             {/* CTA */}

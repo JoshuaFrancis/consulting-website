@@ -6,12 +6,11 @@ import { ShaderBackground } from "@/components/ui/hero-shader";
 type Brand = { name: string; logo?: string; logoClass?: string };
 
 const brands: Brand[] = [
-  { name: "NVIDIA" },
-  { name: "PwC" },
+  { name: "NVIDIA", logo: "/logos/nvidia.png", logoClass: "h-4 md:h-5" },
   { name: "Kraft Heinz", logo: "/logos/kraft-heinz.png", logoClass: "h-5 md:h-6" },
   { name: "Goodyear", logo: "/logos/goodyear.png", logoClass: "h-6 md:h-7" },
   { name: "Peppermill Resort Spa", logo: "/logos/peppermill.png", logoClass: "h-9 md:h-10" },
-  { name: "Uplimit" },
+  { name: "Uplimit", logo: "/logos/uplimit.png", logoClass: "h-6 md:h-7" },
 ];
 
 export function Hero() {

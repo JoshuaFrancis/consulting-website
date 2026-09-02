@@ -90,9 +90,9 @@ export default function AuditPage() {
               <Image
                 src="/william-shields.png"
                 alt="William Shields"
-                width={44}
-                height={44}
-                className="size-11 shrink-0 rounded-full object-cover ring-1 ring-white/25"
+                width={56}
+                height={56}
+                className="size-14 shrink-0 rounded-full object-cover ring-2 ring-white/80 shadow-lg shadow-black/50"
               />
               <span className="min-w-0">
                 <span className="block font-semibold">William Shields</span>

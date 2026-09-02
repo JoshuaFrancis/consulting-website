@@ -86,11 +86,21 @@ export default function AuditPage() {
               &ldquo;Josh led the redesign, and the difference is night and day.
               Now prospects compliment the site before the first call.&rdquo;
             </blockquote>
-            <figcaption className="mt-5">
-              <span className="font-semibold">William Shields</span>
-              <span className="mt-1 block max-w-md text-pretty text-sm leading-snug text-white/85">
-                Founder and Principal of Synthminds, an AI consultancy whose work
-                has supported teams such as NVIDIA, HP, PwC, and Kraft&nbsp;Heinz
+            <figcaption className="mt-5 flex items-start gap-3">
+              <Image
+                src="/william-shields.png"
+                alt="William Shields"
+                width={44}
+                height={44}
+                className="size-11 shrink-0 rounded-full object-cover ring-1 ring-white/25"
+              />
+              <span className="min-w-0">
+                <span className="block font-semibold">William Shields</span>
+                <span className="mt-0.5 block max-w-md text-pretty text-sm leading-snug text-white/85">
+                  Founder and Principal of Synthminds, an AI consultancy whose
+                  work has supported teams such as NVIDIA, HP, PwC, and
+                  Kraft&nbsp;Heinz
+                </span>
               </span>
             </figcaption>
           </figure>
